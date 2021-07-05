@@ -8,7 +8,8 @@
 	var/text
 	for(var/A in typesof(/obj/item))
 		var/obj/item/O = new A( locate(1,1,1) )
-		if(!O) continue
+		if(!O)
+			continue
 		var/icon/J = new(O.icon)
 		var/list/istates = J.IconStates()
 		if(!Lstates.Find(O.icon_state) && !Lstates.Find(O.item_state))

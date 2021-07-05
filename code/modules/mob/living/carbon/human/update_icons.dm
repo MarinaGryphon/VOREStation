@@ -196,7 +196,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			continue
 
 		O.update_icon()
-		if(O.damage_state == "00") continue
+		if(O.damage_state == "00")
+			continue
 		var/icon/DI
 		var/cache_index = "[O.damage_state]/[O.icon_name]/[species.get_blood_colour(src)]/[species.get_bodytype(src)]"
 		if(damage_icon_parts[cache_index] == null)
@@ -971,8 +972,10 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(!tail_icon)
 		//generate a new one
 		var/species_tail_anim = species.get_tail_animation(src)
-		if(!species_tail_anim && species.icobase_tail) species_tail_anim = species.icobase //Allow override of file for non-animated tails
-		if(!species_tail_anim) species_tail_anim = 'icons/effects/species.dmi'
+		if(!species_tail_anim && species.icobase_tail)
+			species_tail_anim = species.icobase //Allow override of file for non-animated tails
+		if(!species_tail_anim)
+			species_tail_anim = 'icons/effects/species.dmi'
 		tail_icon = new/icon(species_tail_anim)
 		tail_icon.Blend(rgb(r_skin, g_skin, b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
 		// The following will not work with animated tails.

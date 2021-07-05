@@ -29,13 +29,17 @@
 
 //Returns the thing in our active hand
 /mob/living/get_active_hand()
-	if(hand)	return l_hand
-	else		return r_hand
+	if(hand)
+		return l_hand
+	else
+		return r_hand
 
 //Returns the thing in our inactive hand
 /mob/living/get_inactive_hand()
-	if(hand)	return r_hand
-	else		return l_hand
+	if(hand)
+		return r_hand
+	else
+		return l_hand
 
 //Drops the item in our active hand. TODO: rename this to drop_active_hand or something
 /mob/living/drop_item(var/atom/Target)
@@ -109,10 +113,14 @@
 
 /mob/living/get_equipped_item(var/slot)
 	switch(slot)
-		if(slot_l_hand) return l_hand
-		if(slot_r_hand) return r_hand
-		if(slot_back) return back
-		if(slot_wear_mask) return wear_mask
+		if(slot_l_hand)
+			return l_hand
+		if(slot_r_hand)
+			return r_hand
+		if(slot_back)
+			return back
+		if(slot_wear_mask)
+			return wear_mask
 	return null
 
 /mob/living/ret_grab(var/list/L, var/mobchain_limit = 5)

@@ -54,7 +54,8 @@
 /turf/simulated/proc/can_safely_remove_from_zone()
 
 
-	if(!zone) return 1
+	if(!zone)
+		return 1
 
 	var/check_dirs = get_zone_neighbours(src)
 	var/unconnected_dirs = check_dirs
@@ -177,7 +178,8 @@
 						#endif
 
 						//Postpone this tile rather than exit, since a connection can still be made.
-						if(!postponed) postponed = list()
+						if(!postponed)
+							postponed = list()
 						postponed.Add(sim)
 
 					else
@@ -207,7 +209,8 @@
 		else
 
 			//Postponing connections to tiles until a zone is assured.
-			if(!postponed) postponed = list()
+			if(!postponed)
+				postponed = list()
 			postponed.Add(unsim)
 
 	if(!air_master.has_valid_zone(src)) //Still no zone, make a new one.
@@ -226,7 +229,8 @@
 		air_master.connect(src, T)
 
 /turf/proc/post_update_air_properties()
-	if(connections) connections.update_all()
+	if(connections)
+		connections.update_all()
 
 /turf/assume_air(datum/gas_mixture/giver) //use this for machines to adjust air
 	return 0
@@ -299,6 +303,7 @@
 	air.volume = CELL_VOLUME
 
 /turf/simulated/proc/c_copy_air()
-	if(!air) air = new/datum/gas_mixture
+	if(!air)
+		air = new/datum/gas_mixture
 	air.copy_from(zone.air)
 	air.group_multiplier = 1

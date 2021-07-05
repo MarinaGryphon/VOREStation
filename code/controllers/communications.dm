@@ -163,22 +163,38 @@ var/list/radiochannels = list(
 
 	for(var/list/channel in channel_info)
 		switch(channel["color"])
-			if("deadsay") channel["color"] = "#530FAD"
-			if("radio") channel["color"] = "#008000"
-			if("deptradio") channel["color"] = "#ff00ff"
-			if("newscaster") channel["color"] = "#750000"
-			if("comradio") channel["color"] = "#193A7A"
-			if("syndradio") channel["color"] = "#6D3F40"
-			if("centradio") channel["color"] = "#5C5C8A"
-			if("airadio") channel["color"] = "#FF00FF"
-			if("entradio") channel["color"] = "#339966"
-			if("secradio") channel["color"] = "#A30000"
-			if("engradio") channel["color"] = "#A66300"
-			if("medradio") channel["color"] = "#008160"
-			if("sciradio") channel["color"] = "#993399"
-			if("supradio") channel["color"] = "#5F4519"
-			if("srvradio") channel["color"] = "#6eaa2c"
-			if("expradio") channel["color"] = "#555555"
+			if("deadsay")
+				channel["color"] = "#530FAD"
+			if("radio")
+				channel["color"] = "#008000"
+			if("deptradio")
+				channel["color"] = "#ff00ff"
+			if("newscaster")
+				channel["color"] = "#750000"
+			if("comradio")
+				channel["color"] = "#193A7A"
+			if("syndradio")
+				channel["color"] = "#6D3F40"
+			if("centradio")
+				channel["color"] = "#5C5C8A"
+			if("airadio")
+				channel["color"] = "#FF00FF"
+			if("entradio")
+				channel["color"] = "#339966"
+			if("secradio")
+				channel["color"] = "#A30000"
+			if("engradio")
+				channel["color"] = "#A66300"
+			if("medradio")
+				channel["color"] = "#008160"
+			if("sciradio")
+				channel["color"] = "#993399"
+			if("supradio")
+				channel["color"] = "#5F4519"
+			if("srvradio")
+				channel["color"] = "#6eaa2c"
+			if("expradio")
+				channel["color"] = "#555555"
 
 	to_chat(src, json_encode(channel_info)) */
 

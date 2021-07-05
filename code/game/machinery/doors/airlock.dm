@@ -1164,9 +1164,11 @@ About the new airlock wires panel:
 			to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
 		else
 			if(density)
-				spawn(0)	open(1)
+				spawn(0)
+					open(1)
 			else
-				spawn(0)	close(1)
+				spawn(0)
+					close(1)
 
 	// Check if we're using a crowbar or armblade, and if the airlock's unpowered for whatever reason (off, broken, etc).
 	else if(istype(C, /obj/item/weapon))

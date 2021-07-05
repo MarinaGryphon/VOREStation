@@ -327,7 +327,8 @@
 	var/list/mobs = sortmobs()
 
 	for(var/mob/M in mobs)
-		if(!M.ckey) continue
+		if(!M.ckey)
+			continue
 
 		dat += "<tr><td>[M.name]</td>"
 		if(isAI(M))

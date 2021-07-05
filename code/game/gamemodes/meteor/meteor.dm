@@ -25,7 +25,8 @@
 	for(var/mob/living/player in player_list)
 		if(player.stat != DEAD)
 			var/turf/location = get_turf(player.loc)
-			if(!location)	continue
+			if(!location)
+				continue
 			switch(location.loc.type)
 				if( /area/shuttle/escape/centcom )
 					text += "<br><b><font size=2>[player.real_name] escaped on the emergency shuttle</font></b>"

@@ -60,7 +60,8 @@
 	var/obj/dummy = new(source)
 	dummy.pass_flags = PASSTABLE
 
-	for(var/i=0, i<5, i++) if(!step_towards(dummy, target)) break
+	for(var/i=0, i<5, i++)
+		if(!step_towards(dummy, target)) break
 
 	var/rval = dummy.Adjacent(target)
 	dummy.loc = null
@@ -143,7 +144,8 @@
 		for (var/ID in virus2)
 //			log_debug("Attempting virus [ID]")
 			var/datum/disease2/disease/V = virus2[ID]
-			if(V.spreadtype != vector) continue
+			if(V.spreadtype != vector)
+				continue
 
 			//It's hard to get other people sick if you're in an airtight suit.
 			if(!infection_spreading_check(src, V.spreadtype)) continue
@@ -176,6 +178,7 @@
 		if (nudity)
 			for (var/ID in victim.virus2)
 				var/datum/disease2/disease/V = victim.virus2[ID]
-				if(V && V.spreadtype != vector) continue
+				if(V && V.spreadtype != vector)
+					continue
 				if(!infection_spreading_check(victim, V.spreadtype)) continue
 				infect_virus2(src,V)

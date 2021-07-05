@@ -22,7 +22,8 @@
 			return
 
 		var/new_name = sanitize(input(usr,"What would you like to name this mob?","Input a name",M.real_name) as text|null, MAX_NAME_LEN)
-		if( !new_name || !M )	return
+		if( !new_name || !M )
+			return
 
 		message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
 		M.fully_replace_character_name(M.real_name,new_name)
@@ -223,8 +224,10 @@
 			return
 
 		switch(href_list["rotatedir"])
-			if("right")	A.set_dir(turn(A.dir, -45))
-			if("left")	A.set_dir(turn(A.dir, 45))
+			if("right")
+				A.set_dir(turn(A.dir, -45))
+			if("left")
+				A.set_dir(turn(A.dir, 45))
 		href_list["datumrefresh"] = href_list["rotatedatum"]
 
 	else if(href_list["makemonkey"])
@@ -407,7 +410,8 @@
 			return
 
 		var/new_organ = tgui_input_list(usr, "Please choose an organ to add.","Organ", subtypesof(/obj/item/organ))
-		if(!new_organ) return
+		if(!new_organ)
+			return
 
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")
@@ -482,12 +486,17 @@
 			return
 
 		switch(Text)
-			if("brute")	L.adjustBruteLoss(amount)
-			if("fire")	L.adjustFireLoss(amount)
-			if("toxin")	L.adjustToxLoss(amount)
+			if("brute")
+				L.adjustBruteLoss(amount)
+			if("fire")
+				L.adjustFireLoss(amount)
+			if("toxin")
+				L.adjustToxLoss(amount)
 			if("oxygen")L.adjustOxyLoss(amount)
-			if("brain")	L.adjustBrainLoss(amount)
-			if("clone")	L.adjustCloneLoss(amount)
+			if("brain")
+				L.adjustBrainLoss(amount)
+			if("clone")
+				L.adjustCloneLoss(amount)
 			else
 				to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]")
 				return

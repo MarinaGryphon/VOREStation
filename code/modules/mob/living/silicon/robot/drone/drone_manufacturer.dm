@@ -48,7 +48,8 @@
 		return
 
 	if(stat & NOPOWER || !produce_drones)
-		if(icon_state != "drone_fab_nopower") icon_state = "drone_fab_nopower"
+		if(icon_state != "drone_fab_nopower")
+			icon_state = "drone_fab_nopower"
 		return
 
 	if(drone_progress >= 100)
@@ -87,7 +88,8 @@
 	var/mob/living/silicon/robot/drone/new_drone = new drone_type(get_turf(src))
 	if(player)
 		announce_ghost_joinleave(player, 0, "They have taken control over a maintenance drone.")
-		if(player.mob && player.mob.mind) player.mob.mind.reset()
+		if(player.mob && player.mob.mind)
+			player.mob.mind.reset()
 		new_drone.transfer_personality(player)
 
 	return new_drone

@@ -41,8 +41,10 @@
 
 
 /mob/new_player/proc/show_latest_news(var/datum/feed_channel/CHANNEL)
-	if(!GLOB.news_data) return
-	if(!GLOB.news_data.station_newspaper) return
+	if(!GLOB.news_data)
+		return
+	if(!GLOB.news_data.station_newspaper)
+		return
 
 	var/dat
 

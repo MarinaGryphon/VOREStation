@@ -118,7 +118,8 @@
 			playsound(src, W.usesound, 100, 1)
 			rigged = 0
 			return
-	else return attack_hand(user)
+	else
+		return attack_hand(user)
 
 /obj/structure/closet/crate/ex_act(severity)
 	switch(severity)
@@ -175,7 +176,8 @@
 		to_chat(user, "<span class='notice'>Access Denied</span>")
 
 /obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
-	if(locked == newlocked) return
+	if(locked == newlocked)
+		return
 
 	locked = newlocked
 	if(user)
@@ -305,10 +307,12 @@
 
 /obj/structure/closet/crate/freezer/return_air()
 	var/datum/gas_mixture/gas = (..())
-	if(!gas)	return null
+	if(!gas)
+		return null
 	var/datum/gas_mixture/newgas = new/datum/gas_mixture()
 	newgas.copy_from(gas)
-	if(newgas.temperature <= target_temp)	return
+	if(newgas.temperature <= target_temp)
+		return
 
 	if((newgas.temperature - cooling_power) > target_temp)
 		newgas.temperature -= cooling_power

@@ -217,7 +217,8 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 	qdel(src)
 
 /obj/structure/AIcore/deactivated/proc/check_malf(var/mob/living/silicon/ai/ai)
-	if(!ai) return
+	if(!ai)
+		return
 	for (var/datum/mind/malfai in malf.current_antagonists)
 		if (ai.mind == malfai)
 			return 1
@@ -263,10 +264,12 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 		cores["[D] ([D.loc.loc])"] = D
 
 	var/id = tgui_input_list(usr, "Which core?", "Toggle AI Core Latejoin", cores)
-	if(!id) return
+	if(!id)
+		return
 
 	var/obj/structure/AIcore/deactivated/D = cores[id]
-	if(!D) return
+	if(!D)
+		return
 
 	if(D in empty_playable_ai_cores)
 		empty_playable_ai_cores -= D

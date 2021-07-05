@@ -32,7 +32,8 @@
 	return src
 
 /obj/effect/shadekin_ability/Click(var/location, var/control, var/params)
-	if(my_kin.stat) return
+	if(my_kin.stat)
+		return
 
 	var/list/clickprops = params2list(params)
 	var/opts = clickprops["shift"]

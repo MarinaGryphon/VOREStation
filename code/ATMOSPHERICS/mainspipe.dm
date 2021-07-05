@@ -20,7 +20,8 @@ obj/machinery/atmospherics/pipe/mains_component
 			if(prob(5))
 				mains_burst()
 
-		else return 1
+		else
+			return 1
 
 	pipeline_expansion()
 		return nodes
@@ -90,7 +91,8 @@ obj/machinery/atmospherics/mains_pipe
 			if(prob(5))
 				burst()
 
-		else return 1
+		else
+			return 1
 
 	get_neighbor_nodes_for_init()
 		return nodes
@@ -603,7 +605,8 @@ obj/machinery/atmospherics/mains_pipe/valve
 			set_dir(4)
 
 	proc/open()
-		if(open) return 0
+		if(open)
+			return 0
 
 		open = 1
 		update_icon()
@@ -613,7 +616,8 @@ obj/machinery/atmospherics/mains_pipe/valve
 		return 1
 
 	proc/close()
-		if(!open) return 0
+		if(!open)
+			return 0
 
 		open = 0
 		update_icon()

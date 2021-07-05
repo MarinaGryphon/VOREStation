@@ -11,7 +11,8 @@
 	set name = "Transform (5)"
 
 	var/datum/changeling/changeling = changeling_power(5,1,0)
-	if(!changeling)	return
+	if(!changeling)
+		return
 
 	if(!isturf(loc))
 		to_chat(src, "<span class='warning'>Transforming here would be a bad idea.</span>")
@@ -22,7 +23,8 @@
 		names += "[DNA.name]"
 
 	var/S = tgui_input_list(src, "Select the target DNA:", "Target DNA", names)
-	if(!S)	return
+	if(!S)
+		return
 
 	var/datum/absorbed_dna/chosen_dna = changeling.GetDNA(S)
 	if(!chosen_dna)

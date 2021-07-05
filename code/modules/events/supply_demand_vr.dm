@@ -134,7 +134,8 @@
  */
 /datum/event/supply_demand/proc/send_console_message(var/message, var/to_department)
 	for(var/obj/machinery/message_server/MS in world)
-		if(!MS.active) continue
+		if(!MS.active)
+			continue
 		MS.send_rc_message(to_department ? to_department : "All Departments", my_department, message, "", "", 2)
 
 //
@@ -147,7 +148,8 @@
 	var/qty_need // How much we still need
 
 /datum/supply_demand_order/New(var/qty)
-	if(qty) qty_orig = qty
+	if(qty)
+		qty_orig = qty
 	qty_need = qty_orig
 
 /datum/supply_demand_order/proc/describe()

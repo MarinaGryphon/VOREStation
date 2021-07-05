@@ -15,9 +15,11 @@
 	var/token/token
 /scriptError/BadToken/New(token/t)
 	token=t
-	if(t&&t.line) message="[t.line]: [message]"
+	if(t&&t.line)
+		message="[t.line]: [message]"
 	if(istype(t))message+="[t.value]"
-	else message+="[t]"
+	else
+		message+="[t]"
 
 /scriptError/InvalidID
 	parent_type=/scriptError/BadToken
@@ -43,7 +45,8 @@
 /scriptError/ExpectedToken
 	message="Expected: '"
 /scriptError/ExpectedToken/New(id, token/T)
-	if(T && T.line) message="[T.line]: [message]"
+	if(T && T.line)
+		message="[T.line]: [message]"
 	message+="[id]'. "
 	if(T)message+="Found '[T.value]'."
 

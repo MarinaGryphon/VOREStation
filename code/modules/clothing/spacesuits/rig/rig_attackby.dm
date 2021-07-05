@@ -119,8 +119,10 @@
 		else if(W.is_screwdriver())
 
 			var/list/current_mounts = list()
-			if(cell) current_mounts   += "cell"
-			if(installed_modules && installed_modules.len) current_mounts += "system module"
+			if(cell)
+				current_mounts   += "cell"
+			if(installed_modules && installed_modules.len)
+				current_mounts += "system module"
 
 			var/to_remove = tgui_input_list(usr, "Which would you like to modify?", "Removal Choice", current_mounts)
 			if(!to_remove)

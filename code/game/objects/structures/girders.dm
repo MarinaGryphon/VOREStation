@@ -88,7 +88,8 @@
 		return 0
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
-	spawn(1) dismantle()
+	spawn(1)
+		dismantle()
 	return 1
 
 /obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
@@ -149,7 +150,8 @@
 			playsound(src, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
 			if(do_after(user,(35 + round(max_health/50)) * W.toolspeed))
-				if(!src) return
+				if(!src)
+					return
 				to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
 				dismantle()
 		else if(!anchored)
@@ -162,7 +164,8 @@
 	else if(istype(W, /obj/item/weapon/pickaxe/plasmacutter))
 		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
 		if(do_after(user,30 * W.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You slice apart the girder!</span>")
 			dismantle()
 
@@ -175,7 +178,8 @@
 			playsound(src, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>Now unsecuring support struts...</span>")
 			if(do_after(user,40 * W.toolspeed))
-				if(!src) return
+				if(!src)
+					return
 				to_chat(user, "<span class='notice'>You unsecured the support struts!</span>")
 				state = 1
 		else if(anchored && !reinf_material)
@@ -187,7 +191,8 @@
 		playsound(src, W.usesound, 100, 1)
 		to_chat(user, "<span class='notice'>Now removing support struts...</span>")
 		if(do_after(user,40 * W.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You removed the support struts!</span>")
 			reinf_material.place_dismantled_product(get_turf(src))
 			reinf_material = null
@@ -197,7 +202,8 @@
 		playsound(src, W.usesound, 100, 1)
 		to_chat(user, "<span class='notice'>Now dislodging the girder...</span>")
 		if(do_after(user, 40 * W.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You dislodged the girder!</span>")
 			displace()
 

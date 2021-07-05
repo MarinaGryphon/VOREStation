@@ -123,11 +123,16 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	new /obj/item/weapon/pen(src)
 	pdachoice = isnull(H) ? 1 : (ishuman(H) ? H.pdachoice : 1)
 	switch(pdachoice)
-		if(1) icon = 'icons/obj/pda.dmi'
-		if(2) icon = 'icons/obj/pda_slim.dmi'
-		if(3) icon = 'icons/obj/pda_old.dmi'
-		if(4) icon = 'icons/obj/pda_rugged.dmi'
-		if(5) icon = 'icons/obj/pda_holo.dmi'
+		if(1)
+			icon = 'icons/obj/pda.dmi'
+		if(2)
+			icon = 'icons/obj/pda_slim.dmi'
+		if(3)
+			icon = 'icons/obj/pda_old.dmi'
+		if(4)
+			icon = 'icons/obj/pda_rugged.dmi'
+		if(5)
+			icon = 'icons/obj/pda_holo.dmi'
 		if(6)
 			icon = 'icons/obj/pda_wrist.dmi'
 			item_state = icon_state
@@ -445,7 +450,8 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		scanmode.scan_atom(A, user)
 
 /obj/item/device/pda/proc/explode() //This needs tuning. //Sure did.
-	if(!src.detonate) return
+	if(!src.detonate)
+		return
 	var/turf/T = get_turf(src.loc)
 	if(T)
 		T.hotspot_expose(700,125)

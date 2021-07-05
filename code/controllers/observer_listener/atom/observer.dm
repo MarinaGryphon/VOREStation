@@ -23,7 +23,8 @@
 	listeners -= procOwner
 
 /atom/proc/get_listener_list_from_event(var/observer_event)
-	if(!observer_events) observer_events = list()
+	if(!observer_events)
+		observer_events = list()
 	var/list/listeners = observer_events[observer_event]
 	if(!listeners)
 		listeners = list()

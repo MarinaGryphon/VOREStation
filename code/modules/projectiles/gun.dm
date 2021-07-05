@@ -11,7 +11,8 @@
 
 /datum/firemode/New(obj/item/weapon/gun/gun, list/properties = null)
 	..()
-	if(!properties) return
+	if(!properties)
+		return
 
 	for(var/propname in properties)
 		var/propvalue = properties[propname]
@@ -218,7 +219,8 @@
 		O.emp_act(severity)
 
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, adjacent, params)
-	if(adjacent) return //A is adjacent, is the user, or is on the user's person
+	if(adjacent)
+		return //A is adjacent, is the user, or is on the user's person
 
 	if(!user.aiming)
 		user.aiming = new(user)
@@ -337,8 +339,10 @@
 		src.add_fingerprint(usr)
 
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
-	if(!user || !target) return
-	if(target.z != user.z) return
+	if(!user || !target)
+		return
+	if(target.z != user.z)
+		return
 
 	add_fingerprint(user)
 
@@ -378,7 +382,8 @@
 				return
 			if(user.get_active_hand() != src)
 				break
-			if(!auto_target) break//Stopped shooting
+			if(!auto_target)
+				break//Stopped shooting
 			else if(auto_target.loc)
 				target = auto_target.loc
 			//Lastly just update our dir if needed

@@ -351,7 +351,8 @@ var/list/ai_verbs_default = list(
 
 	if (!custom_sprite)
 		var/new_sprite = tgui_input_list(usr, "Select an icon!", "AI", ai_icons)
-		if(new_sprite) selected_sprite = new_sprite
+		if(new_sprite)
+			selected_sprite = new_sprite
 	updateicon()
 
 /mob/living/silicon/ai/var/message_cooldown = 0
@@ -514,8 +515,10 @@ var/list/ai_verbs_default = list(
 			client.eye = eyeobj
 			client.perspective = MOB_PERSPECTIVE
 	if(istype(A,/obj/machinery/camera))
-		if(camera_light_on)	A.set_light(AI_CAMERA_LUMINOSITY)
-		else				A.set_light(0)
+		if(camera_light_on)
+			A.set_light(AI_CAMERA_LUMINOSITY)
+		else
+			A.set_light(0)
 
 
 /mob/living/silicon/ai/proc/switchCamera(var/obj/machinery/camera/C)
@@ -605,7 +608,8 @@ var/list/ai_verbs_default = list(
 			if(targets.len)
 				input = tgui_input_list(usr, "Select a crew member:", "Hologram Choice", targets) //The definition of "crew member" is a little loose...
 				//This is torture, I know. If someone knows a better way...
-				if(!input) return
+				if(!input)
+					return
 				var/new_holo = getHologramIcon(getCompoundIcon(targets[input]))
 				qdel(holo_icon)
 				holo_icon = new_holo
@@ -614,7 +618,8 @@ var/list/ai_verbs_default = list(
 				tgui_alert_async(usr, "No suitable records found. Aborting.")
 
 		if("My Character") //Loaded character slot
-			if(!client || !client.prefs) return
+			if(!client || !client.prefs)
+				return
 			var/mob/living/carbon/human/dummy/dummy = new ()
 			//This doesn't include custom_items because that's ... hard.
 			client.prefs.dress_preview_mob(dummy)
@@ -872,7 +877,8 @@ var/list/ai_verbs_default = list(
 	..()
 
 /mob/living/silicon/ai/updateicon()
-	if(!selected_sprite) selected_sprite = default_ai_icon
+	if(!selected_sprite)
+		selected_sprite = default_ai_icon
 
 	if(stat == DEAD)
 		icon_state = selected_sprite.dead_icon

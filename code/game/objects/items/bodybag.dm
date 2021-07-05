@@ -67,8 +67,10 @@
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return 0
-		if(opened)	return 0
-		if(contents.len)	return 0
+		if(opened)
+			return 0
+		if(contents.len)
+			return 0
 		visible_message("[usr] folds up the [src.name]")
 		var/folded = new item_path(get_turf(src))
 		spawn(0)

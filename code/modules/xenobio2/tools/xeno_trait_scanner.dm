@@ -36,7 +36,8 @@
 	return 0
 
 /obj/item/device/analyzer/xeno_analyzer/afterattack(var/target, mob/user, flag)
-	if(!flag) return
+	if(!flag)
+		return
 
 	var/datum/xeno/traits/trait_info
 	var/datum/reagents/prod_reagents

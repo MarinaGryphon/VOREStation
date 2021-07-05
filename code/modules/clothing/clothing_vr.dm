@@ -165,11 +165,16 @@
 	..()
 	sensorpref = isnull(H) ? 1 : (ishuman(H) ? H.sensorpref : 1)
 	switch(sensorpref)
-		if(1) sensor_mode = 0				//Sensors off
-		if(2) sensor_mode = 1				//Sensors on binary
-		if(3) sensor_mode = 2				//Sensors display vitals
-		if(4) sensor_mode = 3				//Sensors display vitals and enables tracking
-		if(5) sensor_mode = pick(0,1,2,3)	//Select a random setting
+		if(1)
+			sensor_mode = 0				//Sensors off
+		if(2)
+			sensor_mode = 1				//Sensors on binary
+		if(3)
+			sensor_mode = 2				//Sensors display vitals
+		if(4)
+			sensor_mode = 3				//Sensors display vitals and enables tracking
+		if(5)
+			sensor_mode = pick(0,1,2,3)	//Select a random setting
 		else
 			sensor_mode = pick(0,1,2,3)
 			log_debug("Invalid switch for suit sensors, defaulting to random. [sensorpref] chosen")

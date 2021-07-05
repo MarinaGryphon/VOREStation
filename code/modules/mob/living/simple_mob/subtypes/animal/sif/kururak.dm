@@ -258,7 +258,8 @@
 
 		A = tgui_input_list(src, "What do we wish to strike?", "Target Choice", choices)
 
-	if(!A || !src) return
+	if(!A || !src)
+		return
 
 	if(!(src.Adjacent(A))) return
 

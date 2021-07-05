@@ -161,7 +161,8 @@
 		visible_message("<span class='warning'>\The [src] pounces on \the [target_mob]!]</span>")
 		target_mob.Stun(5)
 		return EatTarget()
-	else ..()
+	else
+		..()
 
 /mob/living/simple_mob/animal/passive/cat/Found(var/atom/found_atom)
 	if(!SA_attackable(found_atom))
@@ -204,7 +205,8 @@
 /mob/living/simple_mob/fox/PunchTarget()
 	if(istype(target_mob,/mob/living/simple_mob/animal/passive/mouse))
 		return EatTarget()
-	else ..()
+	else
+		..()
 
 /mob/living/simple_mob/fox/Found(var/atom/found_atom)
 	if(!SA_attackable(found_atom))

@@ -39,12 +39,15 @@ var/global/list/map_count = list()
 	else
 		map_count[descriptor]++
 	name = "[descriptor] #[map_count[descriptor]]"
-	if(preserve_map) random_maps[name] = src
+	if(preserve_map)
+		random_maps[name] = src
 
 	// Get origins for applying the map later.
 	set_origins(tx, ty, tz)
-	if(tlx) limit_x = tlx
-	if(tly) limit_y = tly
+	if(tlx)
+		limit_x = tlx
+	if(tly)
+		limit_y = tly
 
 	if(do_not_apply)
 		auto_apply = null
@@ -53,7 +56,8 @@ var/global/list/map_count = list()
 	set_map_size()
 
 	var/start_time = world.timeofday
-	if(!do_not_announce) admin_notice("<span class='danger'>Generating [name].</span>", R_DEBUG)
+	if(!do_not_announce)
+		admin_notice("<span class='danger'>Generating [name].</span>", R_DEBUG)
 	sleep(-1)
 
 	// Testing needed to see how reliable this is (asynchronous calls, called during worldgen), DM ref is not optimistic
@@ -63,9 +67,11 @@ var/global/list/map_count = list()
 
 	for(var/i = 0;i<max_attempts;i++)
 		if(generate())
-			if(!do_not_announce) admin_notice("<span class='danger'>[capitalize(name)] generation completed in [round(0.1*(world.timeofday-start_time),0.1)] seconds.</span>", R_DEBUG)
+			if(!do_not_announce)
+				admin_notice("<span class='danger'>[capitalize(name)] generation completed in [round(0.1*(world.timeofday-start_time),0.1)] seconds.</span>", R_DEBUG)
 			return
-	if(!do_not_announce) admin_notice("<span class='danger'>[capitalize(name)] failed to generate ([round(0.1*(world.timeofday-start_time),0.1)] seconds): could not produce sane map.</span>", R_DEBUG)
+	if(!do_not_announce)
+		admin_notice("<span class='danger'>[capitalize(name)] failed to generate ([round(0.1*(world.timeofday-start_time),0.1)] seconds): could not produce sane map.</span>", R_DEBUG)
 
 /datum/random_map/proc/get_map_cell(var/x,var/y)
 	if(!map)
@@ -148,13 +154,17 @@ var/global/list/map_count = list()
 	origin_z = tz ? tz : 1
 
 /datum/random_map/proc/apply_to_map()
-	if(!origin_x) origin_x = 1
-	if(!origin_y) origin_y = 1
-	if(!origin_z) origin_z = 1
+	if(!origin_x)
+		origin_x = 1
+	if(!origin_y)
+		origin_y = 1
+	if(!origin_z)
+		origin_z = 1
 
 	for(var/x = 1, x <= limit_x, x++)
 		for(var/y = 1, y <= limit_y, y++)
-			if(!priority_process) sleep(-1)
+			if(!priority_process)
+				sleep(-1)
 			apply_to_turf(x,y)
 
 /datum/random_map/proc/apply_to_turf(var/x,var/y)

@@ -135,7 +135,8 @@
 			us.underlays = list(landed_on)
 			appearance = us
 
-		spawn update_breaklights() //So that we update the breaklight overlays only after turfs are connected
+		spawn
+			update_breaklights() //So that we update the breaklight overlays only after turfs are connected
 		return
 
 	if(!under)
@@ -178,7 +179,8 @@
 
 	appearance = us
 
-	spawn update_breaklights() //So that we update the breaklight overlays only after turfs are connected
+	spawn
+		update_breaklights() //So that we update the breaklight overlays only after turfs are connected
 
 	return under
 

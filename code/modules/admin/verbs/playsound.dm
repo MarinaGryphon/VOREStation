@@ -43,7 +43,8 @@ var/list/sounds_cache = list()
 
 	var/melody = tgui_input_list(usr, "Select a sound from the server to play", "Server sound list", sounds, "--CANCEL--")
 
-	if(melody == "--CANCEL--")	return
+	if(melody == "--CANCEL--")
+		return
 
 	play_sound(melody)
 	feedback_add_details("admin_verb","PSS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

@@ -49,7 +49,8 @@
 		to_chat(B.host, "<span class='danger'>You feel the captive mind of [src] begin to resist your control.</span>")
 
 		spawn(rand(200,250)+B.host.brainloss)
-			if(!B || !B.controlling) return
+			if(!B || !B.controlling)
+				return
 
 			B.host.adjustBrainLoss(rand(0.1,0.5))
 			to_chat(H, "<span class='danger'>With an immense exertion of will, you regain control of your body!</span>")

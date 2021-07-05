@@ -20,7 +20,8 @@
 		but \the [target] didn't want it.</span>")
 		return
 
-	if(!I) return
+	if(!I)
+		return
 
 	if(!Adjacent(target))
 		to_chat(src, "<span class='warning'>You need to stay in reaching distance while giving an object.</span>")

@@ -17,7 +17,8 @@
 /obj/machinery/power/terminal/New()
 	..()
 	var/turf/T = src.loc
-	if(level==1) hide(!T.is_plating())
+	if(level==1)
+		hide(!T.is_plating())
 	return
 
 /obj/machinery/power/terminal/Destroy()

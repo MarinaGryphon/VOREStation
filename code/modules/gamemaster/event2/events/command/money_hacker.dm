@@ -56,7 +56,8 @@
 	var/my_department = "[location_name()] Firewall Subroutines"
 
 	for(var/obj/machinery/message_server/MS in machines)
-		if(!MS.active) continue
+		if(!MS.active)
+			continue
 		MS.send_rc_message("Head of Personnel's Desk", my_department, message, "", "", 2)
 
 	global_announcer.autosay(message, my_department, DEPARTMENT_COMMAND)

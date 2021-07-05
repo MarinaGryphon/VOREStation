@@ -72,7 +72,8 @@ var/list/floor_light_cache = list()
 			return
 
 		on = !on
-		if(on) update_use_power(USE_POWER_ACTIVE)
+		if(on)
+			update_use_power(USE_POWER_ACTIVE)
 		//visible_message("<span class='notice'>\The [user] turns \the [src] [on ? "on" : "off"].</span>") //VOREStation Edit - No thankouuuu. Too spammy.
 		update_brightness()
 		return

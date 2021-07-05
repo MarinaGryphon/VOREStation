@@ -35,7 +35,8 @@
 		for(var/turf/T in turfstocapture)
 			atoms.Add(T)
 			for(var/atom/A in T)
-				if(A.invisibility) continue
+				if(A.invisibility)
+					continue
 				atoms.Add(A)
 
 		atoms = sort_atoms_by_layer(atoms)

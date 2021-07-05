@@ -318,7 +318,8 @@
 			correct_type = 1
 			break
 
-	if(!correct_type) return 0
+	if(!correct_type)
+		return 0
 
 	for(var/type in disallow_occupant_types)
 		if(istype(M, type))
@@ -545,8 +546,10 @@
 
 	//Eject any items that aren't meant to be in the pod.
 	var/list/items = contents
-	if(occupant) items -= occupant
-	if(announce) items -= announce
+	if(occupant)
+		items -= occupant
+	if(announce)
+		items -= announce
 
 	for(var/obj/item/W in items)
 		W.forceMove(get_turf(src))
@@ -665,7 +668,8 @@
 
 	if(M.client)
 		if(tgui_alert(M,"Would you like to enter long-term storage?","Cryopod",list("Yes","No")) == "Yes")
-			if(!M) return
+			if(!M)
+				return
 			willing = 1
 	else
 		willing = 1
@@ -685,7 +689,8 @@
 			if(M.client)
 				M.client.perspective = EYE_PERSPECTIVE
 				M.client.eye = src
-		else return
+		else
+			return
 
 		icon_state = occupied_icon_state
 

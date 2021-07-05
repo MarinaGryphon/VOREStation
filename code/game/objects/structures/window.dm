@@ -110,7 +110,8 @@
 /obj/structure/window/bullet_act(var/obj/item/projectile/Proj)
 
 	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
+	if(!proj_damage)
+		return
 
 	..()
 	take_damage(proj_damage)
@@ -165,7 +166,8 @@
 	else if(isobj(AM))
 		var/obj/item/I = AM
 		tforce = I.throwforce
-	if(reinf) tforce *= 0.25
+	if(reinf)
+		tforce *= 0.25
 	if(health - tforce <= 7 && !reinf)
 		anchored = 0
 		update_verbs()
@@ -263,7 +265,8 @@
 					hit(50)
 			return
 
-	if(W.flags & NOBLUDGEON) return
+	if(W.flags & NOBLUDGEON)
+		return
 
 	if(W.is_screwdriver())
 		if(reinf && state >= 1)
@@ -336,7 +339,8 @@
 /obj/structure/window/proc/hit(var/damage, var/sound_effect = 1)
 	if(damage < force_threshold || force_threshold < 0)
 		return
-	if(reinf) damage *= 0.5
+	if(reinf)
+		damage *= 0.5
 	take_damage(damage)
 	return
 

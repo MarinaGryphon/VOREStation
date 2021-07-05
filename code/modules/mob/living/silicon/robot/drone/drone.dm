@@ -110,9 +110,10 @@ var/list/mob_hat_cache = list()
 	mmi = null
 
 	//We need to screw with their HP a bit. They have around one fifth as much HP as a full borg.
-	for(var/V in components) if(V != "power cell")
-		var/datum/robot_component/C = components[V]
-		C.max_damage = 10
+	for(var/V in components)
+		if(V != "power cell")
+			var/datum/robot_component/C = components[V]
+			C.max_damage = 10
 
 	verbs -= /mob/living/silicon/robot/verb/Namepick
 	updateicon()
@@ -122,8 +123,10 @@ var/list/mob_hat_cache = list()
 	if(!scrambledcodes && !foreign_droid)
 		aiCamera = new/obj/item/device/camera/siliconcam/drone_camera(src)
 	additional_law_channels["Drone"] = ":d"
-	if(!laws) laws = new law_type
-	if(!module) module = new module_type(src)
+	if(!laws)
+		laws = new law_type
+	if(!module)
+		module = new module_type(src)
 
 	flavor_text = "It's a tiny little repair drone. The casing is stamped with an corporate logo and the subscript: '[using_map.company_name] Recursive Repair Systems: Fixing Tomorrow's Problem, Today!'"
 	playsound(src, 'sound/machines/twobeep.ogg', 50, 0)
@@ -324,7 +327,8 @@ var/list/mob_hat_cache = list()
 
 /mob/living/silicon/robot/drone/proc/transfer_personality(var/client/player)
 
-	if(!player) return
+	if(!player)
+		return
 
 	src.ckey = player.ckey
 

@@ -184,13 +184,20 @@
 	var/mute_string
 
 	switch(mute_type)
-		if(MUTE_IC)			mute_string = "IC (say and emote)"
-		if(MUTE_OOC)		mute_string = "OOC"
-		if(MUTE_PRAY)		mute_string = "pray"
-		if(MUTE_ADMINHELP)	mute_string = "adminhelp, admin PM and ASAY"
-		if(MUTE_DEADCHAT)	mute_string = "deadchat and DSAY"
-		if(MUTE_ALL)		mute_string = "everything"
-		else				return
+		if(MUTE_IC)
+			mute_string = "IC (say and emote)"
+		if(MUTE_OOC)
+			mute_string = "OOC"
+		if(MUTE_PRAY)
+			mute_string = "pray"
+		if(MUTE_ADMINHELP)
+			mute_string = "adminhelp, admin PM and ASAY"
+		if(MUTE_DEADCHAT)
+			mute_string = "deadchat and DSAY"
+		if(MUTE_ALL)
+			mute_string = "everything"
+		else
+			return
 
 	if(automute)
 		muteunmute = "auto-muted"
@@ -221,7 +228,8 @@
 		return
 
 	var/confirm = tgui_alert(src, "You sure?", "Confirm", list("Yes", "No"))
-	if(confirm != "Yes") return
+	if(confirm != "Yes")
+		return
 	log_admin("[key_name(src)] has added a random AI law.")
 	message_admins("[key_name_admin(src)] has added a random AI law.", 1)
 
@@ -661,13 +669,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_DEBUG|R_FUN))	return //VOREStation Edit
 
 	var/devastation = input(usr, "Range of total devastation. -1 to none", text("Input"))  as num|null
-	if(devastation == null) return
+	if(devastation == null)
+		return
 	var/heavy = input(usr, "Range of heavy impact. -1 to none", text("Input"))  as num|null
-	if(heavy == null) return
+	if(heavy == null)
+		return
 	var/light = input(usr, "Range of light impact. -1 to none", text("Input"))  as num|null
-	if(light == null) return
+	if(light == null)
+		return
 	var/flash = input(usr, "Range of flash. -1 to none", text("Input"))  as num|null
-	if(flash == null) return
+	if(flash == null)
+		return
 
 	if ((devastation != -1) || (heavy != -1) || (light != -1) || (flash != -1))
 		if ((devastation > 20) || (heavy > 20) || (light > 20))
@@ -689,13 +701,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_DEBUG|R_FUN))	return //VOREStation Edit
 
 	var/heavy = input(usr, "Range of heavy pulse.", text("Input"))  as num|null
-	if(heavy == null) return
+	if(heavy == null)
+		return
 	var/med = input(usr, "Range of medium pulse.", text("Input"))  as num|null
-	if(med == null) return
+	if(med == null)
+		return
 	var/light = input(usr, "Range of light pulse.", text("Input"))  as num|null
-	if(light == null) return
+	if(light == null)
+		return
 	var/long = input(usr, "Range of long pulse.", text("Input"))  as num|null
-	if(long == null) return
+	if(long == null)
+		return
 
 	if (heavy || med || light || long)
 
@@ -715,9 +731,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN|R_FUN))	return //VOREStation Edit
 
 	var/confirm = tgui_alert(src, "You sure?", "Confirm", list("Yes", "No"))
-	if(confirm != "Yes") return
+	if(confirm != "Yes")
+		return
 	//Due to the delay here its easy for something to have happened to the mob
-	if(!M)	return
+	if(!M)
+		return
 
 	log_admin("[key_name(usr)] has gibbed [key_name(M)]")
 	message_admins("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
@@ -772,7 +790,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		var/mins = input(usr,"How long (in minutes)?","Ban time",1440) as num
 		if(!mins)
 			return
-		if(mins >= 525600) mins = 525599
+		if(mins >= 525600)
+			mins = 525599
 		var/reason = input(usr,"Reason?","reason","Griefer") as text
 		if(!reason)
 			return
@@ -882,7 +901,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))	return //VOREStation Edit
 
 	var/confirm = tgui_alert(src, "You sure?", "Confirm", list("Yes", "No"))
-	if(confirm != "Yes") return
+	if(confirm != "Yes")
+		return
 
 	var/choice
 	if(ticker.mode.auto_recall_shuttle)

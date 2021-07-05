@@ -232,9 +232,11 @@ emp_act
 
 /mob/living/carbon/human/proc/check_shields(var/damage = 0, var/atom/damage_source = null, var/mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
-		if(!shield) continue
+		if(!shield)
+			continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
-		if(.) return
+		if(.)
+			return
 	return 0
 
 /mob/living/carbon/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
@@ -478,7 +480,8 @@ emp_act
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
 			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
 
-			if(!O || !src) return
+			if(!O || !src)
+				return
 
 			if(O.loc == src && O.sharp) //Projectile is embedded and suitable for pinning.
 				var/turf/T = near_wall(dir,2)
@@ -516,7 +519,8 @@ emp_act
 	return FALSE
 
 /mob/living/carbon/human/embed(var/obj/O, var/def_zone=null)
-	if(!def_zone) ..()
+	if(!def_zone)
+		..()
 
 	var/obj/item/organ/external/affecting = get_organ(def_zone)
 	if(affecting)
@@ -545,7 +549,8 @@ emp_act
 /mob/living/carbon/human/proc/handle_suit_punctures(var/damtype, var/damage, var/def_zone)
 
 	// Tox and oxy don't matter to suits.
-	if(damtype != BURN && damtype != BRUTE) return
+	if(damtype != BURN && damtype != BRUTE)
+		return
 
 	// The rig might soak this hit, if we're wearing one.
 	if(istype(get_rig(),/obj/item/weapon/rig))
@@ -553,11 +558,13 @@ emp_act
 		rig.take_hit(damage)
 
 	// We may also be taking a suit breach.
-	if(!wear_suit) return
+	if(!wear_suit)
+		return
 	if(!istype(wear_suit,/obj/item/clothing/suit/space)) return
 	var/obj/item/clothing/suit/space/SS = wear_suit
 	var/penetrated_dam = max(0,(damage - SS.breach_threshold))
-	if(penetrated_dam) SS.create_breaches(damtype, penetrated_dam)
+	if(penetrated_dam)
+		SS.create_breaches(damtype, penetrated_dam)
 
 /mob/living/carbon/human/reagent_permeability()
 	var/perm = 0

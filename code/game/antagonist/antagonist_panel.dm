@@ -7,7 +7,8 @@
 		dat += "<a href='?src=\ref[player];equip_antagonist=[id]'>\[equip\]</a>"
 		if(starting_locations && starting_locations.len)
 			dat += "<a href='?src=\ref[player];move_antag_to_spawn=[id]'>\[move to spawn\]</a>"
-		if(extra) dat += "[extra]"
+		if(extra)
+			dat += "[extra]"
 	else
 		dat += "<a href='?src=\ref[player];add_antagonist=[id]'>\[+\]</a>"
 	dat += "</td></tr>"
@@ -28,8 +29,10 @@
 		dat += "<tr>"
 		if(M)
 			dat += "<td><a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]/([player.key])</a>"
-			if(!M.client)      dat += " <i>(logged out)</i>"
-			if(M.stat == DEAD) dat += " <b><font color=red>(DEAD)</font></b>"
+			if(!M.client)
+				dat += " <i>(logged out)</i>"
+			if(M.stat == DEAD)
+				dat += " <b><font color=red>(DEAD)</font></b>"
 			dat += "</td>"
 			dat += "<td>\[<A HREF='?src=\ref[caller];adminplayeropts=\ref[M]'>PP</A>]\[<A href='?src=\ref[caller];priv_msg=\ref[M]'>PM</A>\]\[<A href='?src=\ref[caller];traitor=\ref[M]'>TP</A>\]</td>"
 		else

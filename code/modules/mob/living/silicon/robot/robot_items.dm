@@ -283,7 +283,8 @@
 
 		if("Colour")
 			var/newcolour = tgui_input_list(usr, "Which colour would you like to use?", list("black","blue","red","green","yellow"))
-			if(newcolour) colour = newcolour
+			if(newcolour)
+				colour = newcolour
 
 		if("Mode")
 			if (mode == 1)

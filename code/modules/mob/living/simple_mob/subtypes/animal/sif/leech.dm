@@ -262,7 +262,8 @@
 
 		M = tgui_input_list(src, "Who do we wish to infest?", "Target Choice", choices)
 
-	if(!M || !src) return
+	if(!M || !src)
+		return
 
 	if(!(src.Adjacent(M))) return
 

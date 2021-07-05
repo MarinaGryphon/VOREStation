@@ -305,7 +305,8 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	return res
 
 /proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
-	if(!donor || !receiver) return 0
+	if(!donor || !receiver)
+		return 0
 
 	if(donor_species && receiver_species)
 		if(donor_species != receiver_species)
@@ -316,14 +317,18 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	var/donor_rh = (findtext(donor,"+")>0)
 	var/receiver_rh = (findtext(receiver,"+")>0)
 
-	if(donor_rh && !receiver_rh) return 1
+	if(donor_rh && !receiver_rh)
+		return 1
 	switch(receiver_antigen)
 		if("A")
-			if(donor_antigen != "A" && donor_antigen != "O") return 1
+			if(donor_antigen != "A" && donor_antigen != "O")
+				return 1
 		if("B")
-			if(donor_antigen != "B" && donor_antigen != "O") return 1
+			if(donor_antigen != "B" && donor_antigen != "O")
+				return 1
 		if("O")
-			if(donor_antigen != "O") return 1
+			if(donor_antigen != "O")
+				return 1
 		//AB is a universal receiver.
 	return 0
 

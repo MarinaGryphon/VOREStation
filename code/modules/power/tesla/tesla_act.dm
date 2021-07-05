@@ -11,7 +11,8 @@
 	tesla_zap(src, 3, power_bounced)
 	//addtimer(CALLBACK(src, .proc/reset_shocked), 10)
 	//schedule_task_with_source_in(10, src, .proc/reset_shocked)
-	spawn(10) reset_shocked()
+	spawn(10)
+		reset_shocked()
 
 /obj/proc/reset_shocked()
 	being_shocked = FALSE

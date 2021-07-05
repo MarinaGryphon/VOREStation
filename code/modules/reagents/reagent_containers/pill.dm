@@ -73,7 +73,8 @@
 	return 0
 
 /obj/item/weapon/reagent_containers/pill/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	if(target.is_open_container() && target.reagents)
 		if(!target.reagents.total_volume)

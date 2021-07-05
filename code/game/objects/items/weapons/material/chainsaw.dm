@@ -27,7 +27,8 @@
 	..()
 
 /obj/item/weapon/chainsaw/proc/turnOn(mob/user as mob)
-	if(on) return
+	if(on)
+		return
 
 	visible_message("You start pulling the string on \the [src].", "[usr] starts pulling the string on the [src].")
 
@@ -50,7 +51,8 @@
 			to_chat(user, "You fumble with the string.")
 
 /obj/item/weapon/chainsaw/proc/turnOff(mob/user as mob)
-	if(!on) return
+	if(!on)
+		return
 	to_chat(user, "You switch the gas nozzle on the chainsaw, turning it off.")
 	attack_verb = list("bluntly hit", "beat", "knocked")
 	playsound(src, 'sound/weapons/chainsaw_turnoff.ogg',40,1)
@@ -67,7 +69,8 @@
 		turnOff(user)
 
 /obj/item/weapon/chainsaw/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	..()
 	if(on)
 		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)
@@ -99,7 +102,8 @@
 			to_chat(user, "<span class='notice'>Don't move while you're refilling the chainsaw.</span>")
 
 /obj/item/weapon/chainsaw/process()
-	if(!on) return
+	if(!on)
+		return
 
 	if(on)
 		if(get_fuel() > 0)

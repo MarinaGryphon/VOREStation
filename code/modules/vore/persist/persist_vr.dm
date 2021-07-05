@@ -133,8 +133,10 @@
 // Saves mob's current custom species, ears, and tail state to prefs
 // This basically needs to be the reverse of /datum/category_item/player_setup_item/vore/ears/copy_to_mob() ~Leshana
 /proc/apply_ears_to_prefs(var/mob/living/carbon/human/character, var/datum/preferences/prefs)
-	if(character.ear_style) prefs.ear_style = character.ear_style.type
-	if(character.tail_style) prefs.tail_style = character.tail_style.type
+	if(character.ear_style)
+		prefs.ear_style = character.ear_style.type
+	if(character.tail_style)
+		prefs.tail_style = character.tail_style.type
 	prefs.r_tail			= character.r_tail
 	prefs.b_tail			= character.b_tail
 	prefs.g_tail			= character.g_tail
@@ -178,7 +180,8 @@
 	var/list/new_body_markings = list()
 	for(var/N in character.organs_by_name)
 		var/obj/item/organ/external/O = character.organs_by_name[N]
-		if(!O) continue // Skip missing limbs!
+		if(!O)
+			continue // Skip missing limbs!
 
 		for(var/name in O.markings)
 			// Expected to be list("color" = mark_color, "datum" = mark_datum). Sanity checks to ensure it.
@@ -254,6 +257,7 @@
 	var/datum/category_item/player_setup_item/vore/nif/nif_prefs = vore_cat.items_by_name["NIF Data"]
 
 	var/savefile/S = new /savefile(prefs.path)
-	if(!S) warning("Persist (NIF): Couldn't load NIF save savefile? [prefs.real_name]")
+	if(!S)
+		warning("Persist (NIF): Couldn't load NIF save savefile? [prefs.real_name]")
 	S.cd = "/character[prefs.default_slot]"
 	nif_prefs.save_character(S)

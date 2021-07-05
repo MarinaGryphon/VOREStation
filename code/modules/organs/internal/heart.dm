@@ -9,7 +9,8 @@
 
 /obj/item/organ/internal/heart/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
 	//Endocarditis (very rare, usually for artificially implanted heart valves/pacemakers)
 	if (. >= 1)

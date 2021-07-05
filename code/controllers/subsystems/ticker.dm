@@ -294,7 +294,8 @@ var/global/datum/controller/subsystem/ticker/ticker
 
 //Plus it provides an easy way to make cinematics for other events. Just use this as a template :)
 /datum/controller/subsystem/ticker/proc/station_explosion_cinematic(var/station_missed=0, var/override = null)
-	if( cinematic )	return	//already a cinematic in progress!
+	if( cinematic )
+		return	//already a cinematic in progress!
 
 	//initialise our cinematic screen object
 	cinematic = new(src)
@@ -387,8 +388,10 @@ var/global/datum/controller/subsystem/ticker/ticker
 	//Otherwise if its a verb it will continue on afterwards.
 	sleep(300)
 
-	if(cinematic)	qdel(cinematic)		//end the cinematic
-	if(temp_buckle)	qdel(temp_buckle)	//release everybody
+	if(cinematic)
+		qdel(cinematic)		//end the cinematic
+	if(temp_buckle)
+		qdel(temp_buckle)	//release everybody
 	return
 
 

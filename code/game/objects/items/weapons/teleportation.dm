@@ -154,9 +154,12 @@ Frequency:
 				L["[com.id] (Inactive)"] = com.teleport_control.locked
 	var/list/turfs = list(	)
 	for(var/turf/T in orange(10))
-		if(T.x>world.maxx-8 || T.x<8)	continue	//putting them at the edge is dumb
-		if(T.y>world.maxy-8 || T.y<8)	continue
-		if(T.block_tele) continue
+		if(T.x>world.maxx-8 || T.x<8)
+			continue	//putting them at the edge is dumb
+		if(T.y>world.maxy-8 || T.y<8)
+			continue
+		if(T.block_tele)
+			continue
 		turfs += T
 	if(turfs.len)
 		L["None (Dangerous)"] = pick(turfs)
@@ -167,7 +170,8 @@ Frequency:
 		return
 	var/count = 0	//num of portals from this teleport in world
 	for(var/obj/effect/portal/PO in all_portals)
-		if(PO.creator == src)	count++
+		if(PO.creator == src)
+			count++
 	if(count >= 3)
 		user.show_message("<span class='notice'>\The [src] is recharging!</span>")
 		return

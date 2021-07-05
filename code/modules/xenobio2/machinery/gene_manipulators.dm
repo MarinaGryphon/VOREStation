@@ -92,7 +92,8 @@
 /obj/machinery/xenobio/process()
 
 	..()
-	if(!active) return
+	if(!active)
+		return
 
 	if(world.time > last_action + action_time)
 		finished_task()
@@ -181,7 +182,8 @@
 		ui.set_auto_update(1)
 
 /obj/machinery/xenobio/proc/eject_disk()
-	if(!loaded_disk) return
+	if(!loaded_disk)
+		return
 	loaded_disk.forceMove(loc)
 	visible_message("[bicon(src)] [src] beeps and spits out [loaded_disk].")
 	loaded_disk = null
@@ -192,7 +194,8 @@
 		return 1
 
 	if(href_list["eject_product"])
-		if(!product) return
+		if(!product)
+			return
 
 		product.forceMove(get_turf(src))
 		visible_message("[bicon(src)] [src] beeps and spits out [product].")
@@ -203,7 +206,8 @@
 
 	if(href_list["scan_genome"])
 
-		if(!product) return
+		if(!product)
+			return
 
 		last_action = world.time
 		active = 1
@@ -217,13 +221,15 @@
 
 	if(href_list["get_gene"])
 
-		if(!genetics || !loaded_disk) return
+		if(!genetics || !loaded_disk)
+			return
 
 		last_action = world.time
 		active = 1
 
 		var/datum/xeno/genes/G = genetics.get_gene(href_list["get_gene"])
-		if(!G) return
+		if(!G)
+			return
 		loaded_disk.genes += G
 
 		loaded_disk.genesource = "[genetics.source]"
@@ -239,7 +245,8 @@
 			degradation = 0
 
 	if(href_list["clear_buffer"])
-		if(!genetics) return
+		if(!genetics)
+			return
 		genetics = null
 		degradation = 0
 
@@ -302,7 +309,8 @@
 		data["locus"] = ""
 
 		for(var/datum/xeno/genes/X in loaded_disk.genes)
-			if(data["locus"] != "") data["locus"] += ", "
+			if(data["locus"] != "")
+				data["locus"] += ", "
 			data["locus"] += "[xenobio_controller.gene_tag_masks[X.genetype]]"
 
 	else
@@ -328,7 +336,8 @@
 		return 1
 
 	if(href_list["apply_gene"])
-		if(!loaded_disk || !occupant) return
+		if(!loaded_disk || !occupant)
+			return
 
 		last_action = world.time
 		active = 1

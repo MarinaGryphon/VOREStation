@@ -6,13 +6,15 @@
 	log_access_in(client)
 	if(config.log_access)
 		for(var/mob/M in player_list)
-			if(M == src)	continue
+			if(M == src)
+				continue
 			if( M.key && (M.key != key) )
 				var/matches
 				if( (M.lastKnownIP == client.address) )
 					matches += "IP ([client.address])"
 				if( (client.connection != "web") && (M.computer_id == client.computer_id) )
-					if(matches)	matches += " and "
+					if(matches)
+						matches += " and "
 					matches += "ID ([client.computer_id])"
 					if(!config.disable_cid_warn_popup)
 						tgui_alert_async(usr, "You appear to have logged in with another key this round, which is not permitted. Please contact an administrator if you believe this message to be in error.")
@@ -32,7 +34,8 @@
 
 	client.images = null				//remove the images such as AIs being unable to see runes
 	client.screen = list()				//remove hud items just in case
-	if(hud_used)	qdel(hud_used)		//remove the hud objects
+	if(hud_used)
+		qdel(hud_used)		//remove the hud objects
 	hud_used = new /datum/hud(src)
 
 	if(client.prefs && client.prefs.client_fps)

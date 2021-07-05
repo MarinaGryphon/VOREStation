@@ -63,7 +63,8 @@
 	if(frequency)
 		var/datum/radio_frequency/radio_connection = radio_controller.return_frequency(frequency)
 
-		if(!radio_connection) return
+		if(!radio_connection)
+			return
 
 		var/datum/signal/signal = new
 		signal.source = src

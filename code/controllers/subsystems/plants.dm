@@ -150,7 +150,8 @@ SUBSYSTEM_DEF(plants)
 	set name = "Show Plant Genes"
 	set desc = "Prints the round's plant gene masks."
 
-	if(!holder)	return
+	if(!holder)
+		return
 
 	if(!SSplants || !SSplants.gene_tag_masks)
 		to_chat(usr, "Gene masks not set.")

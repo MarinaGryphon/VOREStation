@@ -50,10 +50,14 @@ var/list/organ_cache = list()
 /obj/item/organ/Destroy()
 
 	handle_organ_mod_special(TRUE)
-	if(owner)           owner = null
-	if(transplant_data) transplant_data.Cut()
-	if(autopsy_data)    autopsy_data.Cut()
-	if(trace_chemicals) trace_chemicals.Cut()
+	if(owner)
+		owner = null
+	if(transplant_data)
+		transplant_data.Cut()
+	if(autopsy_data)
+		autopsy_data.Cut()
+	if(trace_chemicals)
+		trace_chemicals.Cut()
 	dna = null
 	species = null
 
@@ -180,7 +184,8 @@ var/list/organ_cache = list()
 		if(B && prob(40))
 			reagents.remove_reagent("blood",0.1)
 			blood_splatter(src,B,1)
-		if(config.organs_decay && decays) damage += rand(1,3)
+		if(config.organs_decay && decays)
+			damage += rand(1,3)
 		if(damage >= max_damage)
 			damage = max_damage
 		adjust_germ_level(rand(2,6))
@@ -389,7 +394,8 @@ var/list/organ_cache = list()
 		owner.internal_organs -= src
 
 		var/obj/item/organ/external/affected = owner.get_organ(parent_organ)
-		if(affected) affected.internal_organs -= src
+		if(affected)
+			affected.internal_organs -= src
 
 		forceMove(owner.drop_location())
 		START_PROCESSING(SSobj, src)
@@ -454,9 +460,12 @@ var/list/organ_cache = list()
 	// Pass over the blood.
 	reagents.trans_to(O, reagents.total_volume)
 
-	if(fingerprints) O.fingerprints = fingerprints.Copy()
-	if(fingerprintshidden) O.fingerprintshidden = fingerprintshidden.Copy()
-	if(fingerprintslast) O.fingerprintslast = fingerprintslast
+	if(fingerprints)
+		O.fingerprints = fingerprints.Copy()
+	if(fingerprintshidden)
+		O.fingerprintshidden = fingerprintshidden.Copy()
+	if(fingerprintslast)
+		O.fingerprintslast = fingerprintslast
 
 	user.put_in_active_hand(O)
 	qdel(src)

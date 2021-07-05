@@ -148,7 +148,8 @@
 						price_list -= item_name
 			if("add")
 				var/item_name = locate(href_list["item"])
-				if(item_list[item_name] >= 20) return
+				if(item_list[item_name] >= 20)
+					return
 				transaction_amount += price_list[item_name]
 				item_list[item_name]++
 			if("clear")
@@ -464,7 +465,8 @@
 	set desc = "Open/closes the register's cash box."
 	set src in view(1)
 
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	if(cash_open)
 		cash_open = 0
@@ -482,7 +484,8 @@
 
 
 /obj/machinery/cash_register/proc/toggle_anchors(obj/item/weapon/tool/wrench/W, mob/user)
-	if(manipulating) return
+	if(manipulating)
+		return
 	manipulating = 1
 	if(!anchored)
 		user.visible_message("\The [user] begins securing \the [src] to the floor.",

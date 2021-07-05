@@ -96,7 +96,8 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	)
 
 /obj/item/weapon/storage/bible/afterattack(atom/A, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(user.mind && (user.mind.assigned_role == "Chaplain"))
 		if(A.reagents && A.reagents.has_reagent("water")) //blesses all the water in the holder
 			to_chat(user, "<span class='notice'>You bless [A].</span>")

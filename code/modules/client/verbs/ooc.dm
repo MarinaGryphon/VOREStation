@@ -7,13 +7,15 @@
 		to_chat(usr, "<span class='warning'>Speech is currently admin-disabled.</span>")
 		return
 
-	if(!mob)	return
+	if(!mob)
+		return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
 
 	msg = sanitize(msg)
-	if(!msg)	return
+	if(!msg)
+		return
 
 	if(!is_preference_enabled(/datum/client_preference/show_ooc))
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
@@ -137,7 +139,8 @@
 
 	var/mob/source = mob.get_looc_source()
 	var/turf/T = get_turf(source)
-	if(!T) return
+	if(!T)
+		return
 	var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
 	var/list/m_viewers = in_range["mobs"]
 

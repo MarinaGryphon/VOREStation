@@ -17,7 +17,8 @@
 	..()
 
 	var/turf/O = get_turf(src)
-	if(!O) return
+	if(!O)
+		return
 
 	if(explosion_size)
 		on_explosion(O)

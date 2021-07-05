@@ -114,7 +114,8 @@
 		..()
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/proc/insert_rag(obj/item/weapon/reagent_containers/glass/rag/R, mob/user)
-	if(!isGlass || rag) return
+	if(!isGlass || rag)
+		return
 	if(user.unEquip(R))
 		to_chat(user, "<span class='notice'>You stuff [R] into [src].</span>")
 		rag = R
@@ -123,14 +124,16 @@
 		update_icon()
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/proc/remove_rag(mob/user)
-	if(!rag) return
+	if(!rag)
+		return
 	user.put_in_hands(rag)
 	rag = null
 	flags |= (initial(flags) & OPENCONTAINER)
 	update_icon()
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/open(mob/user)
-	if(rag) return
+	if(rag)
+		return
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/update_icon()

@@ -54,7 +54,8 @@
 		icon_state = "pdw-short"
 	else
 		icon_state = (ammo_magazine)? "pdw" : "pdw-empty"
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands)
+		update_held_icon()
 
 // For general use
 /obj/item/weapon/gun/projectile/automatic/stg
@@ -75,7 +76,8 @@
 	..()
 	icon_state = (ammo_magazine)? "stg60" : "stg60-empty"
 	item_state = (ammo_magazine)? "arifle" : "arifle-empty"
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands)
+		update_held_icon()
 
 // Removed because gun64_vr.dmi guns don't work.
 /*
@@ -95,7 +97,8 @@
 	// TODO - Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "ufarc" : "ufarc-empty"
 	item_state = (ammo_magazine)? "bullpup" : "bullpup-empty"
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands)
+		update_held_icon()
 
 
 
@@ -113,7 +116,8 @@
 	// TODO - Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "g44" : "g44-empty"
 	item_state = (ammo_magazine)? "bullpup" : "bullpup-empty"
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands)
+		update_held_icon()
 */
 
 //////////////////// Eris Ported Guns ////////////////////

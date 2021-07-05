@@ -45,7 +45,8 @@
 
 /obj/item/organ/internal/liver/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
 	//Pyogenic Abscess
 	if (. >= 1)

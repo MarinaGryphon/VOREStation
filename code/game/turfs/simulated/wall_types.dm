@@ -217,7 +217,8 @@
 				var/found
 				for(var/E in join_carefully)
 					found = locate(E) in adj
-					if(found) break
+					if(found)
+						break
 				if(found)
 					join_flags |= flag      // turn on the bit flag
 					return
@@ -225,7 +226,8 @@
 		var/always_found
 		for(var/E in join_always)
 			always_found = locate(E) in adj
-			if(always_found) break
+			if(always_found)
+				break
 		if(always_found)
 			join_flags |= flag      // turn on the bit flag
 		else

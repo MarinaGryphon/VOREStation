@@ -120,7 +120,8 @@
 
 		//disallow upgrading past aggressive if we're being grabbed aggressively
 		for(var/obj/item/weapon/grab/G in affecting.grabbed_by)
-			if(G == src) continue
+			if(G == src)
+				continue
 			if(G.state >= GRAB_AGGRESSIVE)
 				allow_upgrade = 0
 

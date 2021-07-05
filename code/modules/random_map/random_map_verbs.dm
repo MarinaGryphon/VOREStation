@@ -3,7 +3,8 @@
 	set name = "Display Random Map"
 	set desc = "Show the contents of a random map."
 
-	if(!holder)	return
+	if(!holder)
+		return
 
 	var/choice = tgui_input_list(usr, "Choose a map to display.", "Map Choice", random_maps)
 	if(!choice)
@@ -17,7 +18,8 @@
 	set name = "Delete Random Map"
 	set desc = "Delete a random map."
 
-	if(!holder)	return
+	if(!holder)
+		return
 
 	var/choice = tgui_input_list(usr, "Choose a map to delete.", "Map Choice", random_maps)
 	if(!choice)
@@ -34,7 +36,8 @@
 	set name = "Create Random Map"
 	set desc = "Create a random map."
 
-	if(!holder)	return
+	if(!holder)
+		return
 
 	var/map_datum = tgui_input_list(usr, "Choose a map to create.", "Map Choice", typesof(/datum/random_map)-/datum/random_map)
 	if(!map_datum)
@@ -58,7 +61,8 @@
 	set name = "Apply Random Map"
 	set desc = "Apply a map to the game world."
 
-	if(!holder)	return
+	if(!holder)
+		return
 
 	var/choice = tgui_input_list(usr, "Choose a map to apply.", "Map Choice", random_maps)
 	if(!choice)
@@ -83,7 +87,8 @@
 	set name = "Overlay Random Map"
 	set desc = "Apply a map to another map."
 
-	if(!holder)	return
+	if(!holder)
+		return
 
 	var/choice = tgui_input_list(usr, "Choose a map as base.", "Map Choice", random_maps)
 	if(!choice)
@@ -100,8 +105,10 @@
 	if(istype(base_map) && istype(overlay_map))
 		var/tx = input(usr, "X? (default to 1)") as num|null
 		var/ty = input(usr, "Y? (default to 1)") as num|null
-		if(!tx) tx = 1
-		if(!ty) ty = 1
+		if(!tx)
+			tx = 1
+		if(!ty)
+			ty = 1
 		message_admins("[key_name_admin(usr)] has applied [overlay_map.name] to [base_map.name] at x[tx],y[ty].")
 		log_admin("[key_name(usr)] has applied [overlay_map.name] to [base_map.name] at x[tx],y[ty].")
 		overlay_map.overlay_with(base_map,tx,ty)

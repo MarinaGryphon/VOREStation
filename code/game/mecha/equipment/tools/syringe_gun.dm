@@ -473,7 +473,8 @@
 	return
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/get_equip_info()
-	if(!chassis) return
+	if(!chassis)
+		return
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[src.name] - <a href='?src=\ref[src];toggle_drone=1'>[enabled?"Dea":"A"]ctivate</a>"
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/rad

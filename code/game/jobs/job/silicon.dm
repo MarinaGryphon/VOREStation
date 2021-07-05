@@ -26,7 +26,8 @@
 
 // AI procs
 /datum/job/ai/equip(var/mob/living/carbon/human/H)
-	if(!H)	return 0
+	if(!H)
+		return 0
 	return 1
 
 /datum/job/ai/is_position_available()
@@ -74,7 +75,8 @@
 
 // Cyborg procs
 /datum/job/cyborg/equip(var/mob/living/carbon/human/H)
-	if(!H)	return 0
+	if(!H)
+		return 0
 	return 1
 
 /datum/job/cyborg/equip_preview(mob/living/carbon/human/H)

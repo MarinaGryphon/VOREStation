@@ -128,7 +128,8 @@
 /datum/language/proc/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
 	log_say("(HIVE) [message]", speaker)
 
-	if(!speaker_mask) speaker_mask = speaker.name
+	if(!speaker_mask)
+		speaker_mask = speaker.name
 	message = "[get_spoken_verb(message)], \"[format_message(message, get_spoken_verb(message))]\""
 
 	for(var/mob/player in player_list)

@@ -206,7 +206,8 @@
 	var/rendered = "[bicon(src)] <span class='message'>[text]</span>"
 	for(var/obj/item/device/communicator/comm in communicating)
 		var/turf/T = get_turf(comm)
-		if(!T) return
+		if(!T)
+			return
 		//VOREStation Edit Start for commlinks
 		var/list/mobs_to_relay
 		if(istype(comm,/obj/item/device/communicator/commlink))
@@ -234,7 +235,8 @@
 /obj/item/device/communicator/hear_talk(mob/M, list/message_pieces, verb)
 	for(var/obj/item/device/communicator/comm in communicating)
 		var/turf/T = get_turf(comm)
-		if(!T) return
+		if(!T)
+			return
 		//VOREStation Edit Start for commlinks
 		var/list/mobs_to_relay
 		if(istype(comm,/obj/item/device/communicator/commlink))
@@ -260,7 +262,8 @@
 	var/rendered = "[bicon(src)] <span class='message'>[msg]</span>"
 	for(var/obj/item/device/communicator/comm in communicating)
 		var/turf/T = get_turf(comm)
-		if(!T) return
+		if(!T)
+			return
 		var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
 		var/list/mobs_to_relay = in_range["mobs"]
 

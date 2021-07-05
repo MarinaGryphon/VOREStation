@@ -45,7 +45,8 @@
 	return ..()
 
 /obj/machinery/gibber/autogibber/Bumped(var/atom/A)
-	if(!input_plate) return
+	if(!input_plate)
+		return
 
 	if(ismob(A))
 		var/mob/M = A

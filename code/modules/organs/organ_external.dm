@@ -424,10 +424,14 @@
 
 	var/damage_amount
 	switch(damage_type)
-		if(BRUTE)   damage_amount = brute_dam
-		if(BURN)    damage_amount = burn_dam
-		if("omni")  damage_amount = max(brute_dam,burn_dam)
-		else return 0
+		if(BRUTE)
+			damage_amount = brute_dam
+		if(BURN)
+			damage_amount = burn_dam
+		if("omni")
+			damage_amount = max(brute_dam,burn_dam)
+		else
+			return 0
 
 	if(!damage_amount)
 		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
@@ -454,8 +458,10 @@
 		return 0
 
 	switch(damage_type)
-		if(BRUTE) src.heal_damage(repair_amount, 0, 0, 1)
-		if(BURN)  src.heal_damage(0, repair_amount, 0, 1)
+		if(BRUTE)
+			src.heal_damage(repair_amount, 0, 0, 1)
+		if(BURN)
+			src.heal_damage(0, repair_amount, 0, 1)
 		if("omni")src.heal_damage(repair_amount, repair_amount, 0, 1)
 
 	if(damage_desc)
@@ -520,7 +526,8 @@ This function completely restores a damaged organ to perfect condition.
 	..()
 
 /obj/item/organ/external/proc/createwound(var/type = CUT, var/damage)
-	if(damage == 0) return
+	if(damage == 0)
+		return
 
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
@@ -673,7 +680,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/handle_germ_effects()
 	. = ..() //May be null or an infection level, if null then no specific processing needed here
-	if(!.) return
+	if(!.)
+		return
 
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
 
@@ -1002,7 +1010,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 // checks if all wounds on the organ are bandaged
 /obj/item/organ/external/proc/is_bandaged()
 	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
+		if(W.internal)
+			continue
 		if(!W.bandaged)
 			return 0
 	return 1
@@ -1010,7 +1019,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 // checks if all wounds on the organ are salved
 /obj/item/organ/external/proc/is_salved()
 	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
+		if(W.internal)
+			continue
 		if(!W.salved)
 			return 0
 	return 1
@@ -1018,7 +1028,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 // checks if all wounds on the organ are disinfected
 /obj/item/organ/external/proc/is_disinfected()
 	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
+		if(W.internal)
+			continue
 		if(!W.disinfected)
 			return 0
 	return 1
@@ -1027,7 +1038,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/rval = 0
 	status &= ~ORGAN_BLEEDING
 	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
+		if(W.internal)
+			continue
 		rval |= !W.bandaged
 		W.bandaged = 1
 	return rval
@@ -1042,7 +1054,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/disinfect()
 	var/rval = 0
 	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
+		if(W.internal)
+			continue
 		rval |= !W.disinfected
 		W.disinfected = 1
 		W.germ_level = 0
@@ -1052,7 +1065,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/rval = 0
 	src.status &= ~ORGAN_BLEEDING
 	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
+		if(W.internal)
+			continue
 		rval |= !W.clamped
 		W.clamped = 1
 	return rval
@@ -1176,11 +1190,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(src.robotic >= ORGAN_ROBOT)
 		return
 	src.status |= ORGAN_MUTATED
-	if(owner) owner.update_icons_body()
+	if(owner)
+		owner.update_icons_body()
 
 /obj/item/organ/external/proc/unmutate()
 	src.status &= ~ORGAN_MUTATED
-	if(owner) owner.update_icons_body()
+	if(owner)
+		owner.update_icons_body()
 
 /obj/item/organ/external/proc/get_damage()	//returns total damage
 	return (brute_dam+burn_dam)	//could use max_damage?
@@ -1341,7 +1357,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 	else if (open)
 		wound_descriptors["an incision"] = 1
 	for(var/datum/wound/W in wounds)
-		if(W.internal && !open) continue // can't see internal wounds
+		if(W.internal && !open)
+			continue // can't see internal wounds
 		var/this_wound_desc = W.desc
 
 		if(W.damage_type == BURN && W.salved)

@@ -50,7 +50,8 @@
 		if(istype(loc, /mob/living)) return
 		var/obj/item/I
 		for(I in loc)
-			if(I.density || I.anchored || I == src) continue
+			if(I.density || I.anchored || I == src)
+				continue
 			I.forceMove(src)
 		// adjust locker size to hold all items with 5 units of free store room
 		var/content_size = 0
@@ -267,7 +268,8 @@
 			else
 				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
 			if(do_after(user, 20 * W.toolspeed))
-				if(!src) return
+				if(!src)
+					return
 				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 				anchored = !anchored
 				return
@@ -401,7 +403,8 @@
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")
 	dump_contents()
-	spawn(1) qdel(src)
+	spawn(1)
+		qdel(src)
 	return 1
 
 /obj/structure/closet/proc/req_breakout()
@@ -478,7 +481,8 @@
 	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return
 	dump_contents()
-	spawn(1) qdel(src)
+	spawn(1)
+		qdel(src)
 	return 1
 
 // Just a generic cabinet for mappers to use

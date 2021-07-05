@@ -207,7 +207,8 @@
 
 //Complex version for catching in-round characters
 /datum/nifsoft/soulcatcher/proc/catch_mob(var/mob/M)
-	if(!M.mind)	return
+	if(!M.mind)
+		return
 
 	//Create a new brain mob
 	var/mob/living/carbon/brain/caught_soul/brainmob = new(nif)
@@ -313,7 +314,8 @@
 	else
 		client_missing = 0
 
-	if(parent_mob) return
+	if(parent_mob)
+		return
 
 	//If they're blinded
 	if(ext_blind)
@@ -364,11 +366,13 @@
 		return ..(direction)
 
 /mob/living/carbon/brain/caught_soul/say(var/message, var/datum/language/speaking = null, var/whispering = 0)
-	if(silent) return FALSE
+	if(silent)
+		return FALSE
 	soulcatcher.say_into(message,src,eyeobj)
 
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
-	if(silent) return FALSE
+	if(silent)
+		return FALSE
 	if (act == "me")
 		if(silent)
 			return
@@ -385,7 +389,8 @@
 		return FALSE
 
 /mob/living/carbon/brain/caught_soul/custom_emote(var/m_type, var/message)
-	if(silent) return FALSE
+	if(silent)
+		return FALSE
 	soulcatcher.emote_into(message,src,eyeobj)
 
 /mob/living/carbon/brain/caught_soul/resist()

@@ -180,9 +180,12 @@
 		..()
 
 /obj/item/weapon/gun/launcher/crossbow/proc/superheat_rod(var/mob/user)
-	if(!user || !cell || !bolt) return
-	if(cell.charge < 500) return
-	if(bolt.throwforce >= 15) return
+	if(!user || !cell || !bolt)
+		return
+	if(cell.charge < 500)
+		return
+	if(bolt.throwforce >= 15)
+		return
 	if(!istype(bolt,/obj/item/weapon/arrow/rod)) return
 
 	to_chat(user, "<span class='notice'>[bolt] plinks and crackles as it begins to glow red-hot.</span>")

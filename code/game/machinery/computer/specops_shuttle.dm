@@ -282,7 +282,8 @@ var/specops_shuttle_timeleft = 0
 		usr.machine = src
 
 	if (href_list["sendtodock"])
-		if(!specops_shuttle_at_station|| specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom) return
+		if(!specops_shuttle_at_station|| specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom)
+			return
 
 		if (!specops_can_move())
 			to_chat(usr, "<span class='notice'>[using_map.boss_name] will not allow the Special Operations shuttle to return yet.</span>")
@@ -303,7 +304,8 @@ var/specops_shuttle_timeleft = 0
 			specops_return()
 
 	else if (href_list["sendtostation"])
-		if(specops_shuttle_at_station || specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom) return
+		if(specops_shuttle_at_station || specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom)
+			return
 
 		if (!specops_can_move())
 			to_chat(usr, "<span class='warning'>The Special Operations shuttle is unable to leave.</span>")

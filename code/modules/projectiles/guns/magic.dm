@@ -24,7 +24,8 @@
 /obj/item/weapon/gun/magic/consume_next_projectile()
 	if(checks_antimagic && locate(/obj/item/weapon/nullrod) in usr) return null
 	if(!ispath(projectile_type)) return null
-	if(charges <= 0) return null
+	if(charges <= 0)
+		return null
 
 	charges -= 1
 

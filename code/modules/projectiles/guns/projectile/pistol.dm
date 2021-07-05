@@ -32,7 +32,8 @@
 	set desc = "Rename your gun. If you're Security."
 
 	var/mob/M = usr
-	if(!M.mind)	return 0
+	if(!M.mind)
+		return 0
 	var/job = M.mind.assigned_role
 	if(job != "Detective" && job != "Security Officer" && job != "Warden" && job != "Head of Security")
 		to_chat(M, "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>")

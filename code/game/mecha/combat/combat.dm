@@ -78,7 +78,8 @@
 							H.stun_effect_act(1, force / 2, BP_TORSO, src)
 						else
 							return
-					if(update)	H.UpdateDamageIcon()
+					if(update)
+						H.UpdateDamageIcon()
 				H.updatehealth()
 
 			else

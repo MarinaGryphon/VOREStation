@@ -27,7 +27,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/New()
 	allfaxes += src
-	if(!destination) destination = "[using_map.boss_name]"
+	if(!destination)
+		destination = "[using_map.boss_name]"
 	if( !(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
 		alldepartments |= department
 	..()

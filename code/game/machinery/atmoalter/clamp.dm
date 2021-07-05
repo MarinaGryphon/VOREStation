@@ -50,7 +50,8 @@
 
 /obj/machinery/clamp/Destroy()
 	if(!open)
-		spawn(-1) open()
+		spawn(-1)
+			open()
 	. = ..()
 
 /obj/machinery/clamp/proc/open()

@@ -26,7 +26,8 @@ var/list/datum/power/changeling/powerinstances = list()
 	set category = "Changeling"
 	set desc = "Adapt yourself carefully."
 
-	if(!usr || !usr.mind || !usr.mind.changeling)	return
+	if(!usr || !usr.mind || !usr.mind.changeling)
+		return
 	src = usr.mind.changeling
 
 	if(!powerinstances.len)

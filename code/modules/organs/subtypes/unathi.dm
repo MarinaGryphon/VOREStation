@@ -30,7 +30,8 @@
 //Unathi liver acts as kidneys, too.
 /obj/item/organ/internal/liver/unathi/process()
 	..()
-	if(!owner) return
+	if(!owner)
+		return
 
 	var/datum/reagent/coffee = locate(/datum/reagent/drink/coffee) in owner.reagents.reagent_list
 	if(coffee)

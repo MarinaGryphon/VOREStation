@@ -181,37 +181,40 @@ var/list/preferences_datums = list()
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
-	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
-		if(!skills.Find(S.ID) || forced)
-			skills[S.ID] = SKILL_NONE
+	for(var/V in SKILLS)
+		for(var/datum/skill/S in SKILLS[V])
+			if(!skills.Find(S.ID) || forced)
+				skills[S.ID] = SKILL_NONE
 
 /datum/preferences/proc/CalculateSkillPoints()
 	used_skillpoints = 0
-	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
-		var/multiplier = 1
-		switch(skills[S.ID])
-			if(SKILL_NONE)
-				used_skillpoints += 0 * multiplier
-			if(SKILL_BASIC)
-				used_skillpoints += 1 * multiplier
-			if(SKILL_ADEPT)
-				// secondary skills cost less
-				if(S.secondary)
+	for(var/V in SKILLS)
+		for(var/datum/skill/S in SKILLS[V])
+			var/multiplier = 1
+			switch(skills[S.ID])
+				if(SKILL_NONE)
+					used_skillpoints += 0 * multiplier
+				if(SKILL_BASIC)
 					used_skillpoints += 1 * multiplier
-				else
-					used_skillpoints += 3 * multiplier
-			if(SKILL_EXPERT)
-				// secondary skills cost less
-				if(S.secondary)
-					used_skillpoints += 3 * multiplier
-				else
-					used_skillpoints += 6 * multiplier
+				if(SKILL_ADEPT)
+					// secondary skills cost less
+					if(S.secondary)
+						used_skillpoints += 1 * multiplier
+					else
+						used_skillpoints += 3 * multiplier
+				if(SKILL_EXPERT)
+					// secondary skills cost less
+					if(S.secondary)
+						used_skillpoints += 3 * multiplier
+					else
+						used_skillpoints += 6 * multiplier
 
 /datum/preferences/proc/GetSkillClass(points)
 	return CalculateSkillClass(points, age)
 
 /proc/CalculateSkillClass(points, age)
-	if(points <= 0) return "Unconfigured"
+	if(points <= 0)
+		return "Unconfigured"
 	// skill classes describe how your character compares in total points
 	points -= min(round((age - 20) / 2.5), 4) // every 2.5 years after 20, one extra skillpoint
 	if(age > 30)
@@ -233,7 +236,8 @@ var/list/preferences_datums = list()
 			return "God"
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!user || !user.client)	return
+	if(!user || !user.client)
+		return
 
 	if(!get_mob_by_key(client_ckey))
 		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")
@@ -316,7 +320,8 @@ var/list/preferences_datums = list()
 	char_render_holders = null
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
-	if(!user)	return
+	if(!user)
+		return
 
 	if(!istype(user, /mob/new_player))	return
 

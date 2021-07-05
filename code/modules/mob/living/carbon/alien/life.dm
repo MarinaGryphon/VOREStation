@@ -5,7 +5,8 @@
 	set background = 1
 
 	if (transforming)	return
-	if(!loc)			return
+	if(!loc)
+		return
 
 	..()
 
@@ -36,7 +37,8 @@
 
 /mob/living/carbon/alien/handle_regular_status_updates()
 
-	if(status_flags & GODMODE)	return 0
+	if(status_flags & GODMODE)
+		return 0
 
 	if(stat == DEAD)
 		blinded = 1
@@ -144,7 +146,8 @@
 /mob/living/carbon/alien/handle_environment(var/datum/gas_mixture/environment)
 	// Both alien subtypes survive in vaccum and suffer in high temperatures,
 	// so I'll just define this once, for both (see radiation comment above)
-	if(!environment) return
+	if(!environment)
+		return
 
 	if(environment.temperature > (T0C+66))
 		adjustFireLoss((environment.temperature - (T0C+66))/5) // Might be too high, check in testing.

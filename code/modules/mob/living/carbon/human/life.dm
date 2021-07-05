@@ -220,13 +220,15 @@
 		if(0 <= rn && rn <= 3)
 			custom_pain("Your head feels numb and painful.", 10)
 	if(getBrainLoss() >= 15)
-		if(4 <= rn && rn <= 6) if(eye_blurry <= 0)
-			to_chat(src, "<span class='warning'>It becomes hard to see for some reason.</span>")
-			eye_blurry = 10
+		if(4 <= rn && rn <= 6)
+			if(eye_blurry <= 0)
+				to_chat(src, "<span class='warning'>It becomes hard to see for some reason.</span>")
+				eye_blurry = 10
 	if(getBrainLoss() >= 35)
-		if(7 <= rn && rn <= 9) if(get_active_hand())
-			to_chat(src, "<span class='danger'>Your hand won't respond properly, you drop what you're holding!</span>")
-			drop_item()
+		if(7 <= rn && rn <= 9)
+			if(get_active_hand())
+				to_chat(src, "<span class='danger'>Your hand won't respond properly, you drop what you're holding!</span>")
+				drop_item()
 	if(getBrainLoss() >= 45)
 		if(10 <= rn && rn <= 12)
 			if(prob(50))
@@ -466,7 +468,8 @@
 	// Not enough to breathe
 	if(inhale_pp < safe_pressure_min)
 		if(prob(20))
-			spawn(0) emote("gasp")
+			spawn(0)
+				emote("gasp")
 
 		var/ratio = inhale_pp/safe_pressure_min
 		// Don't fuck them up too fast (space only does HUMAN_MAX_OXYLOSS after all!)
@@ -552,7 +555,8 @@
 		// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 		else if(SA_pp > 0.15)
 			if(prob(20))
-				spawn(0) emote(pick("giggle", "laugh"))
+				spawn(0)
+					emote(pick("giggle", "laugh"))
 		breath.adjust_gas("nitrous_oxide", -breath.gas["nitrous_oxide"]/6, update = 0) //update after
 
 	// Were we able to breathe?
@@ -720,7 +724,8 @@
 
 			take_overall_damage(burn=cold_dam, used_weapon = "Low Body Temperature")
 
-	else clear_alert("temp")
+	else
+		clear_alert("temp")
 
 	// Account for massive pressure differences.  Done by Polymorph
 	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
@@ -981,7 +986,8 @@
 	if(skip_some_updates())
 		return 0
 
-	if(status_flags & GODMODE)	return 0
+	if(status_flags & GODMODE)
+		return 0
 
 	//SSD check, if a logged player is awake put them back to sleep!
 	if(species.get_ssd(src) && !client && !teleop)
@@ -1007,7 +1013,8 @@
 				if(prob(3))
 					fake_attack(src)
 				if(!handling_hal)
-					spawn handle_hallucinations() //The not boring kind!
+					spawn
+						handle_hallucinations() //The not boring kind!
 				if(client && prob(5))
 					client.dir = pick(2,4,8)
 					spawn(rand(20,50))
@@ -1165,23 +1172,35 @@
 		client.screen |= cam.client_huds
 
 	if(stat == DEAD) //Dead
-		if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
-		if(healths)		healths.icon_state = "health7"	//DEAD healthmeter
+		if(!druggy)
+			see_invisible = SEE_INVISIBLE_LEVEL_TWO
+		if(healths)
+			healths.icon_state = "health7"	//DEAD healthmeter
 
 	else if(stat == UNCONSCIOUS && health <= 0) //Crit
 		//Critical damage passage overlay
 		var/severity = 0
 		switch(health)
-			if(-20 to -10)			severity = 1
-			if(-30 to -20)			severity = 2
-			if(-40 to -30)			severity = 3
-			if(-50 to -40)			severity = 4
-			if(-60 to -50)			severity = 5
-			if(-70 to -60)			severity = 6
-			if(-80 to -70)			severity = 7
-			if(-90 to -80)			severity = 8
-			if(-95 to -90)			severity = 9
-			if(-INFINITY to -95)	severity = 10
+			if(-20 to -10)
+				severity = 1
+			if(-30 to -20)
+				severity = 2
+			if(-40 to -30)
+				severity = 3
+			if(-50 to -40)
+				severity = 4
+			if(-60 to -50)
+				severity = 5
+			if(-70 to -60)
+				severity = 6
+			if(-80 to -70)
+				severity = 7
+			if(-90 to -80)
+				severity = 8
+			if(-95 to -90)
+				severity = 9
+			if(-INFINITY to -95)
+				severity = 10
 		overlay_fullscreen("crit", /obj/screen/fullscreen/crit, severity)
 	else //Alive
 		clear_fullscreen("crit")
@@ -1189,13 +1208,20 @@
 		if(oxyloss)
 			var/severity = 0
 			switch(oxyloss)
-				if(10 to 20)		severity = 1
-				if(20 to 25)		severity = 2
-				if(25 to 30)		severity = 3
-				if(30 to 35)		severity = 4
-				if(35 to 40)		severity = 5
-				if(40 to 45)		severity = 6
-				if(45 to INFINITY)	severity = 7
+				if(10 to 20)
+					severity = 1
+				if(20 to 25)
+					severity = 2
+				if(25 to 30)
+					severity = 3
+				if(30 to 35)
+					severity = 4
+				if(35 to 40)
+					severity = 5
+				if(40 to 45)
+					severity = 6
+				if(45 to INFINITY)
+					severity = 7
 			overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
 		else
 			clear_fullscreen("oxy")
@@ -1206,12 +1232,18 @@
 		if(hurtdamage)
 			var/severity = 0
 			switch(hurtdamage)
-				if(10 to 25)		severity = 1
-				if(25 to 40)		severity = 2
-				if(40 to 55)		severity = 3
-				if(55 to 70)		severity = 4
-				if(70 to 85)		severity = 5
-				if(85 to INFINITY)	severity = 6
+				if(10 to 25)
+					severity = 1
+				if(25 to 40)
+					severity = 2
+				if(40 to 55)
+					severity = 3
+				if(55 to 70)
+					severity = 4
+				if(70 to 85)
+					severity = 5
+				if(85 to INFINITY)
+					severity = 6
 			overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
 		else
 			clear_fullscreen("brute")
@@ -1336,7 +1368,8 @@
 					if(O.helmet && O.helmet == head && (O.helmet.body_parts_covered & EYES))
 						if((O.offline && O.offline_vision_restriction == 1) || (!O.offline && O.vision_restriction == 1))
 							found_welder = 1
-				if(absorbed) found_welder = 1 //VOREStation Code
+				if(absorbed)
+					found_welder = 1 //VOREStation Code
 			if(found_welder)
 				client.screen |= global_hud.darkMask
 
@@ -1368,7 +1401,8 @@
 		if(XRAY in mutations)
 			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
 			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			if(!druggy)
+				see_invisible = SEE_INVISIBLE_LEVEL_TWO
 
 		if(seer==1)
 			var/obj/effect/rune/R = locate() in loc
@@ -1402,7 +1436,8 @@
 		if(XRAY in mutations)
 			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
 			see_in_dark = 8
-			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+			if(!druggy)
+				see_invisible = SEE_INVISIBLE_LEVEL_TWO
 
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.vision_flags))
@@ -1462,7 +1497,8 @@
 					to_chat(src, "<span class='danger'>You lose directional control!</span>")
 					Confuse(10)
 		if (getToxLoss() >= 45 && !isSynthetic())
-			spawn vomit()
+			spawn
+				vomit()
 
 
 	//0.1% chance of playing a scary sound to someone who's in complete darkness
@@ -1535,7 +1571,8 @@
 
 /mob/living/carbon/human/handle_shock()
 	..()
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return 0	//godmode
 	if(!can_feel_pain()) return
 
 	if(health < config.health_threshold_softcrit)// health 0 makes you immediately collapse
@@ -1590,7 +1627,8 @@
 		Weaken(20)
 
 /mob/living/carbon/human/proc/handle_pulse()
-	if(life_tick % 5) return pulse	//update pulse every 5 life ticks (~1 tick/sec, depending on server load)
+	if(life_tick % 5)
+		return pulse	//update pulse every 5 life ticks (~1 tick/sec, depending on server load)
 
 	var/temp = PULSE_NORM
 

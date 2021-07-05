@@ -120,9 +120,12 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	var/mob/living/L = M //just so I don't need to use :
 
-	if(loc == L) return
-	if(stat != CONSCIOUS)	return
-	if(!sterile) L.take_organ_damage(strength,0) //done here so that even borgs and humans in helmets take damage
+	if(loc == L)
+		return
+	if(stat != CONSCIOUS)
+		return
+	if(!sterile)
+		L.take_organ_damage(strength,0) //done here so that even borgs and humans in helmets take damage
 
 	L.visible_message("<span class='danger'><b> [src] leaps at [L]'s face!</b></span>")
 
@@ -132,7 +135,8 @@ var/const/MAX_ACTIVE_TIME = 400
 		if(target.wear_mask)
 			if(prob(20))	return
 			var/obj/item/clothing/W = target.wear_mask
-			if(!W.canremove)	return
+			if(!W.canremove)
+				return
 			target.drop_from_inventory(W)
 
 			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!"</b></span>)
@@ -140,7 +144,8 @@ var/const/MAX_ACTIVE_TIME = 400
 		target.equip_to_slot(src, slot_wear_mask)
 		target.contents += src // Monkey sanity check - Snapshot
 
-		if(!sterile) L.Paralyse(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
+		if(!sterile)
+			L.Paralyse(MAX_IMPREGNATION_TIME/6) //something like 25 ticks = 20 seconds with the default settings
 
 	GoIdle() //so it doesn't jump the people that tear it off
 

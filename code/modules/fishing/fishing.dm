@@ -160,7 +160,8 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNC
 				to_chat(user,"<span class='notice'>You fish out \the [fished] from the water with [P.name]!</span>")
 		R.cast = FALSE
 		being_fished = FALSE
-	else ..()
+	else
+		..()
 
 /obj/random/fishing_junk
 	name = "junk"

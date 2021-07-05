@@ -607,7 +607,8 @@
 	var/mob/M = src.mob
 	if(M && M.in_contents_of(/obj/mecha))
 
-		if(mech_click == world.time) return
+		if(mech_click == world.time)
+			return
 		mech_click = world.time
 
 		if(!istype(object, /atom)) return
@@ -626,8 +627,10 @@
 */
 
 /obj/mecha/proc/click_action(atom/target,mob/user, params)
-	if(!src.occupant || src.occupant != user ) return
-	if(user.stat) return
+	if(!src.occupant || src.occupant != user )
+		return
+	if(user.stat)
+		return
 	if(target == src && user == occupant)
 		show_radial_occupant(user)
 		return
@@ -640,7 +643,8 @@
 		return
 
 	if(!get_charge()) return
-	if(src == target) return
+	if(src == target)
+		return
 	var/dir_to_target = get_dir(src,target)
 	if(dir_to_target && !(dir_to_target & src.dir))//wrong direction
 		return
@@ -1554,11 +1558,11 @@
 				to_chat(user, "<span class='notice'>You repair some damage to [src.name].</span>")
 				src.health += min(10, initial(src.health)-src.health)
 				update_damage_alerts()
-			else	if(HC.integrity<HC.max_integrity)
+			else if(HC.integrity<HC.max_integrity)
 				to_chat(user, "<span class='notice'>You repair some damage to [HC.name].</span>")
 				HC.integrity += min(10, HC.max_integrity-HC.integrity)
 				update_damage_alerts()
-			else	if(AC.integrity<AC.max_integrity)
+			else if(AC.integrity<AC.max_integrity)
 				to_chat(user, "<span class='notice'>You repair some damage to [AC.name].</span>")
 				AC.integrity += min(10, AC.max_integrity-AC.integrity)
 				update_damage_alerts()
@@ -1841,10 +1845,13 @@
 	lights()
 
 /obj/mecha/verb/lights()
-	if(usr!=occupant)	return
+	if(usr!=occupant)
+		return
 	lights = !lights
-	if(lights)	set_light(light_range + lights_power)
-	else		set_light(light_range - lights_power)
+	if(lights)
+		set_light(light_range + lights_power)
+	else
+		set_light(light_range - lights_power)
 	src.occupant_message("Toggled lights [lights?"on":"off"].")
 	log_message("Toggled lights [lights?"on":"off"].")
 	playsound(src, 'sound/mecha/heavylightswitch.ogg', 50, 1)
@@ -2083,7 +2090,8 @@
 
 
 /obj/mecha/proc/go_out() //Eject/Exit the mech. Yes this is for easier searching.
-	if(!src.occupant) return
+	if(!src.occupant)
+		return
 	var/atom/movable/mob_container
 	QDEL_NULL(minihud)
 	if(ishuman(occupant))
@@ -2384,7 +2392,8 @@
 
 
 /obj/mecha/proc/output_access_dialog(obj/item/weapon/card/id/id_card, mob/user)
-	if(!id_card || !user) return
+	if(!id_card || !user)
+		return
 	var/output = {"<html>
 						<head><style>
 						h1 {font-size:15px;margin-bottom:4px;}
@@ -2398,9 +2407,11 @@
 		output += "[get_access_desc(a)] - <a href='?src=\ref[src];del_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Delete</a><br>"
 	output += "<hr><h1>Following keycodes were detected on portable device:</h1>"
 	for(var/a in id_card.access)
-		if(a in operation_req_access) continue
+		if(a in operation_req_access)
+			continue
 		var/a_name = get_access_desc(a)
-		if(!a_name) continue //there's some strange access without a name
+		if(!a_name)
+			continue //there's some strange access without a name
 		output += "[a_name] - <a href='?src=\ref[src];add_req_access=[a];user=\ref[user];id_card=\ref[id_card]'>Add</a><br>"
 	output += "<hr><a href='?src=\ref[src];finish_req_access=1;user=\ref[user]'>Finish</a> <font color='red'>(Warning! The ID upload panel will be locked. It can be unlocked only through Exosuit Interface.)</font>"
 	output += "</body></html>"
@@ -2409,7 +2420,8 @@
 	return
 
 /obj/mecha/proc/output_maintenance_dialog(obj/item/weapon/card/id/id_card,mob/user)
-	if(!id_card || !user) return
+	if(!id_card || !user)
+		return
 
 	var/maint_options = "<a href='?src=\ref[src];set_internal_tank_valve=1;user=\ref[user]'>Set Cabin Air Pressure</a>"
 	if (locate(/obj/item/mecha_parts/mecha_equipment/tool/passenger) in contents)
@@ -2461,7 +2473,8 @@
 /obj/mecha/Topic(href, href_list)
 	..()
 	if(href_list["update_content"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		send_byjax(src.occupant,"exosuit.browser","content",src.get_stats_part())
 		return
 	if(href_list["close"])
@@ -2470,7 +2483,8 @@
 		return
 	var/datum/topic_input/top_filter = new /datum/topic_input(href,href_list)
 	if(href_list["select_equip"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		var/obj/item/mecha_parts/mecha_equipment/equip = top_filter.getObj("select_equip")
 		if(equip)
 			src.selected = equip
@@ -2479,21 +2493,25 @@
 			send_byjax(src.occupant,"exosuit.browser","eq_list",src.get_equipment_list())
 		return
 	if(href_list["eject"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.eject()
 		return
 	if(href_list["toggle_lights"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.lights()
 		return
 /*
 	if(href_list["toggle_strafing"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.strafing()
 		return*/
 
 	if(href_list["toggle_airtank"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.internal_tank()
 		return
 	if (href_list["toggle_thrusters"])
@@ -2510,17 +2528,20 @@
 		src.phasing()
 
 	if(href_list["rmictoggle"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		radio.broadcasting = !radio.broadcasting
 		send_byjax(src.occupant,"exosuit.browser","rmicstate",(radio.broadcasting?"Engaged":"Disengaged"))
 		return
 	if(href_list["rspktoggle"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		radio.listening = !radio.listening
 		send_byjax(src.occupant,"exosuit.browser","rspkstate",(radio.listening?"Engaged":"Disengaged"))
 		return
 	if(href_list["rfreq"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		var/new_frequency = (radio.frequency + top_filter.getNum("rfreq"))
 		if ((radio.frequency < PUBLIC_LOW_FREQ || radio.frequency > PUBLIC_HIGH_FREQ))
 			new_frequency = sanitize_frequency(new_frequency)
@@ -2528,20 +2549,24 @@
 		send_byjax(src.occupant,"exosuit.browser","rfreq","[format_frequency(radio.frequency)]")
 		return
 	if(href_list["port_disconnect"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.disconnect_from_port()
 		return
 	if (href_list["port_connect"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.connect_to_port()
 		return
 	if (href_list["view_log"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.occupant << browse(src.get_log_html(), "window=exosuit_log")
 		onclose(occupant, "exosuit_log")
 		return
 	if (href_list["change_name"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		var/newname = sanitizeSafe(input(occupant,"Choose new exosuit name","Rename exosuit",initial(name)) as text, MAX_NAME_LEN)
 		if(newname)
 			name = newname
@@ -2549,12 +2574,14 @@
 			tgui_alert_async(occupant, "nope.avi")
 		return
 	if (href_list["toggle_id_upload"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		add_req_access = !add_req_access
 		send_byjax(src.occupant,"exosuit.browser","t_id_upload","[add_req_access?"L":"Unl"]ock ID upload panel")
 		return
 	if(href_list["toggle_maint_access"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		if(state)
 			occupant_message("<font color='red'>Maintenance protocols in effect</font>")
 			return
@@ -2629,7 +2656,8 @@
 		user << browse(null,"window=exosuit_add_access")
 		return
 	if(href_list["dna_lock"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		if(istype(occupant, /mob/living/carbon/brain))
 			occupant_message("You are a brain. No.")
 			return
@@ -2638,10 +2666,12 @@
 			src.occupant_message("You feel a prick as the needle takes your DNA sample.")
 		return
 	if(href_list["reset_dna"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.dna = null
 	if(href_list["repair_int_control_lost"])
-		if(usr != src.occupant)	return
+		if(usr != src.occupant)
+			return
 		src.occupant_message("Recalibrating coordination system.")
 		src.log_message("Recalibration of coordination system started.")
 		var/T = src.loc
@@ -2735,7 +2765,8 @@
 	return call((proc_res["dyngetcharge"]||src), "dyngetcharge")()
 
 /obj/mecha/proc/dyngetcharge()//returns null if no powercell, else returns cell.charge
-	if(!src.cell) return
+	if(!src.cell)
+		return
 	return max(0, src.cell.charge)
 
 /obj/mecha/proc/use_power(amount)
@@ -2844,7 +2875,8 @@
 	set name = "Test internal damage"
 	set category = "Exosuit Interface"
 	set src in view(0)
-	if(!occupant) return
+	if(!occupant)
+		return
 	if(usr!=occupant)
 		return
 	var/output = {"<html>

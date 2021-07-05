@@ -68,7 +68,8 @@
 		var/obj/item/integrated_circuit/CIRC = candidate
 		who = CIRC
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
-	else return
+	else
+		return
 
 	im_contacts |= candidate
 

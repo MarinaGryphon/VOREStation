@@ -99,7 +99,8 @@
 	if(!action_checks(target)) return
 	if(isobj(target))
 		var/obj/target_obj = target
-		if(target_obj.unacidable)	return
+		if(target_obj.unacidable)
+			return
 	set_ready_state(FALSE)
 	chassis.use_power(energy_drain)
 	chassis.visible_message("<span class='danger'>[chassis] starts to bore into \the [target]</span>", "<span class='warning'>You hear the bore.</span>")

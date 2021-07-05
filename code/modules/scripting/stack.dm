@@ -4,12 +4,14 @@
 	contents+=value
 
 /stack/proc/Pop()
-	if(!contents.len) return null
+	if(!contents.len)
+		return null
 	. = contents[contents.len]
 	contents.len--
 
 /stack/proc/Top() //returns the item on the top of the stack without removing it
-	if(!contents.len) return null
+	if(!contents.len)
+		return null
 	return contents[contents.len]
 
 /stack/proc/Copy()

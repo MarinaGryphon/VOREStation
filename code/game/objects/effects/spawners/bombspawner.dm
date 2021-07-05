@@ -115,13 +115,16 @@
 	var/obj/effect/spawner/newbomb/proto = /obj/effect/spawner/newbomb/radio/custom
 
 	var/p = input(usr, "Enter phoron amount (mol):","Phoron", initial(proto.phoron_amt)) as num|null
-	if(p == null) return
+	if(p == null)
+		return
 
 	var/o = input(usr, "Enter oxygen amount (mol):","Oxygen", initial(proto.oxygen_amt)) as num|null
-	if(o == null) return
+	if(o == null)
+		return
 
 	var/c = input(usr, "Enter carbon dioxide amount (mol):","Carbon Dioxide", initial(proto.carbon_amt)) as num|null
-	if(c == null) return
+	if(c == null)
+		return
 
 	new /obj/effect/spawner/newbomb/radio/custom(get_turf(mob), p, o, c)
 
@@ -152,9 +155,12 @@
 	assembly_type = /obj/item/device/assembly/prox_sensor
 
 /obj/effect/spawner/newbomb/radio/custom/New(var/newloc, ph, ox, co)
-	if(ph != null) phoron_amt = ph
-	if(ox != null) oxygen_amt = ox
-	if(co != null) carbon_amt = co
+	if(ph != null)
+		phoron_amt = ph
+	if(ox != null)
+		oxygen_amt = ox
+	if(co != null)
+		carbon_amt = co
 	..()
 
 /obj/effect/spawner/newbomb/Initialize(newloc)

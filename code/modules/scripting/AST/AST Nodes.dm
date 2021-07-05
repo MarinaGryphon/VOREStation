@@ -71,7 +71,8 @@ var
 
 /node/expression/operator/New()
 	.=..()
-	if(!src.name) src.name="[src.type]"
+	if(!src.name)
+		src.name="[src.type]"
 
 /node/expression/operator/ToString()
 	return "operator: [name]"

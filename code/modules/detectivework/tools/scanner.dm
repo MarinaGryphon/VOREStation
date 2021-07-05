@@ -38,7 +38,8 @@
 	return
 
 /obj/item/device/detective_scanner/afterattack(atom/A as obj|turf, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(ismob(A))
 		return
 

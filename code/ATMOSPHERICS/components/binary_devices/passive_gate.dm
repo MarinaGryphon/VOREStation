@@ -253,9 +253,12 @@
 		if("regulate_mode")
 			. = TRUE
 			switch(params["mode"])
-				if("off") regulate_mode = REGULATE_NONE
-				if("input") regulate_mode = REGULATE_INPUT
-				if("output") regulate_mode = REGULATE_OUTPUT
+				if("off")
+					regulate_mode = REGULATE_NONE
+				if("input")
+					regulate_mode = REGULATE_INPUT
+				if("output")
+					regulate_mode = REGULATE_OUTPUT
 
 		if("set_press")
 			. = TRUE

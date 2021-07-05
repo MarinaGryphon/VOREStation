@@ -7,8 +7,10 @@
 
 /datum/random_map/maze/set_map_size()
 	// Map has to be odd so that there are walls on all sides.
-	if(limit_x%2==0) limit_x++
-	if(limit_y%2==0) limit_y++
+	if(limit_x%2==0)
+		limit_x++
+	if(limit_y%2==0)
+		limit_y++
 	..()
 
 /datum/random_map/maze/generate_map()
@@ -16,8 +18,10 @@
 	// Grab a random point on the map to begin the maze cutting at.
 	var/start_x = rand(1,limit_x-2)
 	var/start_y = rand(1,limit_y-2)
-	if(start_x%2!=0) start_x++
-	if(start_y%2!=0) start_y++
+	if(start_x%2!=0)
+		start_x++
+	if(start_y%2!=0)
+		start_y++
 
 	// Create the origin cell to start us off.
 	openlist += new /datum/maze_cell(start_x,start_y)

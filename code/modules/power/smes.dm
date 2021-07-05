@@ -103,7 +103,8 @@ GLOBAL_LIST_EMPTY(smeses)
 
 /obj/machinery/power/smes/update_icon()
 	cut_overlays()
-	if(stat & BROKEN)	return
+	if(stat & BROKEN)
+		return
 
 	add_overlay("smes-op[outputting]")
 
@@ -145,7 +146,8 @@ GLOBAL_LIST_EMPTY(smeses)
 	charge -= amount*SMESRATE
 
 /obj/machinery/power/smes/process()
-	if(stat & BROKEN)	return
+	if(stat & BROKEN)
+		return
 
 	// only update icon if state changed
 	if(last_disp != chargedisplay() || last_chrg != inputting || last_onln != outputting)

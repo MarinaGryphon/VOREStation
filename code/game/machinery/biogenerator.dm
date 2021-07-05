@@ -276,7 +276,8 @@
 		S += 5
 		if(I.reagents.get_reagent_amount("nutriment") < 0.1)
 			points += 1
-		else points += I.reagents.get_reagent_amount("nutriment") * 10 * eat_eff
+		else
+			points += I.reagents.get_reagent_amount("nutriment") * 10 * eat_eff
 		qdel(I)
 	if(S)
 		processing = 1

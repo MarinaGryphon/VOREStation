@@ -2,7 +2,8 @@
 	name = "Launch a Shuttle (Forced)"
 
 /datum/admin_secret_item/admin_secret/launch_shuttle_forced/can_execute(var/mob/user)
-	if(!SSshuttles) return 0
+	if(!SSshuttles)
+		return 0
 	return ..()
 
 /datum/admin_secret_item/admin_secret/launch_shuttle_forced/execute(var/mob/user)

@@ -302,7 +302,8 @@
 		usr.forceMove(get_turf(src))
 
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
-	if(!anchored)	take_damage(maxhealth) // Fatboy
+	if(!anchored)
+		take_damage(maxhealth) // Fatboy
 	LAZYREMOVE(climbers, user)
 
 /obj/structure/railing/can_climb(var/mob/living/user, post_climb_check=0)
@@ -328,6 +329,7 @@
 	for(var/obj/O in T.contents)
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
-			if(S.climbable) continue
+			if(S.climbable)
+				continue
 		if(O && O.density && !(O.flags & ON_BORDER && !(turn(O.dir, 180) & dir)))
 			return O

@@ -100,7 +100,8 @@
 	return 1
 
 /obj/machinery/floorlayer/proc/TakeTile(var/obj/item/stack/tile/tile)
-	if(!T)	T = tile
+	if(!T)
+		T = tile
 	tile.loc = src
 
 	SortStacks()

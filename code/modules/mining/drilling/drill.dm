@@ -79,7 +79,8 @@
 
 	check_supports()
 
-	if(!active) return
+	if(!active)
+		return
 
 	if(!anchored || !use_cell_power())
 		system_error("System configuration or charge error.")
@@ -112,7 +113,8 @@
 			else
 				harvesting = null
 
-		if(!harvesting) return
+		if(!harvesting)
+			return
 
 		var/total_harvest = harvest_speed //Ore harvest-per-tick.
 		var/found_resource = 0 //If this doesn't get set, the area is depleted and the drill errors out.
@@ -129,7 +131,8 @@
 			if(contents.len + total_harvest >= capacity)
 				total_harvest = capacity - contents.len
 
-			if(total_harvest <= 0) break
+			if(total_harvest <= 0)
+				break
 			if(harvesting.resources[metal])
 
 				found_resource  = 1
@@ -175,7 +178,8 @@
 			return
 		if(default_part_replacement(user, O))
 			return
-	if(!panel_open || active) return ..()
+	if(!panel_open || active)
+		return ..()
 
 	if(istype(O, /obj/item/weapon/cell))
 		if(cell)
@@ -301,7 +305,8 @@
 		system_error("Resources depleted.")
 
 /obj/machinery/mining/drill/proc/use_cell_power()
-	if(!cell) return 0
+	if(!cell)
+		return 0
 	if(cell.charge >= charge_use)
 		cell.use(charge_use)
 		return 1
@@ -312,7 +317,8 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
@@ -382,9 +388,11 @@
 
 /obj/machinery/mining/brace/proc/disconnect()
 
-	if(!connected) return
+	if(!connected)
+		return
 
-	if(!connected.supports) connected.supports = list()
+	if(!connected.supports)
+		connected.supports = list()
 
 	icon_state = "mining_brace"
 
@@ -397,7 +405,8 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	if (src.anchored)
 		to_chat(usr, "It is anchored in place!")

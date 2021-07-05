@@ -20,7 +20,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	hal_crit = 0
 
 /mob/living/carbon/proc/handle_hallucinations()
-	if(handling_hal) return
+	if(handling_hal)
+		return
 	handling_hal = 1
 	while(client && hallucination > 20)
 		sleep(rand(200,500)/(hallucination/25))
@@ -38,13 +39,18 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				if(!halitem)
 					halitem = new
 					var/list/slots_free = list(ui_lhand,ui_rhand)
-					if(l_hand) slots_free -= ui_lhand
-					if(r_hand) slots_free -= ui_rhand
+					if(l_hand)
+						slots_free -= ui_lhand
+					if(r_hand)
+						slots_free -= ui_rhand
 					if(istype(src,/mob/living/carbon/human))
 						var/mob/living/carbon/human/H = src
-						if(!H.belt) slots_free += ui_belt
-						if(!H.l_store) slots_free += ui_storage1
-						if(!H.r_store) slots_free += ui_storage2
+						if(!H.belt)
+							slots_free += ui_belt
+						if(!H.l_store)
+							slots_free += ui_storage1
+						if(!H.r_store)
+							slots_free += ui_storage2
 					if(slots_free.len)
 						halitem.screen_loc = pick(slots_free)
 						halitem.hud_layerise()
@@ -75,7 +81,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								halitem.icon = 'icons/obj/grenade.dmi'
 								halitem.icon_state = "flashbang1"
 								halitem.name = "Flashbang"
-						if(client) client.screen += halitem
+						if(client)
+							client.screen += halitem
 						spawn(rand(100,250))
 							if(client)
 								client.screen -= halitem
@@ -102,9 +109,11 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								halimage = image('icons/obj/assemblies.dmi',target,"plastic-explosive2",OBJ_LAYER+0.01)
 
 
-						if(client) client.images += halimage
+						if(client)
+							client.images += halimage
 						spawn(rand(10,50)) //Only seen for a brief moment.
-							if(client) client.images -= halimage
+							if(client)
+								client.images -= halimage
 							halimage = null
 
 
@@ -112,22 +121,31 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				//Strange audio
 				//to_chat(src, "Strange Audio")
 				switch(rand(1,12))
-					if(1) src << 'sound/machines/door/old_airlock.ogg'
+					if(1)
+						src << 'sound/machines/door/old_airlock.ogg'
 					if(2)
 						if(prob(50))src << 'sound/effects/Explosion1.ogg'
-						else src << 'sound/effects/Explosion2.ogg'
-					if(3) src << 'sound/effects/explosionfar.ogg'
-					if(4) src << 'sound/effects/Glassbr1.ogg'
-					if(5) src << 'sound/effects/Glassbr2.ogg'
-					if(6) src << 'sound/effects/Glassbr3.ogg'
-					if(7) src << 'sound/machines/twobeep.ogg'
-					if(8) src << 'sound/machines/door/windowdoor.ogg'
+						else
+							src << 'sound/effects/Explosion2.ogg'
+					if(3)
+						src << 'sound/effects/explosionfar.ogg'
+					if(4)
+						src << 'sound/effects/Glassbr1.ogg'
+					if(5)
+						src << 'sound/effects/Glassbr2.ogg'
+					if(6)
+						src << 'sound/effects/Glassbr3.ogg'
+					if(7)
+						src << 'sound/machines/twobeep.ogg'
+					if(8)
+						src << 'sound/machines/door/windowdoor.ogg'
 					if(9)
 						//To make it more realistic, I added two gunshots (enough to kill)
 						src << 'sound/weapons/Gunshot1.ogg'
 						spawn(rand(10,30))
 							src << 'sound/weapons/Gunshot2.ogg'
-					if(10) src << 'sound/weapons/smash.ogg'
+					if(10)
+						src << 'sound/weapons/smash.ogg'
 					if(11)
 						//Same as above, but with tasers.
 						src << 'sound/weapons/Taser.ogg'
@@ -161,9 +179,11 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	//						if(5)
 	//							halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
 
-						if(client) client.images += halbody
+						if(client)
+							client.images += halbody
 						spawn(rand(50,80)) //Only seen for a brief moment.
-							if(client) client.images -= halbody
+							if(client)
+								client.images -= halbody
 							halbody = null
 			if(71 to 72)
 				//Fake death
@@ -263,7 +283,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	..()
 	QDEL_IN(src, 30 SECONDS)
 	step_away(src,my_target,2)
-	spawn attack_loop()
+	spawn
+		attack_loop()
 
 /obj/effect/fake_attacker/Destroy()
 	if(my_target)

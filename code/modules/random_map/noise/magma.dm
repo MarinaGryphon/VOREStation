@@ -14,21 +14,29 @@
 				continue
 			var/count
 			var/tmp_cell = get_map_cell(x+1,y+1)
-			if(tmp_cell && map[tmp_cell] >= 178) count++
+			if(tmp_cell && map[tmp_cell] >= 178)
+				count++
 			tmp_cell = get_map_cell(x-1,y-1)
-			if(tmp_cell && map[tmp_cell] >= 178) count++
+			if(tmp_cell && map[tmp_cell] >= 178)
+				count++
 			tmp_cell = get_map_cell(x+1,y-1)
-			if(tmp_cell && map[tmp_cell] >= 178) count++
+			if(tmp_cell && map[tmp_cell] >= 178)
+				count++
 			tmp_cell = get_map_cell(x-1,y+1)
-			if(tmp_cell && map[tmp_cell] >= 178) count++
+			if(tmp_cell && map[tmp_cell] >= 178)
+				count++
 			tmp_cell = get_map_cell(x-1,y)
-			if(tmp_cell && map[tmp_cell] >= 178) count++
+			if(tmp_cell && map[tmp_cell] >= 178)
+				count++
 			tmp_cell = get_map_cell(x,y-1)
-			if(tmp_cell && map[tmp_cell] >= 178) count++
+			if(tmp_cell && map[tmp_cell] >= 178)
+				count++
 			tmp_cell = get_map_cell(x+1,y)
-			if(tmp_cell && map[tmp_cell] >= 178) count++
+			if(tmp_cell && map[tmp_cell] >= 178)
+				count++
 			tmp_cell = get_map_cell(x,y+1)
-			if(tmp_cell && map[tmp_cell] >= 178) count++
+			if(tmp_cell && map[tmp_cell] >= 178)
+				count++
 			if(!count)
 				map[current_cell] = 177
 

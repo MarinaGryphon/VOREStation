@@ -18,7 +18,8 @@
 	if(losebreath>0) //Suffocating so do not take a breath
 		AdjustLosebreath(-1)
 		if (prob(10) && !isbelly(loc)) //Gasp per 10 ticks? Sounds about right. //VOREStation Add
-			spawn emote("gasp")
+			spawn
+				emote("gasp")
 	else
 		//Okay, we can breathe, now check if we can get air
 		breath = get_breath_from_internal() //First, check for air from internals
@@ -33,7 +34,8 @@
 			breath = get_breath_from_environment() //No breath from internals so let's try to get air from our location
 		if(!breath)
 			var/static/datum/gas_mixture/vacuum //avoid having to create a new gas mixture for each breath in space
-			if(!vacuum) vacuum = new
+			if(!vacuum)
+				vacuum = new
 
 			breath = vacuum //still nothing? must be vacuum
 

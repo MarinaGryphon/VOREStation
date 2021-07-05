@@ -247,7 +247,8 @@
 
 /obj/screen/Click(location, control, params)
 	..() // why the FUCK was this not called before
-	if(!usr)	return 1
+	if(!usr)
+		return 1
 	switch(name)
 		if("toggle")
 			if(usr.hud_used.inventory_shown)

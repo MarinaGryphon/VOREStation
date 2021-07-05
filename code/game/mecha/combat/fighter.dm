@@ -281,7 +281,8 @@
 						stripe2_color = new_paint_color
 
 		update_icon()
-	else ..()
+	else
+		..()
 
 /obj/effect/decal/mecha_wreckage/gunpod
 	name = "Gunpod wreckage"

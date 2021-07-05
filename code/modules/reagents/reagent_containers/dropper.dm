@@ -23,7 +23,8 @@
 			. += "<span class='notice'>It is empty.</span>"
 
 /obj/item/weapon/reagent_containers/dropper/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!target.reagents || !proximity) return
+	if(!target.reagents || !proximity)
+		return
 
 	if(reagents.total_volume)
 

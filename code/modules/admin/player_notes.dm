@@ -46,7 +46,8 @@
 	var/savefile/note_list = new("data/player_notes.sav")
 	var/list/note_keys
 	note_list >> note_keys
-	if(!note_keys) note_keys = list()
+	if(!note_keys)
+		note_keys = list()
 	if(!note_keys.Find(key)) note_keys += key
 	note_list << note_keys
 	del(note_list) // savefile, so NOT qdel
@@ -56,7 +57,8 @@
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(!infos || infos.len < index) return
+	if(!infos || infos.len < index)
+		return
 
 	var/datum/player_info/item = infos[index]
 	infos.Remove(item)

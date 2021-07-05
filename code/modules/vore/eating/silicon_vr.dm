@@ -20,7 +20,8 @@
 	return ..()
 
 /obj/effect/overlay/aiholo/proc/get_prey(var/mob/living/prey)
-	if(bellied) return
+	if(bellied)
+		return
 	playsound(src, 'sound/effects/stealthoff.ogg',50,0)
 	bellied = prey
 	prey.forceMove(src)
@@ -33,7 +34,8 @@
 	alpha = HOLO_HARDLIGHT_ALPHA
 
 /obj/effect/overlay/aiholo/proc/drop_prey()
-	if(!bellied) return
+	if(!bellied)
+		return
 	playsound(src, 'sound/effects/stealthoff.ogg',50,0)
 	bellied.forceMove(get_turf(src))
 	bellied.Weaken(2)

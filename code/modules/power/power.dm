@@ -143,7 +143,8 @@
 		cdir = get_dir(T,loc)
 
 		for(var/obj/structure/cable/C in T)
-			if(C.powernet)	continue
+			if(C.powernet)
+				continue
 			if(C.d1 == cdir || C.d2 == cdir)
 				. += C
 	return .
@@ -170,7 +171,8 @@
 /obj/machinery/power/proc/get_indirect_connections()
 	. = list()
 	for(var/obj/structure/cable/C in loc)
-		if(C.powernet)	continue
+		if(C.powernet)
+			continue
 		if(C.d1 == 0) // the cable is a node cable
 			. += C
 	return .
@@ -188,11 +190,13 @@
 
 	var/reverse = d ? reverse_dir[d] : 0
 	for(var/AM in T)
-		if(AM == source)	continue			//we don't want to return source
+		if(AM == source)
+			continue			//we don't want to return source
 
 		if(!cable_only && istype(AM,/obj/machinery/power))
 			var/obj/machinery/power/P = AM
-			if(P.powernet == 0)	continue		// exclude APCs which have powernet=0
+			if(P.powernet == 0)
+				continue		// exclude APCs which have powernet=0
 
 			if(!unmarked || !P.powernet)		//if unmarked=1 we only return things with no powernet
 				if(d == 0)
@@ -257,7 +261,8 @@
 	for(var/obj/structure/cable/Cable in net2.cables) //merge cables
 		net1.add_cable(Cable)
 
-	if(!net2) return net1
+	if(!net2)
+		return net1
 
 	for(var/obj/machinery/power/Node in net2.nodes) //merge power machines
 		if(!Node.connect_to_network())
@@ -308,7 +313,8 @@
 			return
 		if(H.gloves)
 			var/obj/item/clothing/gloves/G = H.gloves
-			if(G.siemens_coefficient == 0)	return 0		//to avoid spamming with insulated glvoes on
+			if(G.siemens_coefficient == 0)
+				return 0		//to avoid spamming with insulated glvoes on
 
 	//Checks again. If we are still here subject will be shocked, trigger standard 20 tick warning
 	//Since this one is longer it will override the original one.

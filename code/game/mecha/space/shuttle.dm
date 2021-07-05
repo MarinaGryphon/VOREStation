@@ -82,4 +82,5 @@
 					if("Base")
 						base_paint = new_paint_color
 		update_icon()
-	else ..()
+	else
+		..()

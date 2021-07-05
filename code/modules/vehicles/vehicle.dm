@@ -395,7 +395,8 @@
 	src.health -= damage
 	if(mechanical && prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
-	spawn(1) healthcheck()
+	spawn(1)
+		healthcheck()
 	return 1
 
 /obj/vehicle/take_damage(var/damage)
@@ -404,5 +405,6 @@
 	src.health -= damage
 	if(mechanical && prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
-	spawn(1) healthcheck()
+	spawn(1)
+		healthcheck()
 	return 1

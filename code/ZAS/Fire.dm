@@ -101,7 +101,8 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 
 	var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in src
 	zone.fire_tiles |= src
-	if(fuel) zone.fuel_objs += fuel
+	if(fuel)
+		zone.fuel_objs += fuel
 
 	return 0
 

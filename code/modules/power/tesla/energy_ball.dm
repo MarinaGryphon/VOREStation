@@ -103,7 +103,8 @@
 
 		playsound(src, 'sound/effects/lightning_chargeup.ogg', 100, 1, extrarange = 30)
 		//addtimer(CALLBACK(src, .proc/new_mini_ball), 100)
-		spawn(100) new_mini_ball()
+		spawn(100)
+			new_mini_ball()
 
 	else if(energy < energy_to_lower && orbiting_balls.len)
 		energy_to_raise = energy_to_raise / 1.25

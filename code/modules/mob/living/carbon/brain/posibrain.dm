@@ -20,7 +20,8 @@
 		icon_state = "posibrain-searching"
 		src.searching = 1
 		src.request_player()
-		spawn(600) reset_search()
+		spawn(600)
+			reset_search()
 
 /obj/item/device/mmi/digital/posibrain/proc/request_player()
 	for(var/mob/observer/dead/O in player_list)
@@ -34,11 +35,13 @@
 
 /obj/item/device/mmi/digital/posibrain/proc/question(var/client/C)
 	spawn(0)
-		if(!C)	return
+		if(!C)
+			return
 		var/response = tgui_alert(C, "Someone is requesting a personality for a positronic brain. Would you like to play as one?", "Positronic brain request", list("Yes", "No", "Never for this round"))
 		if(response == "Yes")
 			response = tgui_alert(C, "Are you sure you want to play as a positronic brain?", "Positronic brain request", list("Yes", "No"))
-		if(!C || brainmob.key || 0 == searching)	return		//handle logouts that happen whilst the alert is waiting for a response, and responses issued after a brain has been located.
+		if(!C || brainmob.key || 0 == searching)
+			return		//handle logouts that happen whilst the alert is waiting for a response, and responses issued after a brain has been located.
 		if(response == "Yes")
 			transfer_personality(C.mob)
 		else if (response == "Never for this round")
@@ -74,7 +77,8 @@
 
 /obj/item/device/mmi/digital/posibrain/proc/reset_search() //We give the players sixty seconds to decide, then reset the timer.
 
-	if(src.brainmob && src.brainmob.key) return
+	if(src.brainmob && src.brainmob.key)
+		return
 	to_world_log("Resetting Posibrain: [brainmob][brainmob ? ", [brainmob.key]" : ""]")
 
 	src.searching = 0

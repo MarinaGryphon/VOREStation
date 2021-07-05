@@ -271,8 +271,10 @@
 	process()
 		var/mob/observer/dead/ghost
 		for(var/mob/observer/dead/O in src.loc)
-			if(!O.client)	continue
-			if(O.mind && O.mind.current && O.mind.current.stat != DEAD)	continue
+			if(!O.client)
+				continue
+			if(O.mind && O.mind.current && O.mind.current.stat != DEAD)
+				continue
 			ghost = O
 			break
 		if(ghost)
@@ -283,8 +285,10 @@
 	attack_hand(mob/living/user as mob)
 		var/mob/observer/dead/ghost
 		for(var/mob/observer/dead/O in src.loc)
-			if(!O.client)	continue
-			if(O.mind && O.mind.current && O.mind.current.stat != DEAD)	continue
+			if(!O.client)
+				continue
+			if(O.mind && O.mind.current && O.mind.current.stat != DEAD)
+				continue
 			ghost = O
 			break
 		if(!ghost)

@@ -83,12 +83,14 @@
 		log_debug("Fake stairs at [x],[y],[z] couldn't move someone to their destination.")
 		return
 	AM.forceMove(T)
-	spawn AM.set_dir(dir_to_use)
+	spawn
+		AM.set_dir(dir_to_use)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(L.pulling)
 			L.pulling.forceMove(T)
-			spawn L.pulling.set_dir(dir_to_use)
+			spawn
+				L.pulling.set_dir(dir_to_use)
 
 /obj/structure/fake_stairs/north/top
 	name = "stairs"

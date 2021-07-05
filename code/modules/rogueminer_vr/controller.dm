@@ -187,7 +187,8 @@ var/datum/controller/rogue/rm_controller
 	if(ZM_target)
 		to_world_log("RM(stats): SCORING [ready_zones.len] zones (if unscored).") //DEBUG code for playtest stats gathering.
 		for(var/datum/rogue/zonemaster/ZM_toscore in ready_zones) //Score all the zones first.
-			if(ZM_toscore.scored) continue
+			if(ZM_toscore.scored)
+				continue
 			ZM_toscore.score_zone()
 		ZM_target.prepare_zone()
 	else

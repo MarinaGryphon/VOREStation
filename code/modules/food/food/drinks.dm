@@ -58,7 +58,8 @@
 	return 0
 
 /obj/item/weapon/reagent_containers/food/drinks/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	if(standard_dispenser_refill(user, target))
 		return

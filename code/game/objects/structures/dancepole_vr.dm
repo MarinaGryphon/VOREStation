@@ -19,7 +19,8 @@
 		playsound(src, O.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>Now disassembling \the [src]...</span>")
 		if(do_after(user, 30 * O.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You dissasembled \the [src]!</span>")
 			new /obj/item/stack/material/steel(src.loc, 1)
 			qdel(src)

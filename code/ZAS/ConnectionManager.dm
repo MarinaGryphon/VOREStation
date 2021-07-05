@@ -50,36 +50,48 @@ Macros:
 	switch(d)
 		if(NORTH)
 			if(check(N)) return N
-			else return null
+			else
+				return null
 		if(SOUTH)
 			if(check(S)) return S
-			else return null
+			else
+				return null
 		if(EAST)
 			if(check(E)) return E
-			else return null
+			else
+				return null
 		if(WEST)
 			if(check(W)) return W
-			else return null
+			else
+				return null
 
 		#ifdef MULTIZAS
 		if(UP)
 			if(check(U)) return U
-			else return null
+			else
+				return null
 		if(DOWN)
 			if(check(D)) return D
-			else return null
+			else
+				return null
 		#endif
 
 /connection_manager/proc/place(connection/c, d)
 	switch(d)
-		if(NORTH) N = c
-		if(SOUTH) S = c
-		if(EAST) E = c
-		if(WEST) W = c
+		if(NORTH)
+			N = c
+		if(SOUTH)
+			S = c
+		if(EAST)
+			E = c
+		if(WEST)
+			W = c
 
 		#ifdef MULTIZAS
-		if(UP) U = c
-		if(DOWN) D = c
+		if(UP)
+			U = c
+		if(DOWN)
+			D = c
 		#endif
 
 /connection_manager/proc/update_all()

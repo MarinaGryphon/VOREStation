@@ -45,7 +45,8 @@
 /obj/machinery/smartfridge/drying_rack/proc/dry()
 	for(var/datum/stored_item/I in item_records)
 		for(var/obj/item/weapon/reagent_containers/food/snacks/S in I.instances)
-			if(S.dry) continue
+			if(S.dry)
+				continue
 			if(S.dried_type == S.type)
 				S.dry = 1
 				S.name = "dried [S.name]"

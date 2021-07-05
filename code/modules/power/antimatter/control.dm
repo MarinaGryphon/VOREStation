@@ -44,7 +44,8 @@
 /obj/machinery/power/am_control_unit/process()
 	if(exploding)
 		explosion(get_turf(src),8,12,18,12)
-		if(src) qdel(src)
+		if(src)
+			qdel(src)
 
 	if(update_shield_icons && !shield_icon_delay)
 		check_shield_icons()
@@ -71,7 +72,8 @@
 /obj/machinery/power/am_control_unit/proc/produce_power()
 	playsound(src, 'sound/effects/bang.ogg', 25, 1)
 	var/core_power = reported_core_efficiency//Effectively how much fuel we can safely deal with
-	if(core_power <= 0) return 0//Something is wrong
+	if(core_power <= 0)
+		return 0//Something is wrong
 	var/core_damage = 0
 	var/fuel = fueljar.usefuel(fuel_injection)
 
@@ -81,7 +83,8 @@
 		if(prob(50))core_damage = 1//Small chance of damage
 		if((fuel-core_power) > 5)	core_damage = 5//Now its really starting to overload the cores
 		if((fuel-core_power) > 10)	core_damage = 20//Welp now you did it, they wont stand much of this
-		if(core_damage == 0) return
+		if(core_damage == 0)
+			return
 		for(var/obj/machinery/am_shielding/AMS in linked_cores)
 			AMS.stability -= core_damage
 			AMS.check_stability(1)
@@ -92,16 +95,20 @@
 /obj/machinery/power/am_control_unit/emp_act(severity)
 	switch(severity)
 		if(1)
-			if(active)	toggle_power()
+			if(active)
+				toggle_power()
 			stability -= rand(15,30)
 		if(2)
-			if(active)	toggle_power()
+			if(active)
+				toggle_power()
 			stability -= rand(10,20)
 		if(3)
-			if(active)	toggle_power()
+			if(active)
+				toggle_power()
 			stability -= rand(8,15)
 		if(4)
-			if(active)	toggle_power()
+			if(active)
+				toggle_power()
 			stability -= rand(5,10)
 	..()
 	return 0
@@ -133,8 +140,10 @@
 
 
 /obj/machinery/power/am_control_unit/update_icon()
-	if(active) icon_state = "control_on"
-	else icon_state = "control"
+	if(active)
+		icon_state = "control_on"
+	else
+		icon_state = "control"
 	//No other icons for it atm
 
 
@@ -187,7 +196,8 @@
 
 /obj/machinery/power/am_control_unit/proc/add_shielding(var/obj/machinery/am_shielding/AMS, var/AMS_linking = 0)
 	if(!istype(AMS)) return 0
-	if(!anchored) return 0
+	if(!anchored)
+		return 0
 	if(!AMS_linking && !AMS.link_control(src)) return 0
 	linked_shielding.Add(AMS)
 	update_shield_icons = 1
@@ -198,7 +208,8 @@
 	if(!istype(AMS)) return 0
 	linked_shielding.Remove(AMS)
 	update_shield_icons = 2
-	if(active)	toggle_power()
+	if(active)
+		toggle_power()
 	return 1
 
 
@@ -221,11 +232,13 @@
 
 
 /obj/machinery/power/am_control_unit/proc/check_shield_icons()//Forces icon_update for all shields
-	if(shield_icon_delay) return
+	if(shield_icon_delay)
+		return
 	shield_icon_delay = 1
 	if(update_shield_icons == 2)//2 means to clear everything and rebuild
 		for(var/obj/machinery/am_shielding/AMS in linked_shielding)
-			if(AMS.processing)	AMS.shutdown_core()
+			if(AMS.processing)
+				AMS.shutdown_core()
 			AMS.control_unit = null
 			spawn(10)
 				AMS.controllerscan()
@@ -240,7 +253,8 @@
 
 
 /obj/machinery/power/am_control_unit/proc/check_core_stability()
-	if(stored_core_stability_delay || linked_cores.len <= 0)	return
+	if(stored_core_stability_delay || linked_cores.len <= 0)
+		return
 	stored_core_stability_delay = 1
 	stored_core_stability = 0
 	for(var/obj/machinery/am_shielding/AMS in linked_cores)
@@ -321,7 +335,8 @@
 
 	if(href_list["strengthdown"])
 		fuel_injection--
-		if(fuel_injection < 0) fuel_injection = 0
+		if(fuel_injection < 0)
+			fuel_injection = 0
 
 	if(href_list["refreshstability"])
 		check_core_stability()

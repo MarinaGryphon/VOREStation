@@ -272,9 +272,11 @@
 		var/mob/M = src
 		var/is_client_moving = (ismob(M) && M.client && M.client.moving)
 		spawn(0)
-			if(is_client_moving) M.client.moving = 1
+			if(is_client_moving)
+				M.client.moving = 1
 			handle_fall(below)
-			if(is_client_moving) M.client.moving = 0
+			if(is_client_moving)
+				M.client.moving = 0
 		// TODO - handle fall on damage!
 
 //For children to override

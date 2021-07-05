@@ -43,7 +43,8 @@ var/datum/paiController/paiController			// Global handler for pAI candidates
 			card.setPersonality(pai)
 			card.looking_for_personality = 0
 
-			if(pai.mind) update_antag_icons(pai.mind)
+			if(pai.mind)
+				update_antag_icons(pai.mind)
 
 			pai_candidates -= candidate
 			usr << browse(null, "window=findPai")
@@ -362,11 +363,13 @@ var/datum/paiController/paiController			// Global handler for pAI candidates
 
 /datum/paiController/proc/question(var/client/C)
 	spawn(0)
-		if(!C)	return
+		if(!C)
+			return
 		asked.Add(C.key)
 		asked[C.key] = world.time
 		var/response = tgui_alert(C, "[inquirer] is requesting a pAI personality. Would you like to play as a personal AI?", "pAI Request", list("Yes", "No", "Never for this round"))
-		if(!C)	return		//handle logouts that happen whilst the alert is waiting for a response.
+		if(!C)
+			return		//handle logouts that happen whilst the alert is waiting for a response.
 		if(response == "Yes")
 			recruitWindow(C.mob)
 		else if (response == "Never for this round")

@@ -280,15 +280,19 @@ var/list/debug_verbs = list (
 	set category = "Mapping"
 	set name = "Count Objects On Level"
 	var/level = input(usr, "Which z-level?","Level?") as text
-	if(!level) return
+	if(!level)
+		return
 	var/num_level = text2num(level)
-	if(!num_level) return
+	if(!num_level)
+		return
 	if(!isnum(num_level)) return
 
 	var/type_text = input(usr, "Which type path?","Path?") as text
-	if(!type_text) return
+	if(!type_text)
+		return
 	var/type_path = text2path(type_text)
-	if(!type_path) return
+	if(!type_path)
+		return
 
 	var/count = 1
 
@@ -324,9 +328,11 @@ var/list/debug_verbs = list (
 	set name = "Count Objects All"
 
 	var/type_text = input(usr, "Which type path?","") as text
-	if(!type_text) return
+	if(!type_text)
+		return
 	var/type_path = text2path(type_text)
-	if(!type_path) return
+	if(!type_path)
+		return
 
 	var/count = 0
 

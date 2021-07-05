@@ -20,10 +20,12 @@
 			. += M.slowdown
 
 	var/health_deficiency = (getMaxHealth() - health)
-	if(health_deficiency >= 40) . += (health_deficiency / 25)
+	if(health_deficiency >= 40)
+		. += (health_deficiency / 25)
 
 	if(can_feel_pain())
-		if(halloss >= 10) . += (halloss / 10) //halloss shouldn't slow you down if you can't even feel it
+		if(halloss >= 10)
+			. += (halloss / 10) //halloss shouldn't slow you down if you can't even feel it
 
 	var/hungry = (500 - nutrition) / 5 //VOREStation Edit - Fixed 500 here instead of our huge MAX_NUTRITION
 	if (hungry >= 70) . += hungry/50
@@ -31,7 +33,8 @@
 	//VOREstation start
 	if (feral >= 10) //crazy feral animals give less and less of a shit about pain and hunger as they get crazier
 		. = max(species.slowdown, species.slowdown+((.-species.slowdown)/(feral/10))) // As feral scales to damage, this amounts to an effective +1 slowdown cap
-		if(shock_stage >= 10) . -= 1.5 //this gets a +3 later, feral critters take reduced penalty
+		if(shock_stage >= 10)
+			. -= 1.5 //this gets a +3 later, feral critters take reduced penalty
 	if(reagents.has_reagent("numbenzyme"))
 		. += 1.5 //A tad bit of slowdown.
 	if(riding_datum) //Bit of slowdown for taur rides if rider is bigger or fatter than mount.
@@ -65,9 +68,11 @@
 			else if(E.status & ORGAN_BROKEN)
 				. += 1.5
 
-	if(shock_stage >= 10) . += 3
+	if(shock_stage >= 10)
+		. += 3
 
-	if(aiming && aiming.aiming_at) . += 5 // Iron sights make you slower, it's a well-known fact.
+	if(aiming && aiming.aiming_at)
+		. += 5 // Iron sights make you slower, it's a well-known fact.
 
 	if(FAT in src.mutations)
 		. += 1.5
@@ -230,10 +235,13 @@
 		prob_slip = 0
 
 	//Check hands and mod slip
-	if(!l_hand)	prob_slip -= 2
-	else if(l_hand.w_class <= 2)	prob_slip -= 1
+	if(!l_hand)
+		prob_slip -= 2
+	else if(l_hand.w_class <= 2)
+		prob_slip -= 1
 	if (!r_hand)	prob_slip -= 2
-	else if(r_hand.w_class <= 2)	prob_slip -= 1
+	else if(r_hand.w_class <= 2)
+		prob_slip -= 1
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
@@ -253,7 +261,8 @@
 
 	var/S = pick(footstep_sounds)
 	GLOB.step_taken_shift_roundstat++
-	if(!S) return
+	if(!S)
+		return
 
 	// Play every 20 steps while walking, for the sneak
 	if(m_intent == "walk" && step_count++ % 20 != 0)

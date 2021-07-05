@@ -76,14 +76,16 @@ default behaviour is:
 					continue
 				if(!A.CanPass(tmob, loc))
 					can_swap = 0
-				if(!can_swap) break
+				if(!can_swap)
+					break
 		if(can_swap)
 			for(var/atom/movable/A in tmob.loc)
 				if(A == tmob)
 					continue
 				if(!A.CanPass(src, tmob.loc))
 					can_swap = 0
-				if(!can_swap) break
+				if(!can_swap)
+					break
 
 		//Leaping mobs just land on the tile, no pushing, no anything.
 		if(status_flags & LEAPING)

@@ -60,7 +60,8 @@ List of things solar grubs should be able to do:
 
 /mob/living/simple_mob/vore/solargrub/Life()
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 
 	if(!ai_holder.target)
 			//first, check for potential cables nearby to powersink

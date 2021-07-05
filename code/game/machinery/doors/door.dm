@@ -160,13 +160,15 @@
 	return !density // Block airflow unless density = 0
 
 /obj/machinery/door/proc/bumpopen(mob/user as mob)
-	if(operating)	return
+	if(operating)
+		return
 	if(user.last_airflow > world.time - vsc.airflow_delay) //Fakkit
 		return
 	src.add_fingerprint(user)
 	if(density)
 		if(allowed(user))	open()
-		else				do_animate("deny")
+		else
+			do_animate("deny")
 	return
 
 /obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)

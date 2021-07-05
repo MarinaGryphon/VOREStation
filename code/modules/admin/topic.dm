@@ -114,7 +114,8 @@
 		var/task = href_list["editrights"]
 		if(task == "add")
 			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
-			if(!new_ckey)	return
+			if(!new_ckey)
+				return
 			if(new_ckey in admin_datums)
 				to_chat(usr, "<span class='filter_adminlog warning'>Error: Topic 'editrights': [new_ckey] is already an admin</span>")
 				return
@@ -130,7 +131,8 @@
 
 		if(task == "remove")
 			if(tgui_alert(usr, "Are you sure you want to remove [adm_ckey]?","Message",list("Yes","Cancel")) == "Yes")
-				if(!D)	return
+				if(!D)
+					return
 				admin_datums -= adm_ckey
 				D.disassociate()
 
@@ -149,7 +151,8 @@
 			if(D)
 				rights = D.rights
 			switch(new_rank)
-				if(null,"") return
+				if(null,"")
+					return
 				if("*New Rank*")
 					new_rank = input(usr, "Please input a new rank", "New custom rank", null, null) as null|text
 					if(config.admin_legacy_system)
@@ -183,12 +186,14 @@
 			log_admin_rank_modification(adm_ckey, new_rank)
 
 		else if(task == "permissions")
-			if(!D)	return
+			if(!D)
+				return
 			var/list/permissionlist = list()
 			for(var/i=1, i<=R_MAXPERMISSION, i<<=1)		//that <<= is shorthand for i = i << 1. Which is a left bitshift
 				permissionlist[rights2text(i)] = i
 			var/new_permission = tgui_input_list(usr, "Select a permission to turn on/off", "Permission toggle", permissionlist)
-			if(!new_permission)	return
+			if(!new_permission)
+				return
 			D.rights ^= permissionlist[new_permission]
 
 			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
@@ -269,32 +274,53 @@
 
 		var/delmob = 0
 		switch(tgui_alert(usr, "Delete old mob?","Message",list("Yes","No","Cancel")))
-			if("Cancel")	return
-			if("Yes")		delmob = 1
+			if("Cancel")
+				return
+			if("Yes")
+				delmob = 1
 
 		log_admin("[key_name(usr)] has used rudimentary transformation on [key_name(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 		message_admins("<font color='blue'>[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]</font>", 1)
 
 		switch(href_list["simplemake"])
-			if("observer")			M.change_mob_type( /mob/observer/dead , null, null, delmob )
-			if("larva")				M.change_mob_type( /mob/living/carbon/alien/larva , null, null, delmob )
-			if("nymph")				M.change_mob_type( /mob/living/carbon/alien/diona , null, null, delmob )
-			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
-			if("slime")				M.change_mob_type( /mob/living/simple_mob/slime/xenobio , null, null, delmob )
-			if("monkey")			M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
-			if("robot")				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
-			if("cat")				M.change_mob_type( /mob/living/simple_mob/animal/passive/cat , null, null, delmob )
-			if("runtime")			M.change_mob_type( /mob/living/simple_mob/animal/passive/cat/runtime , null, null, delmob )
-			if("corgi")				M.change_mob_type( /mob/living/simple_mob/animal/passive/dog/corgi , null, null, delmob )
-			if("ian")				M.change_mob_type( /mob/living/simple_mob/animal/passive/dog/corgi/Ian , null, null, delmob )
-			if("crab")				M.change_mob_type( /mob/living/simple_mob/animal/passive/crab , null, null, delmob )
-			if("coffee")			M.change_mob_type( /mob/living/simple_mob/animal/passive/crab/Coffee , null, null, delmob )
-			if("parrot")			M.change_mob_type( /mob/living/simple_mob/animal/passive/bird/parrot , null, null, delmob )
-			if("polyparrot")		M.change_mob_type( /mob/living/simple_mob/animal/passive/bird/parrot/poly , null, null, delmob )
-			if("constructarmoured")	M.change_mob_type( /mob/living/simple_mob/construct/juggernaut , null, null, delmob )
-			if("constructbuilder")	M.change_mob_type( /mob/living/simple_mob/construct/artificer , null, null, delmob )
-			if("constructwraith")	M.change_mob_type( /mob/living/simple_mob/construct/wraith , null, null, delmob )
-			if("shade")				M.change_mob_type( /mob/living/simple_mob/construct/shade , null, null, delmob )
+			if("observer")
+				M.change_mob_type( /mob/observer/dead , null, null, delmob )
+			if("larva")
+				M.change_mob_type( /mob/living/carbon/alien/larva , null, null, delmob )
+			if("nymph")
+				M.change_mob_type( /mob/living/carbon/alien/diona , null, null, delmob )
+			if("human")
+				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
+			if("slime")
+				M.change_mob_type( /mob/living/simple_mob/slime/xenobio , null, null, delmob )
+			if("monkey")
+				M.change_mob_type( /mob/living/carbon/human/monkey , null, null, delmob )
+			if("robot")
+				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
+			if("cat")
+				M.change_mob_type( /mob/living/simple_mob/animal/passive/cat , null, null, delmob )
+			if("runtime")
+				M.change_mob_type( /mob/living/simple_mob/animal/passive/cat/runtime , null, null, delmob )
+			if("corgi")
+				M.change_mob_type( /mob/living/simple_mob/animal/passive/dog/corgi , null, null, delmob )
+			if("ian")
+				M.change_mob_type( /mob/living/simple_mob/animal/passive/dog/corgi/Ian , null, null, delmob )
+			if("crab")
+				M.change_mob_type( /mob/living/simple_mob/animal/passive/crab , null, null, delmob )
+			if("coffee")
+				M.change_mob_type( /mob/living/simple_mob/animal/passive/crab/Coffee , null, null, delmob )
+			if("parrot")
+				M.change_mob_type( /mob/living/simple_mob/animal/passive/bird/parrot , null, null, delmob )
+			if("polyparrot")
+				M.change_mob_type( /mob/living/simple_mob/animal/passive/bird/parrot/poly , null, null, delmob )
+			if("constructarmoured")
+				M.change_mob_type( /mob/living/simple_mob/construct/juggernaut , null, null, delmob )
+			if("constructbuilder")
+				M.change_mob_type( /mob/living/simple_mob/construct/artificer , null, null, delmob )
+			if("constructwraith")
+				M.change_mob_type( /mob/living/simple_mob/construct/wraith , null, null, delmob )
+			if("shade")
+				M.change_mob_type( /mob/living/simple_mob/construct/shade , null, null, delmob )
 
 
 	/////////////////////////////////////new ban stuff
@@ -339,17 +365,20 @@
 				if(minutes > CMinutes)
 					mins = minutes - CMinutes
 				mins = input(usr,"How long (in minutes)? (Default: 1440)","Ban time",mins ? mins : 1440) as num|null
-				if(!mins)	return
+				if(!mins)
+					return
 				mins = min(525599,mins)
 				minutes = CMinutes + mins
 				duration = GetExp(minutes)
 				reason = sanitize(input(usr,"Reason?","reason",reason2) as text|null)
-				if(!reason)	return
+				if(!reason)
+					return
 			if("No")
 				temp = 0
 				duration = "Perma"
 				reason = sanitize(input(usr,"Reason?","reason",reason2) as text|null)
-				if(!reason)	return
+				if(!reason)
+					return
 
 		log_admin("[key_name(usr)] edited [banned_key]'s ban. Reason: [reason] Duration: [duration]")
 		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [reason] Duration: [duration]")
@@ -396,9 +425,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr align='center' bgcolor='ccccff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))]'><a href='?src=\ref[src];jobban3=commanddept;jobban4=\ref[M]'>Command Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -417,9 +448,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='ffddf0'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))]'><a href='?src=\ref[src];jobban3=securitydept;jobban4=\ref[M]'>Security Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -438,9 +471,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))]'><a href='?src=\ref[src];jobban3=engineeringdept;jobban4=\ref[M]'>Engineering Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -459,9 +494,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))]'><a href='?src=\ref[src];jobban3=cargodept;jobban4=\ref[M]'>Cargo Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -480,9 +517,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='ffeef0'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))]'><a href='?src=\ref[src];jobban3=medicaldept;jobban4=\ref[M]'>Medical Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -501,9 +540,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='e79fff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))]'><a href='?src=\ref[src];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -522,9 +563,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='e79fff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))]'><a href='?src=\ref[src];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -543,9 +586,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='dddddd'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))]'><a href='?src=\ref[src];jobban3=civiliandept;jobban4=\ref[M]'>Civilian Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -570,9 +615,11 @@
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
 		jobs += "<tr bgcolor='ccffcc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))+1]'><a href='?src=\ref[src];jobban3=nonhumandept;jobban4=\ref[M]'>Non-human Positions</a></th></tr><tr align='center'>"
 		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
-			if(!jobPos)	continue
+			if(!jobPos)
+				continue
 			var/datum/job/job = job_master.GetJob(jobPos)
-			if(!job) continue
+			if(!job)
+				continue
 
 			if(jobban_isbanned(M, job.title))
 				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[job.title];jobban4=\ref[M]'><font color=red>[replacetext(job.title, " ", "&nbsp")]</font></a></td>"
@@ -657,60 +704,78 @@
 		switch(href_list["jobban3"])
 			if("commanddept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			if("securitydept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			if("engineeringdept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			if("cargodept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			if("medicaldept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			if("sciencedept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			//VOREStation Edit Start
 			if("explorationdept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			//VOREStation Edit End
 			if("civiliandept")
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			if("nonhumandept")
 				joblist += "pAI"
 				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
-					if(!jobPos)	continue
+					if(!jobPos)
+						continue
 					var/datum/job/temp = job_master.GetJob(jobPos)
-					if(!temp) continue
+					if(!temp)
+						continue
 					joblist += temp.title
 			else
 				joblist += href_list["jobban3"]
@@ -772,8 +837,10 @@
 							DB_ban_record(BANTYPE_JOB_PERMA, M, -1, reason, job)
 							feedback_add_details("ban_job","- [job]")
 							jobban_fullban(M, job, "[reason]; By [usr.ckey] on [time2text(world.realtime)]")
-							if(!msg)	msg = job
-							else		msg += ", [job]"
+							if(!msg)
+								msg = job
+							else
+								msg += ", [job]"
 						notes_add(M.ckey, "Banned  from [msg] - [reason]", usr)
 						message_admins("<font color='blue'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]</font>", 1)
 						to_chat(M, "<span class='filter_system'><font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font></span>")
@@ -794,7 +861,8 @@
 			var/msg
 			for(var/job in joblist)
 				var/reason = jobban_isbanned(M, job)
-				if(!reason) continue //skip if it isn't jobbanned anyway
+				if(!reason)
+					continue //skip if it isn't jobbanned anyway
 				switch(tgui_alert(usr, "Job: '[job]' Reason: '[reason]' Un-jobban?","Please Confirm",list("Yes","No")))
 					if("Yes")
 						ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
@@ -803,8 +871,10 @@
 						feedback_inc("ban_job_unban",1)
 						feedback_add_details("ban_job_unban","- [job]")
 						jobban_unban(M, job)
-						if(!msg)	msg = job
-						else		msg += ", [job]"
+						if(!msg)
+							msg = job
+						else
+							msg += ", [job]"
 					else
 						continue
 			if(msg)
@@ -857,7 +927,8 @@
 		var/mob/M = locate(href_list["newban"])
 		if(!ismob(M)) return
 
-		if(M.client && M.client.holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+		if(M.client && M.client.holder)
+			return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		switch(tgui_alert(usr, "Temporary Ban?","Temporary Ban",list("Yes","No","Cancel")))
 			if("Yes")
@@ -867,7 +938,8 @@
 				if(check_rights(R_MOD, 0) && !check_rights(R_BAN, 0) && mins > config.mod_tempban_max)
 					to_chat(usr, "<span class='warning'>Moderators can only job tempban up to [config.mod_tempban_max] minutes!</span>")
 					return
-				if(mins >= 525600) mins = 525599
+				if(mins >= 525600)
+					mins = 525599
 				var/reason = sanitize(input(usr,"Reason?","reason","Griefer") as text|null)
 				if(!reason)
 					return
@@ -896,7 +968,8 @@
 				if(!reason)
 					return
 				switch(tgui_alert(usr,"IP ban?","IP Ban",list("Yes","No","Cancel")))
-					if("Cancel")	return
+					if("Cancel")
+						return
 					if("Yes")
 						AddBan(M.ckey, M.computer_id, reason, usr.ckey, 0, 0, M.lastKnownIP)
 					if("No")
@@ -926,7 +999,8 @@
 
 		var/mob/M = locate(href_list["mute"])
 		if(!ismob(M))	return
-		if(!M.client)	return
+		if(!M.client)
+			return
 
 		var/mute_type = href_list["mute_type"]
 		if(istext(mute_type))	mute_type = text2num(mute_type)
@@ -1019,7 +1093,8 @@
 			to_chat(usr, "<span class='filter_adminlog'>this can only be used on instances of type /mob</span>")
 
 		var/speech = input(usr, "What will [key_name(M)] say?.", "Force speech", "") // Don't need to sanitize, since it does that in say(), we also trust our admins.
-		if(!speech)	return
+		if(!speech)
+			return
 		M.say(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
 		log_admin("[key_name(usr)] forced [key_name(M)] to say: [speech]")
@@ -1040,7 +1115,8 @@
 			return
 
 		var/turf/prison_cell = pick(prisonwarp)
-		if(!prison_cell)	return
+		if(!prison_cell)
+			return
 
 		var/obj/structure/closet/secure_closet/brig/locker = new /obj/structure/closet/secure_closet/brig(prison_cell)
 		locker.opened = 0
@@ -1053,7 +1129,8 @@
 		//so they black out before warping
 		M.Paralyse(5)
 		sleep(5)
-		if(!M)	return
+		if(!M)
+			return
 
 		M.loc = prison_cell
 		if(istype(M, /mob/living/carbon/human))
@@ -1371,8 +1448,10 @@
 
 		//Gener
 		switch(M.gender)
-			if(MALE,FEMALE)	gender_description = "[M.gender]"
-			else			gender_description = "<font color='red'><b>[M.gender]</b></font>"
+			if(MALE,FEMALE)
+				gender_description = "[M.gender]"
+			else
+				gender_description = "<font color='red'><b>[M.gender]</b></font>"
 
 		to_chat(src.owner, "<span class='filter_adminlog'><b>Info about [M.name]:</b><br>\
 							Mob type = [M.type]; Gender = [gender_description] Damage = [health_description]<br>\
@@ -1437,7 +1516,8 @@
 
 		if(L.can_centcom_reply())
 			var/input = sanitize(input(src.owner, "Please enter a message to reply to [key_name(L)] via their headset.","Outgoing message from CentCom", ""))
-			if(!input)		return
+			if(!input)
+				return
 
 			to_chat(src.owner, "<span class='filter_adminlog'>You sent [input] to [L] via a secure channel.</span>")
 			log_admin("[src.owner] replied to [key_name(L)]'s CentCom message with the message [input].")
@@ -1462,7 +1542,8 @@
 			return
 
 		var/input = sanitize(input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from a shadowy figure...", ""))
-		if(!input)	return
+		if(!input)
+			return
 
 		to_chat(src.owner, "<span class='filter_adminlog'>You sent [input] to [H] via a secure channel.</span>")
 		log_admin("[src.owner] replied to [key_name(H)]'s illegal message with the message [input].")
@@ -1988,7 +2069,8 @@
 	if(href_list["add_player_info"])
 		var/key = href_list["add_player_info"]
 		var/add = sanitize(input(usr, "Add Player Info") as null|text)
-		if(!add) return
+		if(!add)
+			return
 
 		notes_add(key,add,usr)
 		show_player_info(key)
@@ -2040,7 +2122,8 @@
 		return "|<A HREF='?[source];adminplayerobservejump=\ref[mind.current]'>BDY</A>"
 
 /proc/admin_jump_link(var/atom/target, var/source)
-	if(!target) return
+	if(!target)
+		return
 	// The way admin jump links handle their src is weirdly inconsistent...
 	if(istype(source, /datum/admins))
 		source = "src=\ref[source]"

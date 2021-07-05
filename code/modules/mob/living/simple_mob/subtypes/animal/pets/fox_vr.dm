@@ -139,7 +139,8 @@
 
 /mob/living/simple_mob/animal/passive/fox/fluff/Life()
 	. = ..()
-	if(!. || !friend) return
+	if(!. || !friend)
+		return
 
 	var/friend_dist = get_dist(src,friend)
 

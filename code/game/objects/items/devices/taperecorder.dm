@@ -220,8 +220,10 @@
 		to_chat(usr, "<span class='notice'>You can't wipe the tape while playing or recording!</span>")
 		return
 	else
-		if(mytape.storedinfo)	mytape.storedinfo.Cut()
-		if(mytape.timestamp)	mytape.timestamp.Cut()
+		if(mytape.storedinfo)
+			mytape.storedinfo.Cut()
+		if(mytape.timestamp)
+			mytape.timestamp.Cut()
 		mytape.used_capacity = 0
 		to_chat(usr, "<span class='notice'>You wipe the tape.</span>")
 		return

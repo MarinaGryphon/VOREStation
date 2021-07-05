@@ -27,7 +27,8 @@
 	..()
 
 /obj/item/alien_embryo/process()
-	if(!affected_mob)	return
+	if(!affected_mob)
+		return
 	if(loc != affected_mob)
 		affected_mob.status_flags &= ~(XENO_HOST)
 		STOP_PROCESSING(SSobj, src)

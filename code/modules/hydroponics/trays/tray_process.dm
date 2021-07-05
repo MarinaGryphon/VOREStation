@@ -34,7 +34,8 @@
 	// If there is no seed data (and hence nothing planted),
 	// or the plant is dead, process nothing further.
 	if(!seed || dead)
-		if(mechanical) update_icon() //Harvesting would fail to set alert icons properly.
+		if(mechanical)
+			update_icon() //Harvesting would fail to set alert icons properly.
 		return
 
 	// Advance plant age.
@@ -43,7 +44,8 @@
 	//Highly mutable plants have a chance of mutating every tick.
 	if(seed.get_trait(TRAIT_IMMUTABLE) == -1)
 		var/mut_prob = rand(1,100)
-		if(mut_prob <= 5) mutate(mut_prob == 1 ? 2 : 1)
+		if(mut_prob <= 5)
+			mutate(mut_prob == 1 ? 2 : 1)
 
 	// Other plants also mutate if enough mutagenic compounds have been added.
 	if(!seed.get_trait(TRAIT_IMMUTABLE))
@@ -74,7 +76,8 @@
 		environment = air_contents
 	// If atmos input is not there, grab from turf.
 	if(!environment && istype(T)) environment = T.return_air()
-	if(!environment) return
+	if(!environment)
+		return
 
 	// Seed datum handles gasses, light and pressure.
 	if(mechanical && closed_system)

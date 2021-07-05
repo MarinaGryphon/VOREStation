@@ -99,7 +99,8 @@
 
 	while(paperamount)
 		var/obj/item/weapon/shreddedp/SP = get_shredded_paper()
-		if(!SP) break
+		if(!SP)
+			break
 		if(empty_into)
 			empty_into.handle_item_insertion(SP)
 			if(empty_into.contents.len >= empty_into.storage_slots)

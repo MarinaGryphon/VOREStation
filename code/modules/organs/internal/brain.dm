@@ -60,7 +60,8 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
 	//Bacterial meningitis (more of a spine thing but 'brain infection' isn't a common thing)
 	if (. >= 1)

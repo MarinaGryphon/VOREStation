@@ -6,7 +6,8 @@ Contains helper procs for airflow, handled in /connection_group.
 /mob/proc/airflow_stun()
 	if(stat == 2)
 		return 0
-	if(last_airflow_stun > world.time - vsc.airflow_stun_cooldown)	return 0
+	if(last_airflow_stun > world.time - vsc.airflow_stun_cooldown)
+		return 0
 
 	if(!(status_flags & CANSTUN) && !(status_flags & CANWEAKEN))
 		to_chat(src, "<span class='notice'>You stay upright as the air rushes past you.</span>")
@@ -29,7 +30,8 @@ Contains helper procs for airflow, handled in /connection_group.
 	..()
 
 /atom/movable/proc/check_airflow_movable(n)
-	if(!simulated) return 0
+	if(!simulated)
+		return 0
 
 	if(anchored && !ismob(src)) return 0
 
@@ -53,16 +55,21 @@ Contains helper procs for airflow, handled in /connection_group.
 	if (!(. = ..()))
 		return 0
 	if(isnull(w_class))
-		if(n < vsc.airflow_dense_pressure) return 0 //most non-item objs don't have a w_class yet
+		if(n < vsc.airflow_dense_pressure)
+			return 0 //most non-item objs don't have a w_class yet
 	switch(w_class)
 		if(ITEMSIZE_TINY,ITEMSIZE_SMALL)
-			if(n < vsc.airflow_lightest_pressure) return 0
+			if(n < vsc.airflow_lightest_pressure)
+				return 0
 		if(ITEMSIZE_NORMAL)
-			if(n < vsc.airflow_light_pressure) return 0
+			if(n < vsc.airflow_light_pressure)
+				return 0
 		if(ITEMSIZE_LARGE,ITEMSIZE_HUGE)
-			if(n < vsc.airflow_medium_pressure) return 0
+			if(n < vsc.airflow_medium_pressure)
+				return 0
 		else
-			if(n < vsc.airflow_dense_pressure) return 0
+			if(n < vsc.airflow_dense_pressure)
+				return 0
 
 /atom/movable/var/tmp/turf/airflow_dest
 /atom/movable/var/tmp/airflow_speed = 0

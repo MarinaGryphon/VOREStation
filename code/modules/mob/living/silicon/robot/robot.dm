@@ -135,10 +135,11 @@
 	initialize_components()
 	//if(!unfinished)
 	// Create all the robot parts.
-	for(var/V in components) if(V != "power cell")
-		var/datum/robot_component/C = components[V]
-		C.installed = 1
-		C.wrapped = new C.external_type
+	for(var/V in components)
+		if(V != "power cell")
+			var/datum/robot_component/C = components[V]
+			C.installed = 1
+			C.wrapped = new C.external_type
 
 	if(!cell)
 		cell = new /obj/item/weapon/cell(src)
@@ -223,7 +224,8 @@
 /mob/living/silicon/robot/Destroy()
 	if(mmi && mind)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
 		var/turf/T = get_turf(loc)//To hopefully prevent run time errors.
-		if(T)	mmi.loc = T
+		if(T)
+			mmi.loc = T
 		if(mmi.brainmob)
 			var/obj/item/weapon/robot_module/M = locate() in contents
 			if(M)
@@ -398,7 +400,8 @@
 
 	var/list/installed_components = list()
 	for(var/V in components)
-		if(V == "power cell") continue
+		if(V == "power cell")
+			continue
 		var/datum/robot_component/C = components[V]
 		if(C.installed)
 			installed_components += V
@@ -575,7 +578,8 @@
 				// Okay we're not removing the cell or an MMI, but maybe something else?
 				var/list/removable_components = list()
 				for(var/V in components)
-					if(V == "power cell") continue
+					if(V == "power cell")
+						continue
 					var/datum/robot_component/C = components[V]
 					if(C.installed == 1 || C.installed == -1)
 						removable_components += V
@@ -1138,7 +1142,8 @@
 		return
 
 	if(opened)//Cover is open
-		if(emagged)	return//Prevents the X has hit Y with Z message also you cant emag them twice
+		if(emagged)
+			return//Prevents the X has hit Y with Z message also you cant emag them twice
 		if(wiresexposed)
 			to_chat(user, "You must close the panel first")
 			return

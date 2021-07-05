@@ -22,7 +22,8 @@
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	var/base_icon = copytext(icon_state,1,(length(icon_state) - 3 + headphones_on))
 

@@ -33,7 +33,8 @@
 
 // Always face the user when put on a table
 /obj/item/device/retail_scanner/afterattack(atom/movable/AM, mob/user, proximity)
-	if(!proximity)	return
+	if(!proximity)
+		return
 	if(istype(AM, /obj/structure/table))
 		src.pixel_y = 3 // Shift it up slightly to look better on table
 		src.dir = get_dir(src, user)
@@ -142,7 +143,8 @@
 						price_list -= item_name
 			if("add")
 				var/item_name = locate(href_list["item"])
-				if(item_list[item_name] >= 20) return
+				if(item_list[item_name] >= 20)
+					return
 				transaction_amount += price_list[item_name]
 				item_list[item_name]++
 			if("clear")

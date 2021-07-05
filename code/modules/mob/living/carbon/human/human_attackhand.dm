@@ -367,7 +367,8 @@
 	if(!has_grab)
 		return FALSE
 
-	if(!def_zone) def_zone = user.zone_sel.selecting
+	if(!def_zone)
+		def_zone = user.zone_sel.selecting
 	var/target_zone = check_zone(def_zone)
 	if(!target_zone)
 		return FALSE

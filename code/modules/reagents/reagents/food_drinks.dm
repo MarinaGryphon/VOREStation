@@ -50,9 +50,12 @@
 
 /datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	switch(alien)
-		if(IS_DIONA) return
-		if(IS_UNATHI) removed *= 0.5
-		if(IS_CHIMERA) removed *= 0.25 //VOREStation Edit
+		if(IS_DIONA)
+			return
+		if(IS_UNATHI)
+			removed *= 0.5
+		if(IS_CHIMERA)
+			removed *= 0.25 //VOREStation Edit
 	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
 	//VOREStation Edits Start
 	if(!M.isSynthetic())

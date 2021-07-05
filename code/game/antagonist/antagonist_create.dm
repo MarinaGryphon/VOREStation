@@ -33,11 +33,13 @@
 /datum/antagonist/proc/create_id(var/assignment, var/mob/living/carbon/human/player, var/equip = 1)
 
 	var/obj/item/weapon/card/id/W = new id_type(player)
-	if(!W) return
+	if(!W)
+		return
 	W.access |= default_access
 	W.assignment = "[assignment]"
 	player.set_id_info(W)
-	if(equip) player.equip_to_slot_or_del(W, slot_wear_id)
+	if(equip)
+		player.equip_to_slot_or_del(W, slot_wear_id)
 	return W
 
 /datum/antagonist/proc/create_radio(var/freq, var/mob/living/carbon/human/player)
@@ -123,6 +125,7 @@
 		player.real_name = newname
 		player.name = player.real_name
 		player.dna.real_name = newname
-	if(player.mind) player.mind.name = player.name
+	if(player.mind)
+		player.mind.name = player.name
 	// Update any ID cards.
 	update_access(player)

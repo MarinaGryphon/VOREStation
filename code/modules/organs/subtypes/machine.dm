@@ -74,7 +74,8 @@
 		stored_mmi.brainmob.name = stored_mmi.brainmob.real_name
 		stored_mmi.name = "[initial(stored_mmi.name)] ([owner.real_name])"
 
-	if(!owner) return
+	if(!owner)
+		return
 
 	name = stored_mmi.name
 	desc = stored_mmi.desc

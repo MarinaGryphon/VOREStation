@@ -218,8 +218,10 @@
 	var/mob/living/carbon/human/H = usr
 
 	if(!istype(H)) return
-	if(H.stat) return
-	if(H.wear_suit != src) return
+	if(H.stat)
+		return
+	if(H.wear_suit != src)
+		return
 
 	var/obj/item/removing = null
 	if(tank)
@@ -246,7 +248,8 @@
 	if(W.is_screwdriver())
 		if(helmet || boots || tank)
 			var/choice = tgui_input_list(usr, "What component would you like to remove?", "Remove Component", list(helmet,boots,tank,cooler))
-			if(!choice) return
+			if(!choice)
+				return
 
 			if(choice == tank)	//No, a switch doesn't work here. Sorry. ~Techhead
 				to_chat(user, "You pop \the [tank] out of \the [src]'s storage compartment.")

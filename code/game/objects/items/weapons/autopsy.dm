@@ -40,7 +40,8 @@
 	return W
 
 /obj/item/weapon/autopsy_scanner/proc/add_data(var/obj/item/organ/external/O)
-	if(!O.autopsy_data.len && !O.trace_chemicals.len) return
+	if(!O.autopsy_data.len && !O.trace_chemicals.len)
+		return
 
 	for(var/V in O.autopsy_data)
 		var/datum/autopsy_data/W = O.autopsy_data[V]
@@ -94,8 +95,10 @@
 
 			var/wname = W.pretend_weapon
 
-			if(wname in weapon_chances) weapon_chances[wname] += W.damage
-			else weapon_chances[wname] = max(W.damage, 1)
+			if(wname in weapon_chances)
+				weapon_chances[wname] += W.damage
+			else
+				weapon_chances[wname] = max(W.damage, 1)
 			total_score+=W.damage
 
 

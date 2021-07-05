@@ -126,8 +126,10 @@ GLOBAL_LIST_EMPTY(mannequins)
 		var/datum/sprite_accessory/hair/H = new path()
 		hair_styles_list[H.name] = H
 		switch(H.gender)
-			if(MALE)	hair_styles_male_list += H.name
-			if(FEMALE)	hair_styles_female_list += H.name
+			if(MALE)
+				hair_styles_male_list += H.name
+			if(FEMALE)
+				hair_styles_female_list += H.name
 			else
 				hair_styles_male_list += H.name
 				hair_styles_female_list += H.name
@@ -138,8 +140,10 @@ GLOBAL_LIST_EMPTY(mannequins)
 		var/datum/sprite_accessory/facial_hair/H = new path()
 		facial_hair_styles_list[H.name] = H
 		switch(H.gender)
-			if(MALE)	facial_hair_styles_male_list += H.name
-			if(FEMALE)	facial_hair_styles_female_list += H.name
+			if(MALE)
+				facial_hair_styles_male_list += H.name
+			if(FEMALE)
+				facial_hair_styles_female_list += H.name
 			else
 				facial_hair_styles_male_list += H.name
 				facial_hair_styles_female_list += H.name

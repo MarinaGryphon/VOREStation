@@ -33,7 +33,8 @@
 	source.reagents.remove_any(1)				//reaction() doesn't use up the reagents
 */
 /obj/item/weapon/mop_deploy/afterattack(atom/A, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune))
 		user.visible_message("<span class='warning'>[user] begins to clean \the [get_turf(A)].</span>")
 
@@ -54,10 +55,12 @@
 
 /obj/item/weapon/mop_deploy/attack_self(mob/user as mob)
 	user.drop_from_inventory(src)
-	spawn(1) if(!QDELETED(src)) qdel(src)
+	spawn(1)
+		if(!QDELETED(src)) qdel(src)
 
 /obj/item/weapon/mop_deploy/dropped()
-	spawn(1) if(!QDELETED(src)) qdel(src)
+	spawn(1)
+		if(!QDELETED(src)) qdel(src)
 
 /obj/item/weapon/mop_deploy/process()
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
@@ -72,4 +75,5 @@
 			host.pinned -= src
 			host.embedded -= src
 			host.drop_from_inventory(src)
-		spawn(1) if(!QDELETED(src)) qdel(src)
+		spawn(1)
+			if(!QDELETED(src)) qdel(src)

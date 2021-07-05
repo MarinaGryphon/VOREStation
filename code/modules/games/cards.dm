@@ -104,7 +104,8 @@
 		H = new(get_turf(src))
 		user.put_in_hands(H)
 
-	if(!H || !user) return
+	if(!H || !user)
+		return
 
 	var/datum/playingcard/P = cards[1]
 	H.cards += P
@@ -134,7 +135,8 @@
 	//players -= usr
 
 	var/mob/living/M = tgui_input_list(usr, "Who do you wish to deal a card?", "Deal to whom?", players)
-	if(!usr || !src || !M) return
+	if(!usr || !src || !M)
+		return
 
 	deal_at(usr, M, 1)
 
@@ -161,7 +163,8 @@
 	if(dcard > maxcards)
 		return
 	var/mob/living/M = tgui_input_list(usr, "Who do you wish to deal [dcard] card(s)?", "Deal to whom?", players)
-	if(!usr || !src || !M) return
+	if(!usr || !src || !M)
+		return
 
 	deal_at(usr, M, dcard)
 
@@ -330,7 +333,8 @@
 			to_discard[P.name] = P
 		var/discarding = tgui_input_list(usr, "Which card do you wish to put down?", "Card Selection", to_discard)
 
-		if(!discarding || !to_discard[discarding] || !usr || !src) return
+		if(!discarding || !to_discard[discarding] || !usr || !src)
+			return
 
 		var/datum/playingcard/card = to_discard[discarding]
 		to_discard.Cut()
@@ -381,7 +385,8 @@
 		pickablecards[P.name] += P
 	var/pickedcard = tgui_input_list(usr, "Which card do you want to remove from the hand?", "Card Selection", pickablecards)
 
-	if(!pickedcard || !pickablecards[pickedcard] || !usr || !src) return
+	if(!pickedcard || !pickablecards[pickedcard] || !usr || !src)
+		return
 
 	var/datum/playingcard/card = pickablecards[pickedcard]
 

@@ -69,7 +69,8 @@
 	var/oldsrc = src //get a reference to src so we can delete it after detaching ourselves
 	src = null
 	spawn(17)
-		if(!P) return
+		if(!P)
+			return
 
 		if(iswall(W) && user && P.loc == user.loc) //Let's check if everything is still there
 			to_chat(user, "<span class='notice'>You place the poster!</span>")

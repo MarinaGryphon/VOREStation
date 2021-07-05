@@ -88,7 +88,8 @@ var/datum/antagonist/rogue_ai/malf
 		var/mob/holder = player.current
 		player.current = new mob_path(get_turf(player.current), null, null, 1)
 		player.transfer_to(player.current)
-		if(holder) qdel(holder)
+		if(holder)
+			qdel(holder)
 	player.original = player.current
 	return player.current
 
@@ -100,5 +101,6 @@ var/datum/antagonist/rogue_ai/malf
 	var/newname = sanitize(input(player, "You are a [role_text]. Would you like to change your name to something else?", "Name change") as null|text, MAX_NAME_LEN)
 	if (newname)
 		player.SetName(newname)
-	if(player.mind) player.mind.name = player.name
+	if(player.mind)
+		player.mind.name = player.name
 

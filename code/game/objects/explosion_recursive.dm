@@ -17,13 +17,16 @@ var/explosion_in_progress = 0
 
 	var/loopbreak = 0
 	while(explosion_in_progress)
-		if(loopbreak >= 15) return
+		if(loopbreak >= 15)
+			return
 		sleep(10)
 		loopbreak++
 
-	if(power <= 0) return
+	if(power <= 0)
+		return
 	epicenter = get_turf(epicenter)
-	if(!epicenter) return
+	if(!epicenter)
+		return
 
 	message_admins("Explosion with size ([power]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z])")
 	log_game("Explosion with size ([power]) in area [epicenter.loc.name] ")
@@ -43,8 +46,10 @@ var/explosion_in_progress = 0
 
 	//This step applies the ex_act effects for the explosion, as planned in the previous step.
 	for(var/turf/T in explosion_turfs)
-		if(explosion_turfs[T] <= 0) continue
-		if(!T) continue
+		if(explosion_turfs[T] <= 0)
+			continue
+		if(!T)
+			continue
 
 		//Wow severity looks confusing to calculate... Fret not, I didn't leave you with any additional instructions or help. (just kidding, see the line under the calculation)
 		var/severity = 4 - round(max(min( 3, ((explosion_turfs[T] - T.explosion_resistance) / (max(3,(power/3)))) ) ,1), 1)								//sanity			effective power on tile				divided by either 3 or one third the total explosion power

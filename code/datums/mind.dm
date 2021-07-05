@@ -168,19 +168,23 @@
 
 	else if(href_list["remove_antagonist"])
 		var/datum/antagonist/antag = all_antag_types[href_list["remove_antagonist"]]
-		if(antag) antag.remove_antagonist(src)
+		if(antag)
+			antag.remove_antagonist(src)
 
 	else if(href_list["equip_antagonist"])
 		var/datum/antagonist/antag = all_antag_types[href_list["equip_antagonist"]]
-		if(antag) antag.equip(src.current)
+		if(antag)
+			antag.equip(src.current)
 
 	else if(href_list["unequip_antagonist"])
 		var/datum/antagonist/antag = all_antag_types[href_list["unequip_antagonist"]]
-		if(antag) antag.unequip(src.current)
+		if(antag)
+			antag.unequip(src.current)
 
 	else if(href_list["move_antag_to_spawn"])
 		var/datum/antagonist/antag = all_antag_types[href_list["move_antag_to_spawn"]]
-		if(antag) antag.place_mob(src.current)
+		if(antag)
+			antag.place_mob(src.current)
 
 	else if (href_list["role_edit"])
 		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in joblist
@@ -508,7 +512,8 @@
 			ticker.minds += mind
 		else
 			to_world_log("## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn")
-	if(!mind.name)	mind.name = real_name
+	if(!mind.name)
+		mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
 		src.client.verbs += /client/proc/aooc

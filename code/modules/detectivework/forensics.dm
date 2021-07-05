@@ -20,7 +20,8 @@ var/const/FINGERPRINT_COMPLETE = 6
 		if(add_blood(M.bloody_hands_mob))
 			M.bloody_hands--
 
-	if(!suit_fibers) suit_fibers = list()
+	if(!suit_fibers)
+		suit_fibers = list()
 	var/fibertext
 	var/item_multiplier = istype(src,/obj/item)?1.2:1
 	var/suit_coverage = 0

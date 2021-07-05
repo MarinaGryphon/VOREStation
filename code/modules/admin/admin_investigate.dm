@@ -20,16 +20,19 @@
 	return 0
 
 /atom/proc/investigate_log(var/message, var/subject)
-	if(!message)	return
+	if(!message)
+		return
 	var/F = investigate_subject2file(subject)
-	if(!F)	return
+	if(!F)
+		return
 	to_file(F, "<span class='filter_adminlog'><small>[time2text(world.timeofday,"hh:mm")] \ref[src] ([x],[y],[z])</small> || [src] [message]<br></span>")
 
 //ADMINVERBS
 /client/proc/investigate_show( subject in list("hrefs","notes","singulo","telesci") )
 	set name = "Investigate"
 	set category = "Admin"
-	if(!holder)	return
+	if(!holder)
+		return
 	switch(subject)
 		if("singulo", "telesci")			//general one-round-only stuff
 			var/F = investigate_subject2file(subject)

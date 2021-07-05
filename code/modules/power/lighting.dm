@@ -696,12 +696,14 @@ var/global/list/light_type_cache = list()
 	return TRUE
 
 /obj/machinery/light/proc/flicker(var/amount = rand(10, 20))
-	if(flickering) return
+	if(flickering)
+		return
 	flickering = 1
 	spawn(0)
 		if(on && status == LIGHT_OK)
 			for(var/i = 0; i < amount; i++)
-				if(status != LIGHT_OK) break
+				if(status != LIGHT_OK)
+					break
 				on = !on
 				update(0)
 				if(!on) // Only play when the light turns off.
@@ -1038,7 +1040,8 @@ var/global/list/light_type_cache = list()
 // now only shatter if the intent was harm
 
 /obj/item/weapon/light/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target, /obj/machinery/light))
 		return
 	if(user.a_intent != I_HURT)

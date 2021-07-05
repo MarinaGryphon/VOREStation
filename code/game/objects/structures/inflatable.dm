@@ -44,7 +44,8 @@
 
 /obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
+	if(!proj_damage)
+		return
 
 	health -= proj_damage
 	..()
@@ -133,7 +134,8 @@
 	user.do_attack_animation(src)
 	if(health <= 0)
 		user.visible_message("<span class='danger'>[user] [attack_verb] open the [src]!</span>")
-		spawn(1) puncture()
+		spawn(1)
+			puncture()
 	else
 		user.visible_message("<span class='danger'>[user] [attack_verb] at [src]!</span>")
 	return 1
@@ -142,7 +144,8 @@
 	health -= damage
 	if(health <= 0)
 		visible_message("<span class='danger'>The [src] deflates!</span>")
-		spawn(1) puncture()
+		spawn(1)
+			puncture()
 	return 1
 
 /obj/item/inflatable/door/
@@ -180,7 +183,8 @@
 	return !density
 
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
-	if(isSwitchingStates) return
+	if(isSwitchingStates)
+		return
 	if(ismob(user))
 		var/mob/M = user
 		if(M.client)

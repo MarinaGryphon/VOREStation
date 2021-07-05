@@ -1,5 +1,6 @@
 /obj/screen/proc/Click_vr(location, control, params)
-	if(!usr)	return 1
+	if(!usr)
+		return 1
 	switch(name)
 
 		//Shadekin

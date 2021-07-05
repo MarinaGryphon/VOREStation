@@ -88,7 +88,8 @@
 				float_direction = direction
 				start_process(MECHA_PROC_MOVEMENT)
 		can_move = 0
-		spawn(tmp_step_in) can_move = 1
+		spawn(tmp_step_in)
+			can_move = 1
 		use_power(tmp_step_energy_drain)
 		return 1
 	return 0

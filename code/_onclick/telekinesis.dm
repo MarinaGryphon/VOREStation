@@ -11,7 +11,8 @@ var/const/tk_maxrange = 15
 	By default, emulate the user's unarmed attack
 */
 /atom/proc/attack_tk(mob/user)
-	if(user.stat) return
+	if(user.stat)
+		return
 	user.UnarmedAttack(src,0) // attack_hand, attack_paw, etc
 	return
 
@@ -26,7 +27,8 @@ var/const/tk_maxrange = 15
 	return
 
 /obj/attack_tk(mob/user)
-	if(user.stat) return
+	if(user.stat)
+		return
 	if(anchored)
 		..()
 		return
@@ -95,8 +97,10 @@ var/const/tk_maxrange = 15
 		focus.attack_self_tk(user)
 
 /obj/item/tk_grab/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity)//TODO: go over this
-	if(!target || !user)	return
-	if(last_throw+3 > world.time)	return
+	if(!target || !user)
+		return
+	if(last_throw+3 > world.time)
+		return
 	if(!host || host != user)
 		qdel(src)
 		return
@@ -148,7 +152,8 @@ var/const/tk_maxrange = 15
 	return
 
 /obj/item/tk_grab/proc/apply_focus_overlay()
-	if(!focus)	return
+	if(!focus)
+		return
 	var/obj/effect/overlay/O = new /obj/effect/overlay(locate(focus.x,focus.y,focus.z))
 	O.name = "sparkles"
 	O.anchored = 1

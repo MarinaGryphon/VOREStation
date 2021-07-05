@@ -39,10 +39,12 @@
 	for(var/part in current_project.limb_data)
 
 		var/status = current_project.limb_data[part]
-		if(status == null) continue //Species doesn't have limb? Child of amputated limb?
+		if(status == null)
+			continue //Species doesn't have limb? Child of amputated limb?
 
 		var/obj/item/organ/external/O = H.organs_by_name[part]
-		if(!O) continue //Not an organ. Perhaps another amputation removed it already.
+		if(!O)
+			continue //Not an organ. Perhaps another amputation removed it already.
 
 		if(status == 1) //Normal limbs
 			continue
@@ -55,10 +57,12 @@
 	for(var/part in current_project.organ_data)
 
 		var/status = current_project.organ_data[part]
-		if(status == null) continue //Species doesn't have organ? Child of missing part?
+		if(status == null)
+			continue //Species doesn't have organ? Child of missing part?
 
 		var/obj/item/organ/I = H.internal_organs_by_name[part]
-		if(!I) continue//Not an organ. Perhaps external conversion changed it already?
+		if(!I)
+			continue//Not an organ. Perhaps external conversion changed it already?
 
 		if(status == 0) //Normal organ
 			continue
@@ -281,10 +285,12 @@
 	for(var/part in current_project.limb_data)
 
 		var/status = current_project.limb_data[part]
-		if(status == null) continue //Species doesn't have limb? Child of amputated limb?
+		if(status == null)
+			continue //Species doesn't have limb? Child of amputated limb?
 
 		var/obj/item/organ/external/O = H.organs_by_name[part]
-		if(!O) continue //Not an organ. Perhaps another amputation removed it already.
+		if(!O)
+			continue //Not an organ. Perhaps another amputation removed it already.
 
 		if(status == 1) //Normal limbs
 			continue
@@ -297,10 +303,12 @@
 	for(var/part in current_project.organ_data)
 
 		var/status = current_project.organ_data[part]
-		if(status == null) continue //Species doesn't have organ? Child of missing part?
+		if(status == null)
+			continue //Species doesn't have organ? Child of missing part?
 
 		var/obj/item/organ/I = H.internal_organs_by_name[part]
-		if(!I) continue//Not an organ. Perhaps external conversion changed it already?
+		if(!I)
+			continue//Not an organ. Perhaps external conversion changed it already?
 
 		if(status == 0) //Normal organ
 			continue

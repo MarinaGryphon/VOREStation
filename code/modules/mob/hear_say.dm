@@ -236,11 +236,16 @@
 		var/adverb
 		var/length = length(message) * pick(0.8, 0.9, 1.0, 1.1, 1.2)	//Adds a little bit of fuzziness
 		switch(length)
-			if(0 to 12)		adverb = " briefly"
-			if(12 to 30)	adverb = " a short message"
-			if(30 to 48)	adverb = " a message"
-			if(48 to 90)	adverb = " a lengthy message"
-			else			adverb = " a very lengthy message"
+			if(0 to 12)
+				adverb = " briefly"
+			if(12 to 30)
+				adverb = " a short message"
+			if(30 to 48)
+				adverb = " a message"
+			if(48 to 90)
+				adverb = " a lengthy message"
+			else
+				adverb = " a very lengthy message"
 		message = "<B>[speaker]</B> [verb][adverb]."
 
 	show_message(message, type = 1) // Type 1 is visual message

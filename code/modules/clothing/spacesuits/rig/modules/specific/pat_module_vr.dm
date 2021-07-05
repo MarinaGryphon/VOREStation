@@ -57,10 +57,12 @@
 	var/turf/current = Tn
 	for(var/i = 0; i < range; i++)
 		current = get_step(current,direction)
-		if(!current) break
+		if(!current)
+			break
 
 		var/obj/machinery/door/airlock/A = locate(/obj/machinery/door/airlock) in current
-		if(!A || !A.density) continue
+		if(!A || !A.density)
+			continue
 
 		if(A.allowed(user) && A.operable())
 			A.open()

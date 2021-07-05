@@ -292,7 +292,8 @@
 	attack_verb = list("grug'd", "unga'd")
 
 /obj/item/toy/rock/attackby(obj/item/I as obj, mob/living/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(I, /obj/item/weapon/pen))
 		var/drawtype = tgui_alert(user, "Choose what you'd like to draw.", "Faces", list("fred","roxie","rock","Cancel"))
 		switch(drawtype)
@@ -545,7 +546,8 @@
 		else
 			user.visible_message("<span class='notice'>You stop feeding \the [O] into \the [src].</span></span>","<span class='notice'>[user] stops feeding \the [O] into \the [src]!/span>")
 
-	else ..()
+	else
+		..()
 
 /obj/item/toy/toy_xeno
 	icon = 'icons/obj/toy_vr.dmi'

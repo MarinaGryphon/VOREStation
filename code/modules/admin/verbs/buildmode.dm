@@ -261,7 +261,8 @@
 				if(master.buildmode.varholder in locked && !check_rights(R_DEBUG,0))
 					return 1
 				var/thetype = tgui_input_list(usr,"Select variable type:", "Type", list("text","number","mob-reference","obj-reference","turf-reference"))
-				if(!thetype) return 1
+				if(!thetype)
+					return 1
 				switch(thetype)
 					if("text")
 						master.buildmode.valueholder = input(usr,"Enter variable value:" ,"Value", "value") as text
@@ -305,7 +306,8 @@
 		if(H.cl == user.client)
 			holder = H
 			break
-	if(!holder) return
+	if(!holder)
+		return
 	var/list/pa = params2list(params)
 
 	switch(buildmode)
@@ -591,7 +593,8 @@
 		if(H.cl == user)
 			holder = H
 			break
-	if(!holder) return
+	if(!holder)
+		return
 	var/list/pa = params2list(params)
 
 	switch(buildmode)

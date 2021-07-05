@@ -2,7 +2,8 @@ var/savefile/Banlistjob
 
 
 /proc/_jobban_isbanned(var/client/clientvar, var/rank)
-	if(!clientvar) return 1
+	if(!clientvar)
+		return 1
 	ClearTempbansjob()
 	var/id = clientvar.computer_id
 	var/key = clientvar.ckey

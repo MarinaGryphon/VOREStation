@@ -308,7 +308,8 @@
 	while(finalized == "No" && src.client)
 
 		choice = tgui_input_list(usr,"What would you like to use for your mobile chassis icon?","Chassis Choice", possible_chassis)
-		if(!choice) return
+		if(!choice)
+			return
 
 		icon_state = possible_chassis[choice]
 		finalized = tgui_alert(usr, "Look at your sprite. Is this what you wish to use?","Choose Chassis",list("No","Yes"))
@@ -323,7 +324,8 @@
 	set name = "Choose Speech Verbs"
 
 	var/choice = tgui_input_list(usr,"What theme would you like to use for your speech verbs?","Theme Choice", possible_say_verbs)
-	if(!choice) return
+	if(!choice)
+		return
 
 	var/list/sayverbs = possible_say_verbs[choice]
 	speak_statement = sayverbs[1]
@@ -357,7 +359,8 @@
 	else
 		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
 	spawn(1)
-		if(stat != 2) close_up()
+		if(stat != 2)
+			close_up()
 	return
 
 /mob/living/silicon/pai/attack_hand(mob/user as mob)

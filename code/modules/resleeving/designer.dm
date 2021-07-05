@@ -314,10 +314,12 @@
 	// Update the external organs
 	for(var/part in active_br.limb_data)
 		var/status = active_br.limb_data[part]
-		if(status == null) continue //Species doesn't have limb? Child of amputated limb?
+		if(status == null)
+			continue //Species doesn't have limb? Child of amputated limb?
 
 		var/obj/item/organ/external/O = H.organs_by_name[part]
-		if(!O) continue //Not an organ. Perhaps another amputation removed it already.
+		if(!O)
+			continue //Not an organ. Perhaps another amputation removed it already.
 
 		if(status == 1) //Normal limbs
 			continue
@@ -332,10 +334,12 @@
 	// Then the internal organs.  I think only O_EYES acutally counts, but lets do all just in case
 	for(var/part in active_br.organ_data)
 		var/status = active_br.organ_data[part]
-		if(status == null) continue //Species doesn't have organ? Child of missing part?
+		if(status == null)
+			continue //Species doesn't have organ? Child of missing part?
 
 		var/obj/item/organ/I = H.internal_organs_by_name[part]
-		if(!I) continue//Not an organ. Perhaps external conversion changed it already?
+		if(!I)
+			continue//Not an organ. Perhaps external conversion changed it already?
 
 		if(status == 0) //Normal organ
 			continue

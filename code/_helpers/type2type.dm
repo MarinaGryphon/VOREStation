@@ -22,13 +22,20 @@
 		var/char = text2ascii(hex, i)
 		switch(char)
 			if(48)                                  // 0 -- do nothing
-			if(49 to 57) num += (char - 48) * power // 1-9
-			if(97,  65)  num += power * 10          // A
-			if(98,  66)  num += power * 11          // B
-			if(99,  67)  num += power * 12          // C
-			if(100, 68)  num += power * 13          // D
-			if(101, 69)  num += power * 14          // E
-			if(102, 70)  num += power * 15          // F
+			if(49 to 57)
+				num += (char - 48) * power // 1-9
+			if(97,  65)
+				num += power * 10          // A
+			if(98,  66)
+				num += power * 11          // B
+			if(99,  67)
+				num += power * 12          // C
+			if(100, 68)
+				num += power * 13          // D
+			if(101, 69)
+				num += power * 14          // E
+			if(102, 70)
+				num += power * 15          // F
 			else
 				return
 		power *= 16
@@ -130,7 +137,8 @@
 		if (BLEND_MULTIPLY) return ICON_MULTIPLY
 		if (BLEND_ADD)      return ICON_ADD
 		if (BLEND_SUBTRACT) return ICON_SUBTRACT
-		else                return ICON_OVERLAY
+		else
+			return ICON_OVERLAY
 
 // Converts a rights bitfield into a string
 /proc/rights2text(rights,seperator="")

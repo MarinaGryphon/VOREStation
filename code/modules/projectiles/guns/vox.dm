@@ -44,7 +44,8 @@
 	return
 
 /obj/item/weapon/gun/launcher/spikethrower/consume_next_projectile()
-	if(spikes < 1) return null
+	if(spikes < 1)
+		return null
 	spikes--
 	return new /obj/item/weapon/spike(src)
 

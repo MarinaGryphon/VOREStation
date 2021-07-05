@@ -158,8 +158,10 @@
 
 		event_meta = EM
 		severity = event_meta.severity
-		if(severity < EVENT_LEVEL_MUNDANE) severity = EVENT_LEVEL_MUNDANE
-		if(severity > EVENT_LEVEL_MAJOR) severity = EVENT_LEVEL_MAJOR
+		if(severity < EVENT_LEVEL_MUNDANE)
+			severity = EVENT_LEVEL_MUNDANE
+		if(severity > EVENT_LEVEL_MAJOR)
+			severity = EVENT_LEVEL_MAJOR
 
 	startedAt = world.time
 

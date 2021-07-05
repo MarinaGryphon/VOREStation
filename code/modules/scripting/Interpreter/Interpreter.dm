@@ -118,7 +118,8 @@ Runs each statement in a block of code.
 					AssignVariable(name, Eval(stmt.value))
 				else
 					var/datum/D = Eval(GetVariable(stmt.object.id_name))
-					if(!D) return
+					if(!D)
+						return
 					D.vars[stmt.var_name.id_name] = Eval(stmt.value)
 			else if(istype(S, /node/statement/VariableDeclaration))
 				//VariableDeclaration nodes are used to forcibly declare a local variable so that one in a higher scope isn't used by default.
@@ -127,7 +128,8 @@ Runs each statement in a block of code.
 					AssignVariable(dec.var_name.id_name, null, curScope)
 				else
 					var/datum/D = Eval(GetVariable(dec.object.id_name))
-					if(!D) return
+					if(!D)
+						return
 					D.vars[dec.var_name.id_name] = null
 			else if(istype(S, /node/statement/FunctionCall))
 				RunFunction(S)
@@ -174,14 +176,17 @@ Runs a function block or a proc with the arguments specified in the script.
 		def = GetFunction(stmt.func_name)
 	else if(istype(stmt.object))				//A method of an object exposed as a variable is being called, stmt.object is a /node/identifier
 		var/O = GetVariable(stmt.object.id_name)	//Gets a reference to the object which is the target of the function call.
-		if(!O) return							//Error already thrown in GetVariable()
+		if(!O)
+			return							//Error already thrown in GetVariable()
 		def = Eval(O)
 
-	if(!def) return
+	if(!def)
+		return
 
 	cur_recursion++ // add recursion
 	if(istype(def))
-		if(curFunction) functions.Push(curFunction)
+		if(curFunction)
+			functions.Push(curFunction)
 		var/scope/S = CreateScope(def.block)
 		for(var/i=1 to def.parameters.len)
 			var/val
@@ -298,9 +303,12 @@ value - The value to assign to it.
 S     - The scope the variable resides in. If it is null, a scope with the variable already existing is found. If no scopes have a variable of the given name, the current scope is used.
 */
 /n_Interpreter/proc/AssignVariable(name, node/expression/value, scope/S=null)
-	if(!S) S = GetVariableScope(name)
-	if(!S) S = curScope
-	if(!S) S = globalScope
+	if(!S)
+		S = GetVariableScope(name)
+	if(!S)
+		S = curScope
+	if(!S)
+		S = globalScope
 	ASSERT(istype(S))
 	if(istext(value) || isnum(value) || isnull(value))	value = new/node/expression/value/literal(value)
 	else if(!istype(value) && isobject(value))			value = new/node/expression/value/reference(value)

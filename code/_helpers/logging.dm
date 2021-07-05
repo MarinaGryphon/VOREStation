@@ -191,12 +191,18 @@
 //pretty print a direction bitflag, can be useful for debugging.
 /proc/print_dir(var/dir)
 	var/list/comps = list()
-	if(dir & NORTH) comps += "NORTH"
-	if(dir & SOUTH) comps += "SOUTH"
-	if(dir & EAST) comps += "EAST"
-	if(dir & WEST) comps += "WEST"
-	if(dir & UP) comps += "UP"
-	if(dir & DOWN) comps += "DOWN"
+	if(dir & NORTH)
+		comps += "NORTH"
+	if(dir & SOUTH)
+		comps += "SOUTH"
+	if(dir & EAST)
+		comps += "EAST"
+	if(dir & WEST)
+		comps += "WEST"
+	if(dir & UP)
+		comps += "UP"
+	if(dir & DOWN)
+		comps += "DOWN"
 
 	return english_list(comps, nothing_text="0", and_text="|", comma_text="|")
 
@@ -243,8 +249,10 @@
 			. += key
 
 		if(include_link)
-			if(C)	. += "</a>"
-			else	. += " (DC)"
+			if(C)
+				. += "</a>"
+			else
+				. += " (DC)"
 	else
 		. += "INVALID"
 

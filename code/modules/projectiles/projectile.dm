@@ -600,7 +600,8 @@
 
 //TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
 /obj/item/projectile/proc/on_hit(atom/target, blocked = 0, def_zone)
-	if(blocked >= 100)		return 0//Full block
+	if(blocked >= 100)
+		return 0//Full block
 	if(!isliving(target))	return 0
 //	if(isanimal(target))	return 0
 	var/mob/living/L = target

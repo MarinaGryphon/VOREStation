@@ -126,7 +126,8 @@
 		. += "It has [detonator.name] attached to it."
 
 /obj/item/weapon/grenade/chem_grenade/activate(mob/user as mob)
-	if(active) return
+	if(active)
+		return
 
 	if(detonator)
 		if(!isigniter(detonator.a_left))
@@ -148,11 +149,13 @@
 		icon_state = initial(icon_state) + (primed?"_primed":"_active")
 
 /obj/item/weapon/grenade/chem_grenade/detonate()
-	if(!stage || stage<2) return
+	if(!stage || stage<2)
+		return
 
 	var/has_reagents = 0
 	for(var/obj/item/weapon/reagent_containers/glass/G in beakers)
-		if(G.reagents.total_volume) has_reagents = 1
+		if(G.reagents.total_volume)
+			has_reagents = 1
 
 	active = 0
 	if(!has_reagents)
@@ -179,7 +182,8 @@
 		steam.start()
 
 		for(var/atom/A in view(affected_area, src.loc))
-			if( A == src ) continue
+			if( A == src )
+				continue
 			src.reagents.touch(A)
 
 	if(istype(loc, /mob/living/carbon))		//drop dat grenade if it goes off in your hand

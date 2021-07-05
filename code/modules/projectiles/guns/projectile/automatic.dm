@@ -105,7 +105,8 @@
 		icon_state = "arifle-small" // If using the small magazines, use the small magazine sprite.
 	else
 		icon_state = (ammo_magazine)? "arifle" : "arifle-empty"
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands)
+		update_held_icon()
 
 /obj/item/weapon/gun/projectile/automatic/wt550
 	name = "machine pistol"
@@ -193,7 +194,8 @@
 		icon_state = "carbine-[round(ammo_magazine.stored_ammo.len,2)]"
 	else
 		icon_state = "carbine"
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands)
+		update_held_icon()
 	return
 
 /obj/item/weapon/gun/projectile/automatic/z8/examine(mob/user)

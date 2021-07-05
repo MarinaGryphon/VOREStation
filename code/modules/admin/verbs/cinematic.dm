@@ -7,7 +7,8 @@
 		return
 
 	if(tgui_alert(usr, "Are you sure you want to run [cinematic]?","Confirmation",list("Yes","No"))=="No") return
-	if(!ticker)	return
+	if(!ticker)
+		return
 	switch(cinematic)
 		if("explosion")
 			if(tgui_alert(usr, "The game will be over. Are you really sure?", "Confirmation", list("Continue","Cancel")) == "Cancel")

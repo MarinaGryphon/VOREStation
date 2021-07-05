@@ -57,7 +57,8 @@
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
 
 /obj/item/weapon/extinguisher/proc/propel_object(var/obj/O, mob/user, movementdirection)
-	if(O.anchored) return
+	if(O.anchored)
+		return
 
 	var/obj/structure/bed/chair/C
 	if(istype(O, /obj/structure/bed/chair))
@@ -65,7 +66,8 @@
 
 	var/list/move_speed = list(1, 1, 1, 2, 2, 3)
 	for(var/i in 1 to 6)
-		if(C) C.propelled = (6-i)
+		if(C)
+			C.propelled = (6-i)
 		O.Move(get_step(user,movementdirection), movementdirection)
 		sleep(move_speed[i])
 
@@ -110,7 +112,8 @@
 
 		for(var/a = 1 to spray_particles)
 			spawn(0)
-				if(!src || !reagents.total_volume) return
+				if(!src || !reagents.total_volume)
+					return
 
 				var/obj/effect/effect/water/W = new /obj/effect/effect/water(get_turf(src))
 				var/turf/my_target

@@ -2149,7 +2149,8 @@ Departamental Swimsuits, for general use
 	if (!translocator.teleport_checks(target, user))
 		return 0
 
-	else return 1
+	else
+		return 1
 
 /obj/item/clothing/head/fluff/nikki/attackby(obj/item/weapon/I as obj, mob/user as mob)
 	if (istype(I, /obj/item/device/perfect_tele) && user.get_inactive_hand() == src)
@@ -2237,7 +2238,8 @@ Departamental Swimsuits, for general use
 				translocator.afterattack(target, user, proximity_flag)
 
 		add_attack_logs(user, target, "Teleported [target] with via \the [src]'s [translocator]!")
-	else ..()
+	else
+		..()
 
 //Vitoras: Verie
 /obj/item/clothing/suit/storage/hooded/fluff/verie
@@ -2326,7 +2328,8 @@ Departamental Swimsuits, for general use
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	colorswap(usr)
 

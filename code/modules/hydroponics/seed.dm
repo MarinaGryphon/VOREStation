@@ -124,7 +124,8 @@
 			qdel(target)
 		return
 
-	if(!target_limb) target_limb = pick(BP_ALL)
+	if(!target_limb)
+		target_limb = pick(BP_ALL)
 	var/blocked = target.run_armor_check(target_limb, "melee")
 	var/soaked = target.get_armor_soak(target_limb, "melee")
 
@@ -192,8 +193,10 @@
 					clr = get_trait(TRAIT_BIOLUM_COLOUR)
 				splat.set_light(get_trait(TRAIT_BIOLUM), l_color = clr)
 			var/flesh_colour = get_trait(TRAIT_FLESH_COLOUR)
-			if(!flesh_colour) flesh_colour = get_trait(TRAIT_PRODUCT_COLOUR)
-			if(flesh_colour) splat.color = get_trait(TRAIT_PRODUCT_COLOUR)
+			if(!flesh_colour)
+				flesh_colour = get_trait(TRAIT_PRODUCT_COLOUR)
+			if(flesh_colour)
+				splat.color = get_trait(TRAIT_PRODUCT_COLOUR)
 
 	if(chems && chems.len)
 		for(var/mob/living/M in T.contents)
@@ -670,7 +673,8 @@
 			for(var/trait in list(TRAIT_YIELD, TRAIT_ENDURANCE))
 				if(get_trait(trait) > 0) set_trait(trait,get_trait(trait),null,1,0.85)
 
-			if(!chems) chems = list()
+			if(!chems)
+				chems = list()
 
 			var/list/gene_value = gene.values["[TRAIT_CHEMS]"]
 			for(var/rid in gene_value)
@@ -692,7 +696,8 @@
 
 			var/list/new_gasses = gene.values["[TRAIT_EXUDE_GASSES]"]
 			if(islist(new_gasses))
-				if(!exude_gasses) exude_gasses = list()
+				if(!exude_gasses)
+					exude_gasses = list()
 				exude_gasses |= new_gasses
 				for(var/gas in exude_gasses)
 					exude_gasses[gas] = max(1,round(exude_gasses[gas]*0.8))
@@ -726,7 +731,8 @@
 //Returns a list of the desired trait values.
 /datum/seed/proc/get_gene(var/genetype)
 
-	if(!genetype) return 0
+	if(!genetype)
+		return 0
 
 	var/list/traits_to_copy
 	var/datum/plantgene/P = new()
@@ -865,10 +871,14 @@
 	new_seed.has_item_product = has_item_product
 
 	//Copy over everything else.
-	if(mutants)        new_seed.mutants = mutants.Copy()
-	if(chems)          new_seed.chems = chems.Copy()
-	if(consume_gasses) new_seed.consume_gasses = consume_gasses.Copy()
-	if(exude_gasses)   new_seed.exude_gasses = exude_gasses.Copy()
+	if(mutants)
+		new_seed.mutants = mutants.Copy()
+	if(chems)
+		new_seed.chems = chems.Copy()
+	if(consume_gasses)
+		new_seed.consume_gasses = consume_gasses.Copy()
+	if(exude_gasses)
+		new_seed.exude_gasses = exude_gasses.Copy()
 
 	new_seed.seed_name =            "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][seed_name]"
 	new_seed.display_name =         "[(roundstart ? "[(modified ? "modified" : "mutant")] " : "")][display_name]"

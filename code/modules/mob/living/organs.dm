@@ -7,7 +7,8 @@
 
 /mob/living/proc/get_bodypart_name(var/zone)
 	var/obj/item/organ/external/E = get_organ(zone)
-	if(E) . = E.name
+	if(E)
+		. = E.name
 
 /mob/living/proc/get_organ(var/zone)
 	if(!zone)

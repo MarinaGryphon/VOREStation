@@ -46,7 +46,8 @@
 
 /mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 
-	if(!client && !teleop)	return
+	if(!client && !teleop)
+		return
 
 	if (type)
 		if((type & VISIBLE_MESSAGE) && (is_blind() || paralysis) )//Vision related
@@ -673,9 +674,12 @@
 // facing verbs
 /mob/proc/canface()
 //	if(!canmove)						return 0 //VOREStation Edit. Redundant check that only affects conscious proning, actual inability to turn and shift around handled by actual inabilities.
-	if(stat)							return 0
-	if(anchored)						return 0
-	if(transforming)						return 0
+	if(stat)
+		return 0
+	if(anchored)
+		return 0
+	if(transforming)
+		return 0
 	return 1
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.

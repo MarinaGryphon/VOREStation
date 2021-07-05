@@ -318,7 +318,8 @@ var/list/infomorph_emotions = list(
 	set name = "Choose Chassis"
 
 	var/choice = tgui_input_list(usr,"What would you like to use for your mobile chassis icon? This decision can only be made once.", "Chassis Choice", possible_chassis)
-	if(!choice) return
+	if(!choice)
+		return
 
 	icon_state = possible_chassis[choice]
 	chassis = possible_chassis[choice]
@@ -328,7 +329,8 @@ var/list/infomorph_emotions = list(
 	set name = "Choose Speech Verbs"
 
 	var/choice = tgui_input_list(usr,"What theme would you like to use for your speech verbs? This decision can only be made once.", "Verb Choice", possible_say_verbs)
-	if(!choice) return
+	if(!choice)
+		return
 
 	var/list/sayverbs = possible_say_verbs[choice]
 	speak_statement = sayverbs[1]
@@ -356,7 +358,8 @@ var/list/infomorph_emotions = list(
 	else
 		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
 	spawn(1)
-		if(stat != 2) close_up()
+		if(stat != 2)
+			close_up()
 	return
 
 /mob/living/silicon/infomorph/attack_hand(mob/user as mob)
@@ -544,9 +547,12 @@ var/global/list/default_infomorph_software = list()
 
 	switch(src.stat)
 		if(CONSCIOUS)
-			if(!src.client)	. += "It appears to be in stand-by mode." //afk
-		if(UNCONSCIOUS)		. += "<span class='warning'>It doesn't seem to be responding.</span>"
-		if(DEAD)			. += "<span class='deadsay'>It looks completely unsalvageable.</span>"
+			if(!src.client)
+				. += "It appears to be in stand-by mode." //afk
+		if(UNCONSCIOUS)
+			. += "<span class='warning'>It doesn't seem to be responding.</span>"
+		if(DEAD)
+			. += "<span class='deadsay'>It looks completely unsalvageable.</span>"
 	. += "*---------*"
 
 	if(print_flavor_text())

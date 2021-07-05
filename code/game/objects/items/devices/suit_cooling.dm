@@ -115,7 +115,8 @@
 	updateicon()
 
 /obj/item/device/suit_cooling_unit/proc/turn_off(var/failed)
-	if(failed) visible_message("\The [src] clicks and whines as it powers down.")
+	if(failed)
+		visible_message("\The [src] clicks and whines as it powers down.")
 	on = 0
 	STOP_PROCESSING(SSobj, src)
 	updateicon()

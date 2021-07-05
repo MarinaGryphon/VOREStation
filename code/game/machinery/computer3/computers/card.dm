@@ -152,7 +152,8 @@
 
 	// form for changing assignment, taken care of by scriptblock() mostly
 	var/assign_temp = writer.assignment
-	if(!assign_temp || assign_temp == "") assign_temp = "Unassigned"
+	if(!assign_temp || assign_temp == "")
+		assign_temp = "Unassigned"
 	dat += "<b>Assignment:</b> [assign_temp] <span id='alljobsslot'><a href='#' onclick='showAll()'>change</a></span>"
 
 	// list of access rights

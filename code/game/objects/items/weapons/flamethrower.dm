@@ -59,7 +59,8 @@
 	return
 
 /obj/item/weapon/flamethrower/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	// Make sure our user is still holding us
 	if(user && user.get_active_hand() == src)
 		var/turf/target_turf = get_turf(target)
@@ -92,8 +93,10 @@
 
 	if(isigniter(W))
 		var/obj/item/device/assembly/igniter/I = W
-		if(I.secured)	return
-		if(igniter)		return
+		if(I.secured)
+			return
+		if(igniter)
+			return
 		user.drop_item()
 		I.loc = src
 		igniter = I
@@ -134,9 +137,12 @@
 	if(usr.stat || usr.restrained() || usr.lying)	return
 	usr.set_machine(src)
 	if(href_list["light"])
-		if(!ptank)	return
-		if(ptank.air_contents.gas["phoron"] < 1)	return
-		if(!status)	return
+		if(!ptank)
+			return
+		if(ptank.air_contents.gas["phoron"] < 1)
+			return
+		if(!status)
+			return
 		lit = !lit
 		if(lit)
 			START_PROCESSING(SSobj, src)
@@ -144,7 +150,8 @@
 		throw_amount = throw_amount + text2num(href_list["amount"])
 		throw_amount = max(50, min(5000, throw_amount))
 	if(href_list["remove"])
-		if(!ptank)	return
+		if(!ptank)
+			return
 		usr.put_in_hands(ptank)
 		ptank = null
 		lit = 0
@@ -159,7 +166,8 @@
 
 //Called from turf.dm turf/dblclick
 /obj/item/weapon/flamethrower/proc/flame_turf(turflist)
-	if(!lit || operating)	return
+	if(!lit || operating)
+		return
 	operating = 1
 	for(var/turf/T in turflist)
 		if(T.density || istype(T, /turf/space))

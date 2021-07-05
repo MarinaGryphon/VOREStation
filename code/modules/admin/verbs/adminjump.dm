@@ -202,13 +202,16 @@
 	if(config.allow_admin_jump)
 		if(isnull(tx))
 			tx = input(usr, "Select X coordinate", "Move Atom", null, null) as null|num
-			if(!tx) return
+			if(!tx)
+				return
 		if(isnull(ty))
 			ty = input(usr, "Select Y coordinate", "Move Atom", null, null) as null|num
-			if(!ty) return
+			if(!ty)
+				return
 		if(isnull(tz))
 			tz = input(usr, "Select Z coordinate", "Move Atom", null, null) as null|num
-			if(!tz) return
+			if(!tz)
+				return
 		var/turf/T = locate(tx, ty, tz)
 		if(!T)
 			to_chat(usr, "<span class='warning'>Those coordinates are outside the boundaries of the map.</span>")

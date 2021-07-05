@@ -121,7 +121,8 @@
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	if(!jingled)
 		usr.audible_message("[usr] jingles the [src]'s bell.", runemessage = "jingle")

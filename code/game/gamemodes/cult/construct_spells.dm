@@ -190,7 +190,8 @@
 /spell/aoe_turf/knock/harvester/cast(list/targets)
 /*	for(var/turf/T in targets) //Disintigrating doors is bad, okay.
 		for(var/obj/machinery/door/door in T.contents)
-			spawn door.cultify()
+			spawn
+				door.cultify()
 	return */
 	for(var/turf/T in targets)
 		for(var/obj/machinery/door/door in T.contents)

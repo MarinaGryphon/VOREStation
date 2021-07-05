@@ -345,8 +345,10 @@
 /obj/item/proc/equipped(var/mob/user, var/slot)
 	hud_layerise()
 	user.position_hud_item(src,slot)
-	if(user.client)	user.client.screen |= src
-	if(user.pulling == src) user.stop_pulling()
+	if(user.client)
+		user.client.screen |= src
+	if(user.pulling == src)
+		user.stop_pulling()
 	if((slot_flags & slot))
 		if(equip_sound)
 			playsound(src, equip_sound, 30)
@@ -382,8 +384,10 @@ var/list/global/slot_flags_enumeration = list(
 //Set disable_warning to 1 if you wish it to not give you outputs.
 //Should probably move the bulk of this into mob code some time, as most of it is related to the definition of slots and not item-specific
 /obj/item/proc/mob_can_equip(M as mob, slot, disable_warning = FALSE)
-	if(!slot) return 0
-	if(!M) return 0
+	if(!slot)
+		return 0
+	if(!M)
+		return 0
 
 	if(!ishuman(M)) return 0
 
@@ -470,7 +474,8 @@ var/list/global/slot_flags_enumeration = list(
 	return 1
 
 /obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
-	if(!M) return 0
+	if(!M)
+		return 0
 
 	if(!canremove)
 		return 0

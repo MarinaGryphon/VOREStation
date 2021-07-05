@@ -97,7 +97,8 @@
 	tgui_interact(user)
 
 /obj/machinery/computer/general_air_control/receive_signal(datum/signal/signal)
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
 	var/id_tag = signal.data["tag"]
 	if(!id_tag || !sensors.Find(id_tag)) return
@@ -169,7 +170,8 @@
 	return data
 
 /obj/machinery/computer/general_air_control/large_tank_control/receive_signal(datum/signal/signal)
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
 	var/id_tag = signal.data["tag"]
 
@@ -270,7 +272,8 @@
 	return data
 
 /obj/machinery/computer/general_air_control/supermatter_core/receive_signal(datum/signal/signal)
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
 	var/id_tag = signal.data["tag"]
 
@@ -387,7 +390,8 @@
 	return data
 
 /obj/machinery/computer/general_air_control/fuel_injection/receive_signal(datum/signal/signal)
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
 	var/id_tag = signal.data["tag"]
 

@@ -174,7 +174,8 @@
 	update_verb_holder()
 
 /obj/item/rig_module/ai_container/proc/integrate_ai(var/obj/item/ai,var/mob/user)
-	if(!ai) return
+	if(!ai)
+		return
 
 	// The ONLY THING all the different AI systems have in common is that they all store the mob inside an item.
 	var/mob/living/ai_mob = locate(/mob/living) in ai.contents

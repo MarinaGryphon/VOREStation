@@ -53,7 +53,8 @@
 /obj/machinery/botany/process()
 
 	..()
-	if(!active) return
+	if(!active)
+		return
 
 	if(world.time > last_action + action_time)
 		finished_task()
@@ -286,7 +287,8 @@
 		data["locus"] = ""
 
 		for(var/datum/plantgene/P in loaded_disk.genes)
-			if(data["locus"] != "") data["locus"] += ", "
+			if(data["locus"] != "")
+				data["locus"] += ", "
 			data["locus"] += "[SSplants.gene_tag_masks[P.genetype]]"
 
 	else

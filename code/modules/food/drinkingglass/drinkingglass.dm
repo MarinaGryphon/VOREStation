@@ -144,7 +144,8 @@
 			M.Translate(fsx, fsy)
 			I.transform = M
 			underlays += I
-		else continue
+		else
+			continue
 		side = "right"
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/afterattack(var/obj/target, var/mob/user, var/proximity)

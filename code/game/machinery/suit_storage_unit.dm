@@ -466,7 +466,8 @@
 			return
 		visible_message("[user] starts putting [G.affecting.name] into the Suit Storage Unit.", 3)
 		if(do_after(user, 20))
-			if(!G || !G.affecting) return //derpcheck
+			if(!G || !G.affecting)
+				return //derpcheck
 			var/mob/M = G.affecting
 			if(M.client)
 				M.client.perspective = EYE_PERSPECTIVE
@@ -579,7 +580,8 @@
 	wires = new(src)
 	target_department = departments[1]
 	target_species = species[1]
-	if(!target_department || !target_species) qdel(src)
+	if(!target_department || !target_species)
+		qdel(src)
 
 /obj/machinery/suit_cycler/Destroy()
 	qdel(wires)
@@ -696,7 +698,8 @@
 		visible_message("<span class='notice'>[user] starts putting [G.affecting.name] into the suit cycler.</span>", 3)
 
 		if(do_after(user, 20))
-			if(!G || !G.affecting) return
+			if(!G || !G.affecting)
+				return
 			var/mob/M = G.affecting
 			if(M.client)
 				M.client.perspective = EYE_PERSPECTIVE

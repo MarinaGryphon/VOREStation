@@ -198,8 +198,10 @@ var/global/floorIsLava = 0
 	for(var/k in GLOB.all_languages)
 		var/datum/language/L = GLOB.all_languages[k]
 		if(!(L.flags & INNATE))
-			if(!f) body += " | "
-			else f = 0
+			if(!f)
+				body += " | "
+			else
+				f = 0
 			if(L in M.languages)
 				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#006600'>[k]</a>"
 			else
@@ -291,8 +293,10 @@ var/global/floorIsLava = 0
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(!infos || !infos.len) return 0
-	else return 1
+	if(!infos || !infos.len)
+		return 0
+	else
+		return 1
 
 
 /datum/admins/proc/show_player_info(var/key as text)
@@ -1048,7 +1052,8 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set category = "Server"
 	set desc="Reboots the server post haste"
 	set name="Immediate Reboot"
-	if(!usr.client.holder)	return
+	if(!usr.client.holder)
+		return
 	if(alert(usr, "Reboot server?","Reboot!","Yes","No") == "No") // Not tgui_alert for safety
 		return
 	to_world("<font color='red'><b>Rebooting world!</b></font> <font color='blue'>Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!</font>")
@@ -1352,7 +1357,8 @@ var/datum/announcement/minor/admin_min_announcer = new
 		return
 
 	var/mob/living/carbon/human/M = tgui_input_list(usr, "Select mob.", "Select mob.", human_mob_list)
-	if(!M) return
+	if(!M)
+		return
 
 	show_skill_window(usr, M)
 

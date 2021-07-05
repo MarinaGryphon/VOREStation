@@ -272,7 +272,8 @@ datumrefresh=[refid]'>Refresh</a>
 		<script type='text/javascript'>
 			var complete_list = \[\];
 			var lis = document.getElementById("vars").children;
-			for(var i = lis.length; i--;) complete_list\[i\] = lis\[i\];
+			for(var i = lis.length; i--;)
+				complete_list\[i\] = lis\[i\];
 		</script>
 	</body>
 </html>

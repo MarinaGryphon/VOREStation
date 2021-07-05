@@ -163,11 +163,13 @@
 			M.Weaken(5)
 			seed.thrown_at(src,M)
 			sleep(-1)
-			if(src) qdel(src)
+			if(src)
+				qdel(src)
 			return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
-	if(seed) seed.thrown_at(src,hit_atom)
+	if(seed)
+		seed.thrown_at(src,hit_atom)
 	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/attackby(var/obj/item/weapon/W, var/mob/living/user)
@@ -196,10 +198,12 @@
 					user.show_message("<span class='notice'>You make planks out of \the [src]!</span>", 1)
 					playsound(src, 'sound/effects/woodcutting.ogg', 50, 1)
 					var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
-					if(!flesh_colour) flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
+					if(!flesh_colour)
+						flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
 					for(var/i=0,i<2,i++)
 						var/obj/item/stack/material/wood/NG = new (user.loc)
-						if(flesh_colour) NG.color = flesh_colour
+						if(flesh_colour)
+							NG.color = flesh_colour
 						for (var/obj/item/stack/material/wood/G in user.loc)
 							if(G==NG)
 								continue
@@ -235,7 +239,8 @@
 					var/reagents_to_transfer = round(reagents.total_volume/slices)
 					for(var/i=1; i<=slices; i++)
 						var/obj/item/weapon/reagent_containers/food/snacks/fruit_slice/F = new(get_turf(src),seed)
-						if(reagents_to_transfer) reagents.trans_to_obj(F,reagents_to_transfer)
+						if(reagents_to_transfer)
+							reagents.trans_to_obj(F,reagents_to_transfer)
 					qdel(src)
 					return
 	..()
@@ -269,16 +274,19 @@
 		user.visible_message("<span class='danger'>\The [user] squashes \the [src]!</span>")
 		seed.thrown_at(src,user)
 		sleep(-1)
-		if(src) qdel(src)
+		if(src)
+			qdel(src)
 		return
 
 	if(seed.kitchen_tag == "grass")
 		user.show_message("<span class='notice'>You make a grass tile out of \the [src]!</span>", 1)
 		var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
-		if(!flesh_colour) flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
+		if(!flesh_colour)
+			flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
 		for(var/i=0,i<2,i++)
 			var/obj/item/stack/tile/grass/G = new (user.loc)
-			if(flesh_colour) G.color = flesh_colour
+			if(flesh_colour)
+				G.color = flesh_colour
 			for (var/obj/item/stack/tile/grass/NG in user.loc)
 				if(G==NG)
 					continue
@@ -358,7 +366,8 @@ var/list/fruit_icon_cache = list()
 
 	var/rind_colour = S.get_trait(TRAIT_PRODUCT_COLOUR)
 	var/flesh_colour = S.get_trait(TRAIT_FLESH_COLOUR)
-	if(!flesh_colour) flesh_colour = rind_colour
+	if(!flesh_colour)
+		flesh_colour = rind_colour
 	if(!fruit_icon_cache["rind-[rind_colour]"])
 		var/image/I = image(icon,"fruit_rind")
 		I.color = rind_colour

@@ -39,7 +39,8 @@
 		icon_state = initial(icon_state)
 
 /obj/item/weapon/lipstick/attack(mob/M as mob, mob/user as mob)
-	if(!open)	return
+	if(!open)
+		return
 
 	if(!istype(M, /mob))	return
 

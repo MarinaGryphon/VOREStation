@@ -15,7 +15,8 @@
 
 
 	var/datum/changeling/changeling = changeling_power()
-	if(!changeling)	return
+	if(!changeling)
+		return
 
 	if(changeling.mimicing)
 		changeling.mimicing = ""

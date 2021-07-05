@@ -34,7 +34,8 @@
 /client/proc/admin_ghost()
 	set category = "Admin"
 	set name = "Aghost"
-	if(!holder)	return
+	if(!holder)
+		return
 	if(istype(mob,/mob/observer/dead))
 		//re-enter
 		var/mob/observer/dead/ghost = mob
@@ -140,7 +141,8 @@
 /client/proc/colorooc()
 	set category = "Fun"
 	set name = "OOC Text Color"
-	if(!holder)	return
+	if(!holder)
+		return
 	var/response = tgui_alert(src, "Please choose a distinct color that is easy to read and doesn't mix with all the other chat and radio frequency colors.", "Change own OOC color", list("Pick new color", "Reset to default", "Cancel"))
 	if(response == "Pick new color")
 		prefs.ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color
@@ -204,8 +206,10 @@
 
 	var/datum/preferences/D
 	var/client/C = GLOB.directory[warned_ckey]
-	if(C)	D = C.prefs
-	else	D = preferences_datums[warned_ckey]
+	if(C)
+		D = C.prefs
+	else
+		D = preferences_datums[warned_ckey]
 
 	if(!D)
 		to_chat(src, "<span class='warning'>Error: warn(): No such ckey found.</span>")
@@ -385,7 +389,8 @@
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href logging"
 	set category = "Server"
-	if(!holder)	return
+	if(!holder)
+		return
 	if(config)
 		config.log_hrefs = !config.log_hrefs
 		message_admins("<b>[key_name_admin(usr)] [config.log_hrefs ? "started" : "stopped"] logging hrefs</b>")
@@ -403,7 +408,8 @@
 	if(!check_rights(R_ADMIN|R_FUN|R_EVENT)) return
 
 	var/mob/living/silicon/S = tgui_input_list(usr, "Select silicon.", "Rename Silicon.", silicon_mob_list)
-	if(!S) return
+	if(!S)
+		return
 
 	var/new_name = sanitizeSafe(input(src, "Enter new name. Leave blank or as is to cancel.", "[S.real_name] - Enter new silicon name", S.real_name))
 	if(new_name && new_name != S.real_name)
@@ -418,7 +424,8 @@
 	if(!check_rights(R_ADMIN|R_EVENT)) return
 
 	var/mob/living/silicon/S = tgui_input_list(usr, "Select silicon.", "Manage Silicon Laws", silicon_mob_list)
-	if(!S) return
+	if(!S)
+		return
 
 	var/datum/tgui_module/law_manager/admin/L = new(S)
 	L.tgui_interact(usr)
@@ -487,7 +494,8 @@
 /client/proc/toggleghostwriters()
 	set name = "Toggle ghost writers"
 	set category = "Server"
-	if(!holder)	return
+	if(!holder)
+		return
 	if(config)
 		config.cult_ghostwriter = !config.cult_ghostwriter
 		message_admins("Admin [key_name_admin(usr)] has [config.cult_ghostwriter ? "en" : "dis"]abled ghost writers.", 1)
@@ -495,7 +503,8 @@
 /client/proc/toggledrones()
 	set name = "Toggle maintenance drones"
 	set category = "Server"
-	if(!holder)	return
+	if(!holder)
+		return
 	if(config)
 		config.allow_drone_spawn = !config.allow_drone_spawn
 		message_admins("Admin [key_name_admin(usr)] has [config.allow_drone_spawn ? "en" : "dis"]abled maintenance drones.", 1)
@@ -533,7 +542,8 @@
 	set name = "Give Spell"
 	set desc = "Gives a spell to a mob."
 	var/spell/S = tgui_input_list(usr, "Choose the spell to give to that guy", "ABRAKADABRA", spells)
-	if(!S) return
+	if(!S)
+		return
 	T.spell_list += new S
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")

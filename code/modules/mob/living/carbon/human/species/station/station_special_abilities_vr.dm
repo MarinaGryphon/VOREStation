@@ -79,7 +79,8 @@
 		return TRUE
 	else if (ingested.has_reagent("nutriment", 60) || src.ingested.has_reagent("protein", 30)) //try forcefeeding them, why not. Less effective.
 		return TRUE
-	else return FALSE
+	else
+		return FALSE
 
 
 /mob/living/carbon/human/proc/hatch()
@@ -154,15 +155,18 @@
 	if(isturf(src.loc)) //else, there's considered to be no light
 		var/turf/T = src.loc
 		return T.get_lumcount() * 5
-	else return 0
+	else
+		return 0
 
 /mob/living/carbon/human/proc/handle_feral()
-	if(handling_hal) return
+	if(handling_hal)
+		return
 	handling_hal = 1
 
 	if(client && feral >= 10) // largely a copy of handle_hallucinations() without the fake attackers. Unlike hallucinations, only fires once - if they're still feral they'll get hit again anyway.
 		spawn(rand(200,500)/(feral/10))
-			if(!feral) return //just to avoid fuckery in the event that they un-feral in the time it takes for the spawn to proc
+			if(!feral)
+				return //just to avoid fuckery in the event that they un-feral in the time it takes for the spawn to proc
 			var/halpick = rand(1,100)
 			switch(halpick)
 				if(0 to 15) //15% chance
@@ -177,13 +181,18 @@
 					if(!halitem)
 						halitem = new
 						var/list/slots_free = list(ui_lhand,ui_rhand)
-						if(l_hand) slots_free -= ui_lhand
-						if(r_hand) slots_free -= ui_rhand
+						if(l_hand)
+							slots_free -= ui_lhand
+						if(r_hand)
+							slots_free -= ui_rhand
 						if(istype(src,/mob/living/carbon/human))
 							var/mob/living/carbon/human/H = src
-							if(!H.belt) slots_free += ui_belt
-							if(!H.l_store) slots_free += ui_storage1
-							if(!H.r_store) slots_free += ui_storage2
+							if(!H.belt)
+								slots_free += ui_belt
+							if(!H.l_store)
+								slots_free += ui_storage1
+							if(!H.r_store)
+								slots_free += ui_storage2
 						if(slots_free.len)
 							halitem.screen_loc = pick(slots_free)
 							halitem.layer = 50
@@ -214,7 +223,8 @@
 									halitem.icon = 'icons/obj/grenade.dmi'
 									halitem.icon_state = "flashbang1"
 									halitem.name = "Flashbang"
-							if(client) client.screen += halitem
+							if(client)
+								client.screen += halitem
 							spawn(rand(100,250))
 								if(client)
 									client.screen -= halitem
@@ -241,31 +251,42 @@
 									halimage = image('icons/obj/assemblies.dmi',target,"plastic-explosive2",OBJ_LAYER+0.01)
 
 
-							if(client) client.images += halimage
+							if(client)
+								client.images += halimage
 							spawn(rand(10,50)) //Only seen for a brief moment.
-								if(client) client.images -= halimage
+								if(client)
+									client.images -= halimage
 								halimage = null
 
 				if(36 to 55) //20% chance
 					//Strange audio
 					//to_chat(src, "Strange Audio")
 					switch(rand(1,12))
-						if(1) src << 'sound/machines/door/old_airlock.ogg'
+						if(1)
+							src << 'sound/machines/door/old_airlock.ogg'
 						if(2)
 							if(prob(50))src << 'sound/effects/Explosion1.ogg'
-							else src << 'sound/effects/Explosion2.ogg'
-						if(3) src << 'sound/effects/explosionfar.ogg'
-						if(4) src << 'sound/effects/Glassbr1.ogg'
-						if(5) src << 'sound/effects/Glassbr2.ogg'
-						if(6) src << 'sound/effects/Glassbr3.ogg'
-						if(7) src << 'sound/machines/twobeep.ogg'
-						if(8) src << 'sound/machines/door/windowdoor.ogg'
+							else
+								src << 'sound/effects/Explosion2.ogg'
+						if(3)
+							src << 'sound/effects/explosionfar.ogg'
+						if(4)
+							src << 'sound/effects/Glassbr1.ogg'
+						if(5)
+							src << 'sound/effects/Glassbr2.ogg'
+						if(6)
+							src << 'sound/effects/Glassbr3.ogg'
+						if(7)
+							src << 'sound/machines/twobeep.ogg'
+						if(8)
+							src << 'sound/machines/door/windowdoor.ogg'
 						if(9)
 							//To make it more realistic, I added two gunshots (enough to kill)
 							src << 'sound/weapons/Gunshot1.ogg'
 							spawn(rand(10,30))
 								src << 'sound/weapons/Gunshot2.ogg'
-						if(10) src << 'sound/weapons/smash.ogg'
+						if(10)
+							src << 'sound/weapons/smash.ogg'
 						if(11)
 							//Same as above, but with tasers.
 							src << 'sound/weapons/Taser.ogg'
@@ -299,9 +320,11 @@
 		//						if(5)
 		//							halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
 
-							if(client) client.images += halbody
+							if(client)
+								client.images += halbody
 							spawn(rand(50,80)) //Only seen for a brief moment.
-								if(client) client.images -= halbody
+								if(client)
+									client.images -= halbody
 								halbody = null
 				if(61 to 85) //25% chance
 					//food
@@ -333,9 +356,11 @@
 								if(10)
 									halbody = image('icons/obj/food.dmi',target,"monkeysdelight",TURF_LAYER)
 
-							if(client) client.images += halbody
+							if(client)
+								client.images += halbody
 							spawn(rand(50,80)) //Only seen for a brief moment.
-								if(client) client.images -= halbody
+								if(client)
+									client.images -= halbody
 								halbody = null
 				if(86 to 100) //15% chance
 					//hear voices. Could make the voice pick from nearby creatures, but nearby creatures make feral hallucinations rare so don't bother.
@@ -369,11 +394,13 @@
 
 	var/mob/living/carbon/human/B = tgui_input_list(src, "Who do you wish to bite?", "Suck Blood", choices)
 
-	if(!B || !src || src.stat) return
+	if(!B || !src || src.stat)
+		return
 
 	if(!Adjacent(B)) return
 
-	if(last_special > world.time) return
+	if(last_special > world.time)
+		return
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite in your current state.")

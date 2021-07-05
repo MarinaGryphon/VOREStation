@@ -269,7 +269,8 @@
 	var/darkness = 1-brightness					//Silly, I know, but 'alpha' and 'darkness' go the same direction on a number line
 	var/adjust_to = min(darkness,darksightedness)//Capped by how darksighted they are
 	var/distance = abs(current-adjust_to)		//Used for how long to animate for
-	if(distance < 0.01) return					//We're already all set
+	if(distance < 0.01)
+		return					//We're already all set
 
 	//to_world("[src] in B:[round(brightness,0.1)] C:[round(current,0.1)] A2:[round(adjust_to,0.1)] D:[round(distance,0.01)] T:[round(distance*10 SECONDS,0.1)]")
 	animate(dsoverlay, alpha = (adjust_to*255), time = (distance*10 SECONDS))

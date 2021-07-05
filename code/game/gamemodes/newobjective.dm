@@ -134,7 +134,8 @@
 			chosenobjectives += objective
 			total_weight += objective.points
 			theftobjectives -= objective
-		else switch(selectobj)
+		else
+			switch(selectobj)
 			if(1 to steal_range)
 				if(!theftobjectives.len)
 					continue
@@ -430,11 +431,13 @@ datum
 			check_completion()
 				if(target && target.current)
 					if(target.current.stat == 2)
-						if(config.require_heads_alive) return 0
+						if(config.require_heads_alive)
+							return 0
 					else
 						if(!target.current.handcuffed)
 							return 0
-				else if(config.require_heads_alive) return 0
+				else if(config.require_heads_alive)
+					return 0
 				return 1
 
 			find_target_by_role(var/role)
@@ -604,7 +607,8 @@ datum
 					var/list/all_items = owner.current.get_contents()
 					for(var/obj/item/I in all_items)
 						if(!istype(I, steal_target))	continue//If it's not actually that item.
-						if(I:air_contents:phoron) return 1 //If they got one with plasma
+						if(I:air_contents:phoron)
+							return 1 //If they got one with plasma
 					return 0
 
 
@@ -1237,7 +1241,8 @@ datum
 				var/area/shuttle = locate(/area/shuttle/escape/centcom)
 				var/protected_mobs[] = list(/mob/living/silicon/ai, /mob/living/silicon/pai, /mob/living/silicon/robot)
 				for(var/mob/living/player in world)
-					if(player.type in protected_mobs)	continue
+					if(player.type in protected_mobs)
+						continue
 					if (player.mind)
 						if (player.stat != 2)
 							if (get_turf(player) in shuttle)
@@ -1343,8 +1348,10 @@ datum
 					return 0
 				else
 					for(var/datum/tech/current_data in S.stored_research)
-						if(current_data.level>1)	current_amount+=(current_data.level-1)
-				if(current_amount<target_amount)	return 0
+						if(current_data.level>1)
+							current_amount+=(current_data.level-1)
+				if(current_amount<target_amount)
+					return 0
 				return 1
 
 
@@ -1379,9 +1386,11 @@ datum
 					return 0
 				var/list/all_items = owner.current.get_contents()
 				for(var/obj/item/device/mmi/mmi in all_items)
-					if(mmi.brainmob&&mmi.brainmob.mind==target)	return 1
+					if(mmi.brainmob&&mmi.brainmob.mind==target)
+						return 1
 				for(var/obj/item/organ/brain/brain in all_items)
-					if(brain.brainmob&&brain.brainmob.mind==target)	return 1
+					if(brain.brainmob&&brain.brainmob.mind==target)
+						return 1
 				return 0
 
 		mutiny

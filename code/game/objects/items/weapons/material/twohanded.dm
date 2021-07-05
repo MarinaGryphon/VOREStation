@@ -118,7 +118,8 @@
 	..()
 
 /obj/item/weapon/material/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	..()
 	if(A && wielded)
 		if(istype(A,/obj/structure/window))

@@ -49,14 +49,16 @@
 	if(Be)
 		Be.multiz_turf_del(src, UP)
 
-	if(connections) connections.erase_all()
+	if(connections)
+		connections.erase_all()
 
 	if(istype(src,/turf/simulated))
 		//Yeah, we're just going to rebuild the whole thing.
 		//Despite this being called a bunch during explosions,
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
-		if(S.zone) S.zone.rebuild()
+		if(S.zone)
+			S.zone.rebuild()
 
 	cut_overlays(TRUE)
 	RemoveElement(/datum/element/turf_z_transparency)

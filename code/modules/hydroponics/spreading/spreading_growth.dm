@@ -153,7 +153,8 @@
 
 /obj/effect/plant/proc/die_off()
 	// Kill off our plant.
-	if(plant) plant.die()
+	if(plant)
+		plant.die()
 	// This turf is clear now, let our buddies know.
 	for(var/turf/simulated/check_turf in get_cardinal_neighbors())
 		if(!istype(check_turf))
@@ -161,6 +162,8 @@
 		for(var/obj/effect/plant/neighbor in check_turf.contents)
 			neighbor.neighbors |= check_turf
 			SSplants.add_plant(neighbor)
-	spawn(1) if(src) qdel(src)
+	spawn(1)
+		if(src)
+			qdel(src)
 
 #undef NEIGHBOR_REFRESH_TIME

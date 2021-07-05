@@ -81,8 +81,10 @@
 
 
 /obj/machinery/gateway/centerstation/proc/toggleon(mob/user as mob)
-	if(!ready)			return
-	if(linked.len != 8)	return
+	if(!ready)
+		return
+	if(linked.len != 8)
+		return
 	if(!powered())		return
 	if(!awaygate)
 		to_chat(user, "<span class='notice'>Error: No destination found. Please program gateway.</span>")
@@ -121,9 +123,12 @@
 
 //okay, here's the good teleporting stuff
 /obj/machinery/gateway/centerstation/Bumped(atom/movable/M as mob|obj)
-	if(!ready)		return
-	if(!active)		return
-	if(!awaygate)	return
+	if(!ready)
+		return
+	if(!active)
+		return
+	if(!awaygate)
+		return
 
 	use_power(5000)
 	M << 'sound/effects/phasein.ogg'
@@ -265,8 +270,10 @@
 
 
 /obj/machinery/gateway/centeraway/proc/toggleon(mob/user as mob)
-	if(!ready)			return
-	if(linked.len != 8)	return
+	if(!ready)
+		return
+	if(linked.len != 8)
+		return
 	if(!stationgate || !calibrated) // Vorestation edit. Not like Polaris ever touches this anyway.
 		to_chat(user, "<span class='notice'>Error: No destination found. Please calibrate gateway.</span>")
 		return
@@ -297,8 +304,10 @@
 
 
 /obj/machinery/gateway/centeraway/Bumped(atom/movable/M as mob|obj)
-	if(!ready)	return
-	if(!active)	return
+	if(!ready)
+		return
+	if(!active)
+		return
 	if(istype(M, /mob/living/carbon))
 		for(var/obj/item/weapon/implant/exile/E in M)//Checking that there is an exile implant in the contents
 			if(E.imp_in == M)//Checking that it's actually implanted vs just in their pocket

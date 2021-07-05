@@ -185,7 +185,8 @@ var/global/photo_count = 0
 		atoms.Add(the_turf);
 		// As well as anything that isn't invisible.
 		for(var/atom/A in the_turf)
-			if(A.invisibility) continue
+			if(A.invisibility)
+				continue
 			if(A.plane > 0 && !(A.plane in picture_planes)) continue
 			atoms.Add(A)
 
@@ -223,10 +224,12 @@ var/global/photo_count = 0
 /obj/item/device/camera/proc/get_mobs(turf/the_turf as turf)
 	var/mob_detail
 	for(var/mob/living/carbon/A in the_turf)
-		if(A.invisibility) continue
+		if(A.invisibility)
+			continue
 		var/holding = null
 		if(A.l_hand || A.r_hand)
-			if(A.l_hand) holding = "They are holding \a [A.l_hand]"
+			if(A.l_hand)
+				holding = "They are holding \a [A.l_hand]"
 			if(A.r_hand)
 				if(holding)
 					holding += " and \a [A.r_hand]"

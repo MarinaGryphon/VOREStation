@@ -173,7 +173,8 @@
 				nif.notify("Respirocytes now fully saturated.")
 
 /datum/nifsoft/spare_breath/proc/resp_breath()
-	if(!active) return null
+	if(!active)
+		return null
 	var/datum/gas_mixture/breath = new(BREATH_VOLUME)
 	breath.adjust_gas("oxygen", BREATH_MOLES)
 	breath.temperature = T20C

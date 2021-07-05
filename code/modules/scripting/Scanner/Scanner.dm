@@ -172,7 +172,8 @@
 					break
 				else
 					buf+=char     //Just a normal character in a string
-	if(!.) return new/token/string(buf, line, COL)
+	if(!.)
+		return new/token/string(buf, line, COL)
 
 /*
 Proc: ReadWord
@@ -216,7 +217,8 @@ Reads a number into a token.
 	var/dec=0
 
 	while(options.IsDigit(char) || (char=="." && !dec))
-		if(char==".") dec=1
+		if(char==".")
+			dec=1
 		buf+=char
 		codepos++
 		char=copytext(code, codepos, codepos+1)
@@ -266,7 +268,8 @@ Reads a comment and outputs the type of comment
 					comm = 0
 					break
 
-			if(expectedend) expectedend = 0
+			if(expectedend)
+				expectedend = 0
 
 		if(comm == 2)
 			errors+=new/scriptError/UnterminatedComment()

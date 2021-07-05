@@ -239,7 +239,8 @@
 
 //Yes, showers are super powerful as far as washing goes.
 /obj/machinery/shower/proc/wash(atom/movable/O as obj|mob)
-	if(!on) return
+	if(!on)
+		return
 
 	if(isliving(O))
 		var/mob/living/L = O
@@ -264,7 +265,8 @@
 	reagents.splash(O, 10)
 
 /obj/machinery/shower/process()
-	if(!on) return
+	if(!on)
+		return
 	for(var/thing in loc)
 		var/atom/movable/AM = thing
 		var/mob/living/L = thing

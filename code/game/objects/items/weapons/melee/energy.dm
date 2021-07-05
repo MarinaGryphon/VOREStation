@@ -456,10 +456,14 @@
 
 /obj/item/weapon/melee/energy/blade/attack_self(mob/user as mob)
 	user.drop_from_inventory(src)
-	spawn(1) if(src) qdel(src)
+	spawn(1)
+		if(src)
+			qdel(src)
 
 /obj/item/weapon/melee/energy/blade/dropped()
-	spawn(1) if(src) qdel(src)
+	spawn(1)
+		if(src)
+			qdel(src)
 
 /obj/item/weapon/melee/energy/blade/process()
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
@@ -474,7 +478,9 @@
 			host.pinned -= src
 			host.embedded -= src
 			host.drop_from_inventory(src)
-		spawn(1) if(src) qdel(src)
+		spawn(1)
+			if(src)
+				qdel(src)
 
 /obj/item/weapon/melee/energy/blade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(60))

@@ -8,7 +8,8 @@
 
 	if(!pai_key)
 		var/client/C = tgui_input_list(usr, "Select client:", "Client Choice", GLOB.clients)
-		if(!C) return
+		if(!C)
+			return
 		pai_key = C.key
 
 	log_and_message_admins("made a pAI with key=[pai_key] at ([t.x],[t.y],[t.z])")

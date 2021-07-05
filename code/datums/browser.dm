@@ -155,7 +155,8 @@
 // Otherwise, the user mob's machine var will be reset directly.
 //
 /proc/onclose(mob/user, windowid, var/atom/ref=null)
-	if(!user || !user.client) return
+	if(!user || !user.client)
+		return
 	var/param = "null"
 	if(ref)
 		param = "\ref[ref]"

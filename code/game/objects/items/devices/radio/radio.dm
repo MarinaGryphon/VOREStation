@@ -617,7 +617,8 @@ GLOBAL_DATUM(autospeaker, /mob/living/silicon/ai/announcer)
 			//Foreach goto(83)
 		add_fingerprint(user)
 		return
-	else return
+	else
+		return
 
 /obj/item/device/radio/emp_act(severity)
 	broadcasting = 0

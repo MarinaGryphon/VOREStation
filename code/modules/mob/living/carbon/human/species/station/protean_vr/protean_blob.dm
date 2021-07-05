@@ -271,7 +271,8 @@
 		var/substance = S.material.name
 		var allowed = FALSE
 		for(var/material in PROTEAN_EDIBLE_MATERIALS)
-			if(material == substance) allowed = TRUE
+			if(material == substance)
+				allowed = TRUE
 		if(!allowed)
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
@@ -285,7 +286,8 @@
 		var/substance = S.material.name
 		var allowed = FALSE
 		for(var/material in PROTEAN_EDIBLE_MATERIALS)
-			if(material == substance) allowed = TRUE
+			if(material == substance)
+				allowed = TRUE
 		if(!allowed)
 			return
 		if(refactory.add_stored_material(S.material.name,1*S.perunit) && S.use(1))
@@ -360,8 +362,10 @@ var/global/list/disallowed_protean_accessories = list(
 	blob.transform = matrix()*size_multiplier
 	blob.size_multiplier = size_multiplier
 
-	if(l_hand) blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
-	if(r_hand) blob.prev_right_hand = r_hand
+	if(l_hand)
+		blob.prev_left_hand = l_hand //Won't save them if dropped above, but necessary if handdrop is disabled.
+	if(r_hand)
+		blob.prev_right_hand = r_hand
 
 	//Put our owner in it (don't transfer var/mind)
 	blob.ckey = ckey
@@ -456,8 +460,10 @@ var/global/list/disallowed_protean_accessories = list(
 		B.forceMove(src)
 		B.owner = src
 
-	if(blob.prev_left_hand) put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
-	if(blob.prev_right_hand) put_in_r_hand(blob.prev_right_hand)
+	if(blob.prev_left_hand)
+		put_in_l_hand(blob.prev_left_hand) //The restore for when reforming.
+	if(blob.prev_right_hand)
+		put_in_r_hand(blob.prev_right_hand)
 
 	Life(1) //Fix my blindness right meow //Has to be moved up here, there exists a circumstance where blob could be deleted without vore organs moving right.
 

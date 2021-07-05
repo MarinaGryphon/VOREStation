@@ -93,7 +93,8 @@
 			all_valid_jobs += department.jobs[J]
 
 	for(var/datum/job/job in all_valid_jobs)
-		if(job.latejoin_only) continue //VOREStation Code
+		if(job.latejoin_only)
+			continue //VOREStation Code
 		var/datum/department/current_department = SSjob.get_primary_department_of_job(job)
 
 		// Should we add a new column?
@@ -398,7 +399,8 @@
 	return (job.title in player_alt_titles) ? player_alt_titles[job.title] : job.title
 
 /datum/preferences/proc/GetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)	return 0
+	if(!job || !level)
+		return 0
 	switch(job.department_flag)
 		if(CIVILIAN)
 			switch(level)

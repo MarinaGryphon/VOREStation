@@ -52,7 +52,8 @@
 				return 0 // check if we actually need to recharge
 
 			charge_tick++
-			if(charge_tick < recharge_time) return 0
+			if(charge_tick < recharge_time)
+				return 0
 			charge_tick = 0
 
 			var/rechargeamt = power_supply.maxcharge*0.2
@@ -106,7 +107,8 @@
 	update_icon()
 
 /obj/item/weapon/gun/energy/consume_next_projectile()
-	if(!power_supply) return null
+	if(!power_supply)
+		return null
 	if(!ispath(projectile_type)) return null
 	if(!power_supply.checked_use(charge_cost)) return null
 	return new projectile_type(src)
@@ -211,7 +213,8 @@
 		else
 			icon_state = "[initial(icon_state)]"
 
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands)
+		update_held_icon()
 
 /obj/item/weapon/gun/energy/proc/start_recharge()
 	if(power_supply == null)

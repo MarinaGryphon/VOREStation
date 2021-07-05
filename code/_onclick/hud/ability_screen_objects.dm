@@ -103,7 +103,8 @@
 		invisibility = 101
 
 /obj/screen/movable/ability_master/proc/add_ability(var/name_given)
-	if(!name) return
+	if(!name)
+		return
 
 //	if(spell.connected_button) //we have one already, for some reason
 //		if(spell.connected_button in spell_objects)

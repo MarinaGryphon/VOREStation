@@ -166,7 +166,8 @@
 			if(dish)
 				var/target = text2num(params["splice"]) // target = 1 to 4 for effects, 5 for species
 				if(memorybank && 0 < target && target <= 4)
-					if(target < memorybank.effect.stage) return // too powerful, catching this for href exploit prevention
+					if(target < memorybank.effect.stage)
+						return // too powerful, catching this for href exploit prevention
 
 					var/datum/disease2/effectholder/target_holder
 					var/list/illegal_types = list()
@@ -175,7 +176,8 @@
 							target_holder = e
 						else
 							illegal_types += e.effect.type
-					if(memorybank.effect.type in illegal_types) return
+					if(memorybank.effect.type in illegal_types)
+						return
 					target_holder.effect = memorybank.effect
 
 				else if(species_buffer && target == 5)

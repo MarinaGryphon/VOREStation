@@ -70,7 +70,8 @@ var/const/TALENG			=(1<<4)
 
 	for(var/A in all_jobs)
 		var/datum/job/job = new A()
-		if(!job)	continue
+		if(!job)
+			continue
 		occupations += job
 
 	return occupations

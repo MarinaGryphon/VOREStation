@@ -126,7 +126,8 @@
 				user.forceMove(ToTurf)
 	else
 		for(var/obj/O in FromTurf)
-			if(O.anchored) continue
+			if(O.anchored)
+				continue
 			if(prob(recievefailchance))
 				O.forceMove(pick(trange(24,user)))
 			else
@@ -145,7 +146,8 @@
 	set name = "Change fire mode"
 	set category = "Object"
 	set src in oview(1)
-	if(transforming) return
+	if(transforming)
+		return
 	mode = !mode
 	transforming = 1
 	to_chat(user,"<span class = 'info'>You change \the [src]'s mode to [mode ? "transmiting" : "receiving"].</span>")

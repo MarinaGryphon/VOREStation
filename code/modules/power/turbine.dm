@@ -394,7 +394,8 @@
 			door_status = !door_status
 			for(var/obj/machinery/door/blast/D in src.doors)
 				if (door_status)
-					spawn(0) D.close()
+					spawn(0)
+						D.close()
 				else
 					spawn(0)D.open()
 			. = TRUE

@@ -15,7 +15,8 @@
 /hook/startup/proc/read_vs_config()
 	var/list/Lines = file2list("config/config.txt")
 	for(var/t in Lines)
-		if(!t)	continue
+		if(!t)
+			continue
 
 		t = trim(t)
 		if (length(t) == 0)

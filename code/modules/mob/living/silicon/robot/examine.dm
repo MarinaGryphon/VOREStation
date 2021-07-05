@@ -27,8 +27,10 @@
 				. += "It appears to be an [deployed ? "active" : "empty"] AI shell."
 			else if(!src.client)
 				. += "It appears to be in stand-by mode." //afk
-		if(UNCONSCIOUS)		. += "<span class='warning'>It doesn't seem to be responding.</span>"
-		if(DEAD)			. += "<span class='deadsay'>It looks completely unsalvageable.</span>"
+		if(UNCONSCIOUS)
+			. += "<span class='warning'>It doesn't seem to be responding.</span>"
+		if(DEAD)
+			. += "<span class='deadsay'>It looks completely unsalvageable.</span>"
 	
 	// VOREStation Edit: Start
 	. += attempt_vr(src,"examine_bellies_borg",args) //VOREStation Edit

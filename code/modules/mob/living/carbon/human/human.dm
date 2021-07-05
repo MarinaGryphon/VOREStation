@@ -88,7 +88,8 @@
 		if(back && istype(back,/obj/item/weapon/rig))
 			var/obj/item/weapon/rig/suit = back
 			var/cell_status = "ERROR"
-			if(suit.cell) cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
+			if(suit.cell)
+				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
 			stat(null, "Suit charge: [cell_status]")
 
 		if(mind)
@@ -179,10 +180,12 @@
 				update |= temp.take_damage(b_loss * 0.4, f_loss * 0.4, used_weapon = weapon_message)
 			else
 				update |= temp.take_damage(b_loss * 0.05, f_loss * 0.05, used_weapon = weapon_message)
-	if(update)	UpdateDamageIcon()
+	if(update)
+		UpdateDamageIcon()
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
-	if(!config.use_loyalty_implants && !override) return // Nuh-uh.
+	if(!config.use_loyalty_implants && !override)
+		return // Nuh-uh.
 
 	var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(src)
 	if(L.handle_implant(src, BP_HEAD))
@@ -304,7 +307,8 @@
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return 0	//godmode
 
 	if (!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -1146,7 +1150,8 @@
 			descriptors[desctype] = descriptor.default_value
 
 	spawn(0)
-		if(regen_icons) regenerate_icons()
+		if(regen_icons)
+			regenerate_icons()
 		make_blood()
 		if(vessel.total_volume < species.blood_volume)
 			vessel.maximum_volume = species.blood_volume
@@ -1467,9 +1472,11 @@
 	set desc = "Shows/hides selected parts of your underwear."
 	set category = "Object"
 
-	if(stat) return
+	if(stat)
+		return
 	var/datum/category_group/underwear/UWC = tgui_input_list(usr, "Choose underwear:", "Show/hide underwear", global_underwear.categories)
-	if(!UWC) return
+	if(!UWC)
+		return
 	var/datum/category_item/underwear/UWI = all_underwear[UWC.name]
 	if(!UWI || UWI.name == "None")
 		to_chat(src, "<span class='notice'>You do not have [UWC.gender==PLURAL ? "[UWC.display_name]" : "a [UWC.display_name]"].</span>")
@@ -1484,7 +1491,8 @@
 	set desc = "Try not to hurt them."
 	set category = "IC"
 
-	if(stat) return
+	if(stat)
+		return
 	pulling_punches = !pulling_punches
 	to_chat(src, "<span class='notice'>You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"].</span>")
 	return

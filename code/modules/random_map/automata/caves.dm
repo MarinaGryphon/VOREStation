@@ -32,7 +32,8 @@
 /datum/random_map/automata/cave_system/cleanup()
 	var/ore_count = round(map.len/20)
 	while((ore_count>0) && (ore_turfs.len>0))
-		if(!priority_process) sleep(-1)
+		if(!priority_process)
+			sleep(-1)
 		var/check_cell = pick(ore_turfs)
 		ore_turfs -= check_cell
 		if(prob(75))

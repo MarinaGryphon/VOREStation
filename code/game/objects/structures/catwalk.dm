@@ -161,7 +161,8 @@
 	activate()
 
 /obj/effect/catwalk_plated/proc/activate()
-	if(activated) return
+	if(activated)
+		return
 
 	if(locate(/obj/structure/catwalk) in loc)
 		warning("Frame Spawner: A catwalk already exists at [loc.x]-[loc.y]-[loc.z]")
@@ -175,7 +176,8 @@
 	/* We don't have wallframes - yet
 	for(var/turf/T in orange(src, 1))
 		for(var/obj/effect/wallframe_spawn/other in T)
-			if(!other.activated) other.activate()
+			if(!other.activated)
+				other.activate()
 	*/
 	qdel(src)
 

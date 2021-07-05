@@ -11,7 +11,8 @@
 // supplied_drop_types is a list of types to spawn in the pod.
 /datum/random_map/droppod/supply/get_spawned_drop(var/turf/T)
 
-	if(!drop_type) drop_type = pick(supply_drop_random_loot_types())
+	if(!drop_type)
+		drop_type = pick(supply_drop_random_loot_types())
 
 	if(drop_type == "custom")
 		if(supplied_drop_types.len)
@@ -19,7 +20,8 @@
 			for(var/drop_type in supplied_drop_types)
 				var/atom/movable/A = new drop_type(T)
 				if(!istype(A, /mob))
-					if(!C) C = new(T)
+					if(!C)
+						C = new(T)
 					C.contents |= A
 			return
 		else

@@ -246,7 +246,8 @@
 
 /turf/simulated/floor/reinforced/n20/Initialize()
 	. = ..()
-	if(!air) make_air()
+	if(!air)
+		make_air()
 	air.adjust_gas("nitrous_oxide", ATMOSTANK_NITROUSOXIDE)
 
 /turf/simulated/floor/cult

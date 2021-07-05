@@ -13,10 +13,14 @@
 	S["skill_specialization"]	<< pref.skill_specialization
 
 /datum/category_item/player_setup_item/skills/sanitize_character()
-	if(SKILLS == null)				setup_skills()
-	if(!pref.skills)				pref.skills = list()
-	if(!pref.skills.len)			pref.ZeroSkills()
-	if(pref.used_skillpoints < 0)	pref.used_skillpoints = 0
+	if(SKILLS == null)
+		setup_skills()
+	if(!pref.skills)
+		pref.skills = list()
+	if(!pref.skills.len)
+		pref.ZeroSkills()
+	if(pref.used_skillpoints < 0)
+		pref.used_skillpoints = 0
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/skills/copy_to_mob(var/mob/living/carbon/human/character)

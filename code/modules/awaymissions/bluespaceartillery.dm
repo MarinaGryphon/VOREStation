@@ -39,7 +39,8 @@
 		var/A = tgui_input_list(usr, "Area to jump bombard", "Open Fire", teleportlocs)
 		var/area/thearea = teleportlocs[A]
 		if (usr.stat || usr.restrained()) return
-		if(src.reload < 180) return
+		if(src.reload < 180)
+			return
 		if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
 			command_announcement.Announce("Bluespace artillery fire detected. Brace for impact.")
 			message_admins("[key_name_admin(usr)] has launched an artillery strike.", 1)

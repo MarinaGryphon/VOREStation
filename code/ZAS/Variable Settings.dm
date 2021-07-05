@@ -104,12 +104,16 @@ var/global/vs_control/vsc = new
 		var/vw_name = ch
 		if(ch in plc.settings)
 			vw = plc.vars[ch]
-			if("[ch]_DESC" in plc.vars) vw_desc = plc.vars["[ch]_DESC"]
-			if("[ch]_NAME" in plc.vars) vw_name = plc.vars["[ch]_NAME"]
+			if("[ch]_DESC" in plc.vars)
+				vw_desc = plc.vars["[ch]_DESC"]
+			if("[ch]_NAME" in plc.vars)
+				vw_name = plc.vars["[ch]_NAME"]
 		else
 			vw = vars[ch]
-			if("[ch]_DESC" in vars) vw_desc = vars["[ch]_DESC"]
-			if("[ch]_NAME" in vars) vw_name = vars["[ch]_NAME"]
+			if("[ch]_DESC" in vars)
+				vw_desc = vars["[ch]_DESC"]
+			if("[ch]_NAME" in vars)
+				vw_name = vars["[ch]_NAME"]
 		dat += "<b>[vw_name] = [vw]</b> <A href='?src=\ref[src];changevar=[ch]'>\[Change\]</A><br>"
 		dat += "<i>[vw_desc]</i><br><br>"
 	user << browse(dat,"window=settings")

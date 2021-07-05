@@ -77,7 +77,8 @@
 				if(!scanning)
 					can_scan = 1
 
-	if(debug_scans) can_scan = 1
+	if(debug_scans)
+		can_scan = 1
 	data["scan_ready"] = can_scan
 
 	// Permit emergency recall of the shuttle if its stranded in a zone with just dead people.

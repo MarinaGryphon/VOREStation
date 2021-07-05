@@ -14,7 +14,8 @@
 		to_chat(src, "<font color='blue'>You are feeling far too docile to do that.</font>")
 		return
 
-	if(!host || !src) return
+	if(!host || !src)
+		return
 
 	to_chat(src, "You begin disconnecting from [host]'s synapses and prodding at their internal ear canal.")
 
@@ -23,7 +24,8 @@
 
 	spawn(100)
 
-		if(!host || !src) return
+		if(!host || !src)
+			return
 
 		if(src.stat)
 			to_chat(src, "You cannot release your host in your current state.")
@@ -62,7 +64,8 @@
 
 	var/mob/living/carbon/M = tgui_input_list(src, "Who do you wish to infest?", "Target Choice", choices)
 
-	if(!M || !src) return
+	if(!M || !src)
+		return
 
 	if(!(src.Adjacent(M))) return
 
@@ -92,7 +95,8 @@
 		to_chat(src, "As [M] moves away, you are dislodged and fall to the ground.")
 		return
 
-	if(!M || !src) return
+	if(!M || !src)
+		return
 
 	if(src.stat)
 		to_chat(src, "You cannot infest a target in your current state.")
@@ -254,7 +258,8 @@
 
 	var/mob/living/carbon/M = tgui_input_list(src, "Who do you wish to dominate?", "Target Choice", choices)
 
-	if(!M || !src) return
+	if(!M || !src)
+		return
 
 	if(M.has_brain_worms())
 		to_chat(src, "You cannot infest someone who is already infested!")

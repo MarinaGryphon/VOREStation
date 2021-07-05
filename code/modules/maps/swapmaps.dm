@@ -174,16 +174,21 @@ swapmap
 			   x2>swapmaps_compiled_maxx)
 				var/list/areas=new
 				for(var/atom/A in block(locate(x1,y1,z1),locate(x2,y2,z2)))
-					for(var/obj/O in A) qdel(O)
+					for(var/obj/O in A)
+						qdel(O)
 					for(var/mob/M in A)
-						if(!M.key) qdel(M)
-						else M.loc=null
+						if(!M.key)
+							qdel(M)
+						else
+							M.loc=null
 					areas[A.loc]=null
 					qdel(A)
 				// delete areas that belong only to this map
 				for(var/area/a in areas)
-					if(a && !a.contents.len) qdel(a)
-				if(x2>=world.maxx || y2>=world.maxy || z2>=world.maxz) CutXYZ()
+					if(a && !a.contents.len)
+						qdel(a)
+				if(x2>=world.maxx || y2>=world.maxy || z2>=world.maxz)
+					CutXYZ()
 				qdel(areas)
 		..()
 
@@ -209,7 +214,8 @@ swapmap
 		var/n
 		var/list/areas
 		var/area/defarea=locate(world.area)
-		if(!defarea) defarea=new world.area
+		if(!defarea)
+			defarea=new world.area
 		areas=list()
 		for(var/turf/T in block(locate(x1,y1,z1),locate(x2,y2,z2)))
 			areas[T.loc]=null
@@ -224,7 +230,8 @@ swapmap
 		S["y"] << y2-y1+1
 		S["x"] << x2-x1+1
 		S["areas"] << areas
-		for(n in 1 to areas.len) areas[areas[n]]=n
+		for(n in 1 to areas.len)
+			areas[areas[n]]=n
 		var/oldcd=S.cd
 		for(z=z1,z<=z2,++z)
 			S.cd="[z-z1+1]"
@@ -234,7 +241,8 @@ swapmap
 					S.cd="[x-x1+1]"
 					var/turf/T=locate(x,y,z)
 					S["type"] << T.type
-					if(T.loc!=defarea) S["AREA"] << areas[T.loc]
+					if(T.loc!=defarea)
+						S["AREA"] << areas[T.loc]
 					T.Write(S)
 					S.cd=".."
 				S.cd=".."
@@ -256,7 +264,8 @@ swapmap
 			x1=locorner.x
 			y1=locorner.y
 			z1=locorner.z
-		if(!defarea) defarea=new world.area
+		if(!defarea)
+			defarea=new world.area
 		if(!_id)
 			S["id"] >> id
 		else
@@ -284,12 +293,16 @@ swapmap
 						S["AREA"]>>n
 						var/area/A=areas[n]
 						A.contents+=T
-					else defarea.contents+=T
+					else
+						defarea.contents+=T
 					// clear the turf
-					for(var/obj/O in T) qdel(O)
+					for(var/obj/O in T)
+						qdel(O)
 					for(var/mob/M in T)
-						if(!M.key) qdel(M)
-						else M.loc=null
+						if(!M.key)
+							qdel(M)
+						else
+							M.loc=null
 					// finish the read
 					T.Read(S)
 					S.cd=".."
@@ -342,21 +355,26 @@ swapmap
 				var/nz2=Z2?(Z2):Z1+z2-1+M.z2-M.z1
 				if(M.x1>=X1+x2)
 					.=ConsiderRegion(X1,Y1,M.x1-1,Y2,Z1,nz2)
-					if(.) return
+					if(.)
+						return
 				else if(M.x2<=X2-x2)
 					.=ConsiderRegion(M.x2+1,Y1,X2,Y2,Z1,nz2)
-					if(.) return
+					if(.)
+						return
 				if(M.y1>=Y1+y2)
 					.=ConsiderRegion(X1,Y1,X2,M.y1-1,Z1,nz2)
-					if(.) return
+					if(.)
+						return
 				else if(M.y2<=Y2-y2)
 					.=ConsiderRegion(X1,M.y2+1,X2,Y2,Z1,nz2)
-					if(.) return
+					if(.)
+						return
 				nextz=nextz?min(nextz,M.z2+1):(M.z2+1)
 			if(!M)
 				/* If nextz is not 0, then at some point there was an overlap that
 				   could not be resolved by using an area to the side */
-				if(nextz) Z1=nextz
+				if(nextz)
+					Z1=nextz
 				if(!nextz || (Z2 && Z2-Z1+1<z2))
 					return (!Z2 || Z2-Z1+1>=z2)?list(X1,Y1,Z1):null
 				X1=1;X2=world.maxx
@@ -380,7 +398,8 @@ swapmap
 		qdel(src)
 
 	proc/Save()
-		if(id==src) return 0
+		if(id==src)
+			return 0
 		var/savefile/S=mode?(new):new("map_[id].sav")
 		S << src
 		while(locked) sleep(1)
@@ -408,7 +427,9 @@ swapmap
 
 	proc/InUse()
 		for(var/turf/T in AllTurfs())
-			for(var/mob/M in T) if(M.key) return 1
+			for(var/mob/M in T)
+				if(M.key)
+					return 1
 
 	proc/LoCorner(z=z1)
 		return locate(x1,y1,z)
@@ -436,7 +457,8 @@ swapmap
 		// pick new corners in a block()-friendly form
 		T1=locate(min(T1.x,T2.x),min(T1.y,T2.y),min(T1.z,T2.z))
 		T2=locate(max(T.x,T2.x),max(T.y,T2.y),max(T.z,T2.z))
-		if(T2.x-T1.x<2 || T2.y-T1.y<2) BuildFilledRectangle(T1,T2,item)
+		if(T2.x-T1.x<2 || T2.y-T1.y<2)
+			BuildFilledRectangle(T1,T2,item)
 		else
 			//for(T in block(T1,T2)-block(locate(T1.x+1,T1.y+1,T1.z),locate(T2.x-1,T2.y-1,T2.z)))
 			for(T in block(T1,locate(T2.x,T1.y,T2.z))) new item(T)
@@ -449,33 +471,45 @@ swapmap
 		type. Actually the list doesn't have to be just turfs.
 	 */
 	proc/BuildInTurfs(list/turfs,item)
-		for(var/T in turfs) new item(T)
+		for(var/T in turfs)
+			new item(T)
 
 atom
 	Write(savefile/S)
 		for(var/V in vars-"x"-"y"-"z"-"contents"-"icon"-"overlays"-"underlays")
 			if(issaved(vars[V]))
 				if(vars[V]!=initial(vars[V])) S[V]<<vars[V]
-				else S.dir.Remove(V)
+				else
+					S.dir.Remove(V)
 		if(icon!=initial(icon))
 			if(swapmaps_iconcache && swapmaps_iconcache[icon])
 				S["icon"]<<swapmaps_iconcache[icon]
-			else S["icon"]<<icon
+			else
+				S["icon"]<<icon
 		// do not save mobs with keys; do save other mobs
 		var/mob/M
-		for(M in src) if(M.key) break
-		if(overlays.len) S["overlays"]<<overlays
-		if(underlays.len) S["underlays"]<<underlays
+		for(M in src)
+			if(M.key)
+				break
+		if(overlays.len)
+			S["overlays"]<<overlays
+		if(underlays.len)
+			S["underlays"]<<underlays
 		if(contents.len && !isarea(src))
 			var/list/l=contents
 			if(M)
 				l=l.Copy()
-				for(M in src) if(M.key) l-=M
-			if(l.len) S["contents"]<<l
-			if(l!=contents) qdel(l)
+				for(M in src)
+					if(M.key)
+						l-=M
+			if(l.len)
+				S["contents"]<<l
+			if(l!=contents)
+				qdel(l)
 	Read(savefile/S)
 		var/list/l
-		if(contents.len) l=contents
+		if(contents.len)
+			l=contents
 		..()
 		// if the icon was a text string, it would not have loaded properly
 		// replace it from the cache list
@@ -509,7 +543,8 @@ var/swapmaps_loaded
 var/swapmaps_byname
 
 /proc/InitializeSwapMaps()
-	if(swapmaps_initialized) return
+	if(swapmaps_initialized)
+		return
 	swapmaps_initialized=1
 	swapmaps_compiled_maxx=world.maxx
 	swapmaps_compiled_maxy=world.maxy
@@ -523,7 +558,8 @@ var/swapmaps_byname
 			swapmaps_iconcache[swapmaps_iconcache[V]]=V
 
 /proc/SwapMaps_AddIconToCache(name,icon)
-	if(!swapmaps_iconcache) swapmaps_iconcache=list()
+	if(!swapmaps_iconcache)
+		swapmaps_iconcache=list()
 	swapmaps_iconcache[name]=icon
 	swapmaps_iconcache[icon]=name
 
@@ -543,7 +579,8 @@ var/swapmaps_byname
 			S=new("map_[id].sav")
 		else if(swapmaps_mode!=SWAPMAPS_TEXT && fexists("map_[id].txt"))
 			text=1
-		else return	// no file found
+		else
+			return	// no file found
 		if(text)
 			S=new
 			S.ImportText("/",file("map_[id].txt"))
@@ -555,18 +592,21 @@ var/swapmaps_byname
 /proc/SwapMaps_Save(id)
 	InitializeSwapMaps()
 	var/swapmap/M=swapmaps_byname[id]
-	if(M) M.Save()
+	if(M)
+		M.Save()
 	return M
 
 /proc/SwapMaps_Save_All()
 	InitializeSwapMaps()
 	for(var/swapmap/M in swapmaps_loaded)
-		if(M) M.Save()
+		if(M)
+			M.Save()
 
 /proc/SwapMaps_Unload(id)
 	InitializeSwapMaps()
 	var/swapmap/M=swapmaps_byname[id]
-	if(!M) return	// return silently from an error
+	if(!M)
+		return	// return silently from an error
 	M.Unload()
 	return 1
 

@@ -41,7 +41,8 @@
 
 /mob/living/carbon/human/death(gibbed)
 
-	if(stat == DEAD) return
+	if(stat == DEAD)
+		return
 
 	BITSET(hud_updateflag, HEALTH_HUD)
 	BITSET(hud_updateflag, STATUS_HUD)
@@ -114,7 +115,8 @@
 	return ..(gibbed,species.get_death_message(src))
 
 /mob/living/carbon/human/proc/ChangeToHusk()
-	if(HUSK in mutations)	return
+	if(HUSK in mutations)
+		return
 
 	if(f_style)
 		f_style = "Shaved"		//we only change the icon_state of the hair datum, so it doesn't mess up their UI/UE
@@ -133,7 +135,8 @@
 	return
 
 /mob/living/carbon/human/proc/ChangeToSkeleton()
-	if(SKELETON in src.mutations)	return
+	if(SKELETON in src.mutations)
+		return
 
 	if(f_style)
 		f_style = "Shaved"

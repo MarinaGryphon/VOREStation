@@ -3,7 +3,8 @@
 	set name = "Toggle Inquisitiveness"
 	set desc = "Sets whether your ghost examines everything on click by default"
 	set category = "Ghost"
-	if(!client) return
+	if(!client)
+		return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
 		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")

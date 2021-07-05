@@ -62,8 +62,10 @@
     key = new mcguffin_type(destination)
 
 /obj/machinery/gateway/centeraway/mcguffin/Bumped(atom/movable/M as mob|obj)
-	if(!ready)	return
-	if(!active)	return
+	if(!ready)
+		return
+	if(!active)
+		return
 	M.forceMove(get_step(stationgate.loc, SOUTH))
 	M.set_dir(SOUTH)
 	M << 'sound/effects/swooshygate.ogg'

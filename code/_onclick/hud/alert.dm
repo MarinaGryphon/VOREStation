@@ -369,7 +369,8 @@ so as to remain in compliance with the most up-to-date laws."
 	timeout = 300
 
 /obj/screen/alert/notify_cloning/Click()
-	if(!usr || !usr.client) return
+	if(!usr || !usr.client)
+		return
 	var/mob/observer/dead/G = usr
 	G.reenter_corpse()
 

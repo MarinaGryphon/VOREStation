@@ -26,7 +26,8 @@
 		if(BANTYPE_JOB_TEMP)
 			bantype_str = "JOB_TEMPBAN"
 			bantype_pass = 1
-	if( !bantype_pass ) return
+	if( !bantype_pass )
+		return
 	if( !istext(reason) ) return
 	if( !isnum(duration) ) return
 
@@ -111,7 +112,8 @@
 			if(BANTYPE_ANY_FULLBAN)
 				bantype_str = "ANY"
 				bantype_pass = 1
-		if( !bantype_pass ) return
+		if( !bantype_pass )
+			return
 
 	var/bantype_sql
 	if(bantype_str == "ANY")

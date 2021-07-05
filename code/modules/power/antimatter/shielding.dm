@@ -3,7 +3,8 @@
 	var/list/things = list()
 	for(var/direction in cardinal)
 		var/turf/T = get_step(center, direction)
-		if(!T) continue
+		if(!T)
+			continue
 		things += T.contents
 	return things
 
@@ -39,7 +40,8 @@
 		qdel(src)
 		return
 	for(var/obj/machinery/am_shielding/AMS in loc.contents)
-		if(AMS == src) continue
+		if(AMS == src)
+			continue
 		spawn(0)
 			qdel(src)
 		return
@@ -66,8 +68,10 @@
 
 
 /obj/machinery/am_shielding/Destroy()
-	if(control_unit)	control_unit.remove_shielding(src)
-	if(processing)	shutdown_core()
+	if(control_unit)
+		control_unit.remove_shielding(src)
+	if(processing)
+		shutdown_core()
 	visible_message("<font color='red'>The [src.name] melts!</font>")
 	//Might want to have it leave a mess on the floor but no sprites for now
 	..()
@@ -79,7 +83,8 @@
 
 
 /obj/machinery/am_shielding/process()
-	if(!processing) . = PROCESS_KILL
+	if(!processing)
+		. = PROCESS_KILL
 	//TODO: core functions and stability
 	//TODO: think about checking the airmix for phoron and increasing power output
 	return
@@ -116,8 +121,10 @@
 
 	if(core_check())
 		add_overlay("core")
-		if(!processing) setup_core()
-	else if(processing) shutdown_core()
+		if(!processing)
+			setup_core()
+	else if(processing)
+		shutdown_core()
 
 
 /obj/machinery/am_shielding/attackby(obj/item/W, mob/user)
@@ -133,7 +140,8 @@
 //Call this to link a detected shilding unit to the controller
 /obj/machinery/am_shielding/proc/link_control(var/obj/machinery/power/am_control_unit/AMC)
 	if(!istype(AMC))	return 0
-	if(control_unit && control_unit != AMC) return 0//Already have one
+	if(control_unit && control_unit != AMC)
+		return 0//Already have one
 	control_unit = AMC
 	control_unit.add_shielding(src,1)
 	return 1
@@ -143,7 +151,8 @@
 /obj/machinery/am_shielding/proc/core_check()
 	for(var/direction in alldirs)
 		var/machine = locate(/obj/machinery, get_step(loc, direction))
-		if(!machine) return 0//Need all for a core
+		if(!machine)
+			return 0//Need all for a core
 		if(!istype(machine, /obj/machinery/am_shielding) && !istype(machine, /obj/machinery/power/am_control_unit))	return 0
 	return 1
 
@@ -151,7 +160,8 @@
 /obj/machinery/am_shielding/proc/setup_core()
 	processing = 1
 	START_MACHINE_PROCESSING(src)
-	if(!control_unit)	return
+	if(!control_unit)
+		return
 	control_unit.linked_cores.Add(src)
 	control_unit.reported_core_efficiency += efficiency
 	return
@@ -159,14 +169,16 @@
 
 /obj/machinery/am_shielding/proc/shutdown_core()
 	processing = 0
-	if(!control_unit)	return
+	if(!control_unit)
+		return
 	control_unit.linked_cores.Remove(src)
 	control_unit.reported_core_efficiency -= efficiency
 	return
 
 
 /obj/machinery/am_shielding/proc/check_stability(var/injecting_fuel = 0)
-	if(stability > 0) return
+	if(stability > 0)
+		return
 	if(injecting_fuel && control_unit)
 		control_unit.exploding = 1
 	if(src)
@@ -175,7 +187,8 @@
 
 
 /obj/machinery/am_shielding/proc/recalc_efficiency(var/new_efficiency)//tbh still not 100% sure how I want to deal with efficiency so this is likely temp
-	if(!control_unit || !processing) return
+	if(!control_unit || !processing)
+		return
 	if(stability < 50)
 		new_efficiency /= 2
 	control_unit.reported_core_efficiency += (new_efficiency - efficiency)

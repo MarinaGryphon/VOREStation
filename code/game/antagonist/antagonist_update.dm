@@ -9,7 +9,8 @@
 		var/mob/holder = player.current
 		player.current = new mob_path(get_turf(player.current))
 		player.transfer_to(player.current)
-		if(holder) qdel(holder)
+		if(holder)
+			qdel(holder)
 	player.original = player.current
 	if(!preserve_appearance && (flags & ANTAG_SET_APPEARANCE))
 		spawn(3)

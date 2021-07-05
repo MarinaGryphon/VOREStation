@@ -149,7 +149,8 @@
 				location.hotspot_expose(700, 5)
 
 /obj/item/weapon/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!welding && max_fuel)
 			O.reagents.trans_to_obj(src, max_fuel)
@@ -269,7 +270,8 @@
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
 /obj/item/weapon/weldingtool/proc/setWelding(var/set_welding, var/mob/M)
-	if(!status)	return
+	if(!status)
+		return
 
 	var/turf/T = get_turf(src)
 	//If we're turning it on

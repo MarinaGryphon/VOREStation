@@ -161,7 +161,8 @@
 				target = source
 				times_idle = 0 //VOREStation Add - Idle shutoff time
 				return
-	if(++times_idle == 150) turn_off() //VOREStation Add - Idle shutoff time
+	if(++times_idle == 150)
+		turn_off() //VOREStation Add - Idle shutoff time
 
 /mob/living/bot/farmbot/calcTargetPath() // We need to land NEXT to the tray, because the tray itself is impassable
 	for(var/trayDir in list(NORTH, SOUTH, EAST, WEST))

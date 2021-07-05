@@ -75,7 +75,8 @@
 		if(prob(5))
 			burst()
 
-	else return 1
+	else
+		return 1
 
 /obj/machinery/atmospherics/pipe/zpipe/proc/burst()
 	src.visible_message("<span class='warning'>\The [src] bursts!</span>");

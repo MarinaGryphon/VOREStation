@@ -361,7 +361,8 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 
 //Prints 'AR' messages to the user
 /obj/item/device/nif/proc/notify(var/message,var/alert = 0)
-	if(!human || stat == NIF_TEMPFAIL) return
+	if(!human || stat == NIF_TEMPFAIL)
+		return
 
 	last_notification = message // TGUI Hook
 
@@ -374,7 +375,8 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 
 //Called to spend nutrition, returns 1 if it was able to
 /obj/item/device/nif/proc/use_charge(var/use_charge)
-	if(stat != NIF_WORKING) return FALSE
+	if(stat != NIF_WORKING)
+		return FALSE
 
 	//You don't want us to take any? Well okay.
 	if(!use_charge)
@@ -413,7 +415,8 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 
 //Install a piece of software
 /obj/item/device/nif/proc/install(var/datum/nifsoft/new_soft)
-	if(stat == NIF_TEMPFAIL) return FALSE
+	if(stat == NIF_TEMPFAIL)
+		return FALSE
 
 	if(nifsofts[new_soft.list_pos])
 		return FALSE
@@ -456,7 +459,8 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 
 //Activate a nifsoft
 /obj/item/device/nif/proc/activate(var/datum/nifsoft/soft)
-	if(stat != NIF_WORKING) return FALSE
+	if(stat != NIF_WORKING)
+		return FALSE
 
 	if(human)
 		if(prob(5)) human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
@@ -537,7 +541,8 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 
 //Check for an installed implant
 /obj/item/device/nif/proc/imp_check(var/soft)
-	if(stat != NIF_WORKING) return FALSE
+	if(stat != NIF_WORKING)
+		return FALSE
 	ASSERT(soft)
 
 	if(ispath(soft))
@@ -549,20 +554,25 @@ You can also set the stat of a NIF to NIF_TEMPFAIL without any issues to disable
 
 //Check for a set flag
 /obj/item/device/nif/proc/flag_check(var/flag,var/hint)
-	if(stat != NIF_WORKING) return FALSE
+	if(stat != NIF_WORKING)
+		return FALSE
 
 	ASSERT(flag && hint)
 
 	var/result = FALSE
 	switch(hint)
 		if(NIF_FLAGS_VISION)
-			if(flag & vision_flags) result = TRUE
+			if(flag & vision_flags)
+				result = TRUE
 		if(NIF_FLAGS_HEALTH)
-			if(flag & health_flags) result = TRUE
+			if(flag & health_flags)
+				result = TRUE
 		if(NIF_FLAGS_COMBAT)
-			if(flag & combat_flags) result = TRUE
+			if(flag & combat_flags)
+				result = TRUE
 		if(NIF_FLAGS_OTHER)
-			if(flag & other_flags) result = TRUE
+			if(flag & other_flags)
+				result = TRUE
 		else
 			CRASH("Not a valid NIF flag hint: [hint]")
 

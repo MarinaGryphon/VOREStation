@@ -181,7 +181,8 @@
 	// Not enough to breathe
 	if((inhale_pp + exhaled_pp) < minimum_breath_pressure) //they can breathe either oxygen OR CO2
 		if(prob(20))
-			spawn(0) H.emote("gasp")
+			spawn(0)
+				H.emote("gasp")
 
 		var/ratio = (inhale_pp + exhaled_pp)/minimum_breath_pressure
 		// Don't fuck them up too fast (space only does HUMAN_MAX_OXYLOSS (1) after all!)
@@ -245,7 +246,8 @@
 		// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 		else if(SA_pp > 0.15)
 			if(prob(20))
-				spawn(0) H.emote(pick("giggle", "laugh"))
+				spawn(0)
+					H.emote(pick("giggle", "laugh"))
 		breath.adjust_gas("sleeping_agent", -breath.gas["sleeping_agent"]/6, update = 0) //update after
 
 	// Were we able to breathe?
@@ -359,7 +361,8 @@
 
 
 /obj/item/organ/internal/fruitgland/process()
-	if(!owner) return
+	if(!owner)
+		return
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	var/before_gen
 	if(parent && generated_reagents && organ_owner) //Is it in the chest/an organ, has reagents, and is 'activated'

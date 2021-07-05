@@ -50,7 +50,8 @@
 // Brain is defined in brain.dm
 /obj/item/organ/internal/handle_germ_effects()
 	. = ..() //Should be an interger value for infection level
-	if(!.) return
+	if(!.)
+		return
 
 	var/antibiotics = owner.chem_effects[CE_ANTIBIOTIC]
 

@@ -77,7 +77,8 @@
 
 /obj/item/organ/internal/eyes/process() //Eye damage replaces the old eye_stat var.
 	..()
-	if(!owner) return
+	if(!owner)
+		return
 
 	if(is_bruised())
 		owner.eye_blurry = 20
@@ -86,7 +87,8 @@
 
 /obj/item/organ/internal/eyes/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
 	//Conjunctivitis
 	if (. >= 1)

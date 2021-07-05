@@ -54,7 +54,8 @@
 	return ..()
 
 /obj/item/device/multitool/proc/mode_switch(mob/living/user)
-	if(mode_index + 1 > modes.len) mode_index = 1
+	if(mode_index + 1 > modes.len)
+		mode_index = 1
 
 	else
 		mode_index += 1

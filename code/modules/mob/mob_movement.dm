@@ -119,7 +119,8 @@
 	if(mob && mob.control_object)
 		if(mob.control_object.density)
 			step(mob.control_object,direct)
-			if(!mob.control_object)	return
+			if(!mob.control_object)
+				return
 			mob.control_object.dir = direct
 		else
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
@@ -377,7 +378,8 @@
 						spawn(0)
 							anim(T,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)
 						limit--
-						if(limit<=0)	break
+						if(limit<=0)
+							break
 			else
 				spawn(0)
 					anim(mobloc,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)

@@ -37,7 +37,8 @@
 		tools |= new type(src)
 
 /obj/item/weapon/combitool/attack_self(mob/user as mob)
-	if(++current_tool > tools.len) current_tool = 1
+	if(++current_tool > tools.len)
+		current_tool = 1
 	var/obj/item/tool = tools[current_tool]
 	if(!tool)
 		to_chat(user, "You can't seem to find any fittings in \the [src].")
@@ -49,14 +50,16 @@
 	if(!M.Adjacent(user))
 		return 0
 	var/obj/item/tool = tools[current_tool]
-	if(!tool) return 0
+	if(!tool)
+		return 0
 	return (tool ? tool.attack(M,user) : 0)
 
 /obj/item/weapon/combitool/afterattack(var/atom/target, var/mob/living/user, proximity, params)
 	if(!proximity)
 		return 0
 	var/obj/item/tool = tools[current_tool]
-	if(!tool) return 0
+	if(!tool)
+		return 0
 	tool.loc = user
 	var/resolved = target.attackby(tool,user)
 	if(!resolved && tool && target)

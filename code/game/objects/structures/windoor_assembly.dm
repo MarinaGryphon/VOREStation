@@ -111,7 +111,8 @@
 				user.visible_message("[user] secures the windoor assembly to the floor.", "You start to secure the windoor assembly to the floor.")
 
 				if(do_after(user, 40 * W.toolspeed))
-					if(!src) return
+					if(!src)
+						return
 					to_chat(user,"<span class='notice'>You've secured the windoor assembly!</span>")
 					src.anchored = 1
 					step = 0
@@ -122,7 +123,8 @@
 				user.visible_message("[user] unsecures the windoor assembly to the floor.", "You start to unsecure the windoor assembly to the floor.")
 
 				if(do_after(user, 40 * W.toolspeed))
-					if(!src) return
+					if(!src)
+						return
 					to_chat(user,"<span class='notice'>You've unsecured the windoor assembly!</span>")
 					src.anchored = 0
 					step = null
@@ -148,7 +150,8 @@
 				user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
 				if(do_after(user, 40 * W.toolspeed))
-					if(!src) return
+					if(!src)
+						return
 
 					to_chat(user,"<span class='notice'>You cut the windoor wires.!</span>")
 					new/obj/item/stack/cable_coil(get_turf(user), 1)
@@ -161,7 +164,8 @@
 				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
 				if(do_after(user, 40))
-					if(!src) return
+					if(!src)
+						return
 
 					user.drop_item()
 					W.loc = src
@@ -177,7 +181,8 @@
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to uninstall electronics from the airlock assembly.")
 
 				if(do_after(user, 40 * W.toolspeed))
-					if(!src || !src.electronics) return
+					if(!src || !src.electronics)
+						return
 					to_chat(user,"<span class='notice'>You've removed the airlock electronics!</span>")
 					step = 1
 					var/obj/item/weapon/airlock_electronics/ae = electronics
@@ -198,7 +203,8 @@
 
 				if(do_after(user, 40 * W.toolspeed))
 
-					if(!src) return
+					if(!src)
+						return
 
 					density = 1 //Shouldn't matter but just incase
 					to_chat(user,"<span class='notice'>You finish the windoor!</span>")

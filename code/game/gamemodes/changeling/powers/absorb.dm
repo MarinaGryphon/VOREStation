@@ -12,7 +12,8 @@
 	set name = "Absorb DNA"
 
 	var/datum/changeling/changeling = changeling_power(0,0,100)
-	if(!changeling)	return
+	if(!changeling)
+		return
 
 	var/obj/item/weapon/grab/G = src.get_active_hand()
 	if(!istype(G))

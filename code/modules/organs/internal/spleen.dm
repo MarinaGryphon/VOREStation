@@ -10,7 +10,8 @@
 
 /obj/item/organ/internal/spleen/process()
 	..()
-	if(!owner) return
+	if(!owner)
+		return
 
 	if(owner.life_tick % spleen_tick == 0)
 
@@ -42,7 +43,8 @@
 
 /obj/item/organ/internal/spleen/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
 	// Low levels can cause pain and haemophilia, high levels can cause brain infections.
 	if (. >= 1)

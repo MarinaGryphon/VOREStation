@@ -116,11 +116,15 @@ Protectiveness | Armor %
 		var/list/turfs = new/list()
 		for(var/turf/T in orange(round(material.spatial_instability / 10) + 1, user))
 			if(istype(T,/turf/space)) continue
-			if(T.density) continue
-			if(T.x>world.maxx-6 || T.x<6)	continue
-			if(T.y>world.maxy-6 || T.y<6)	continue
+			if(T.density)
+				continue
+			if(T.x>world.maxx-6 || T.x<6)
+				continue
+			if(T.y>world.maxy-6 || T.y<6)
+				continue
 			turfs += T
-		if(!turfs.len) turfs += pick(/turf in orange(6))
+		if(!turfs.len)
+			turfs += pick(/turf in orange(6))
 		var/turf/picked = pick(turfs)
 		if(!isturf(picked)) return
 

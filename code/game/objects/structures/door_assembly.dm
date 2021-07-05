@@ -208,7 +208,8 @@
 			user.visible_message("[user] begins securing the airlock assembly to the floor.", "You starts securing the airlock assembly to the floor.")
 
 		if(do_after(user, 40 * W.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured the airlock assembly!</span>")
 			anchored = !anchored
 
@@ -228,7 +229,8 @@
 		user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
 		if(do_after(user, 40 * W.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You cut the airlock wires.!</span>")
 			new/obj/item/stack/cable_coil(src.loc, 1)
 			src.state = 0
@@ -238,7 +240,8 @@
 		user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
 		if(do_after(user, 40))
-			if(!src) return
+			if(!src)
+				return
 			user.drop_item()
 			W.loc = src
 			to_chat(user, "<span class='notice'>You installed the airlock electronics!</span>")
@@ -256,7 +259,8 @@
 		user.visible_message("\The [user] starts removing the electronics from the airlock assembly.", "You start removing the electronics from the airlock assembly.")
 
 		if(do_after(user, 40 * W.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
 			src.state = 1
 			electronics.loc = src.loc
@@ -292,7 +296,8 @@
 		to_chat(user, "<span class='notice'>Now finishing the airlock.</span>")
 
 		if(do_after(user, 40 * W.toolspeed))
-			if(!src) return
+			if(!src)
+				return
 			to_chat(user, "<span class='notice'>You finish the airlock!</span>")
 			var/path
 			if(istext(glass))

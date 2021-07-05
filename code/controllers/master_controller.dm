@@ -30,8 +30,10 @@ var/global/pipe_processing_killed = 0
 		job_master.LoadJobs("config/jobs.txt")
 		admin_notice("<span class='danger'>Job setup complete</span>", R_DEBUG)
 
-	if(!syndicate_code_phrase)		syndicate_code_phrase	= generate_code_phrase()
-	if(!syndicate_code_response)	syndicate_code_response	= generate_code_phrase()
+	if(!syndicate_code_phrase)
+		syndicate_code_phrase	= generate_code_phrase()
+	if(!syndicate_code_response)
+		syndicate_code_response	= generate_code_phrase()
 
 /datum/controller/game_controller/proc/setup()
 

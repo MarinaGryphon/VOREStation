@@ -56,7 +56,8 @@
 		var/obj/L = null
 
 		for(var/obj/effect/landmark/sloc in landmarks_list)
-			if(sloc.name != C.data) continue
+			if(sloc.name != C.data)
+				continue
 			if(locate(/mob/living) in sloc.loc) continue
 			L = sloc
 			break
@@ -188,7 +189,8 @@
 		s.set_up(5, 1, src)
 		s.start()
 		accurate = 1
-		spawn(3000)	accurate = 0 //Accurate teleporting for 5 minutes
+		spawn(3000)
+			accurate = 0 //Accurate teleporting for 5 minutes
 		for(var/mob/B in hearers(src, null))
 			B.show_message("<span class='notice'>Test fire completed.</span>")
 	return

@@ -87,7 +87,8 @@
 
 
 		if(!M || M.stat || !(M in view(M)))	return
-		if(!M.client)	return
+		if(!M.client)
+			return
 		var/client/C = M.client
 		var/image/holder
 		for(var/mob/living/carbon/human/patient in view(M.loc))

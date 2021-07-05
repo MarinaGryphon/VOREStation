@@ -80,7 +80,8 @@
 		playsound(src, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 		tesla_zap(src, 5, power_produced)
 		//addtimer(CALLBACK(src, .proc/reset_shocked), 10)
-		spawn(10) reset_shocked()
+		spawn(10)
+			reset_shocked()
 	else
 		..()
 

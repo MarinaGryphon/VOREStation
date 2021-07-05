@@ -174,7 +174,8 @@
 					to_chat(usr, "[bicon(src)]<span class='warning'>Account not found.</span>")
 			if("trans_purpose")
 				var/choice = sanitize(input(usr, "Enter reason for EFTPOS transaction", "Transaction purpose"))
-				if(choice) transaction_purpose = choice
+				if(choice)
+					transaction_purpose = choice
 			if("trans_value")
 				var/try_num = input(usr, "Enter amount for EFTPOS transaction", "Transaction amount") as num
 				if(try_num < 0)

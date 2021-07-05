@@ -9,7 +9,8 @@
 		user.visible_message("<span class='alium'>\The [user] strokes its feelers against \the [src] and the biomass [density ? "moves aside" : "closes up"].</span>")
 		toggle_open(user)
 		sleep(15)
-		if(can_open == WALL_CAN_OPEN) can_open = 0
+		if(can_open == WALL_CAN_OPEN)
+			can_open = 0
 	else
 		return ..(user, damage, attack_message)
 
@@ -67,21 +68,29 @@
 // This is disgusting.
 /datum/random_map/automata/diona/proc/search_neighbors_for(var/search_val, var/x, var/y)
 	var/current_cell = get_map_cell(x-1,y-1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val)
+		return 1
 	current_cell = get_map_cell(x-1,y)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val)
+		return 1
 	current_cell = get_map_cell(x-1,y+1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val)
+		return 1
 	current_cell = get_map_cell(x,y-1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val)
+		return 1
 	current_cell = get_map_cell(x,y+1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val)
+		return 1
 	current_cell = get_map_cell(x+1,y-1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val)
+		return 1
 	current_cell = get_map_cell(x+1,y)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val)
+		return 1
 	current_cell = get_map_cell(x+1,y+1)
-	if(current_cell && map[current_cell] == search_val) return 1
+	if(current_cell && map[current_cell] == search_val)
+		return 1
 	return 0
 
 /datum/random_map/automata/diona/cleanup()
@@ -90,7 +99,8 @@
 	for(var/x = 1, x <= limit_x, x++)
 		for(var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
-			if(!current_cell) continue
+			if(!current_cell)
+				continue
 			if(map[current_cell] == WALL_CHAR)
 				if(!search_neighbors_for(FLOOR_CHAR,x,y) && !search_neighbors_for(DOOR_CHAR,x,y) && !(x == 1 || y == 1 || x == limit_x || y == limit_y))
 					map[current_cell] = EMPTY_CHAR
@@ -102,7 +112,8 @@
 			for(var/y = 1, y <= limit_y, y++)
 				changed = 0
 				var/current_cell = get_map_cell(x,y)
-				if(!current_cell) continue
+				if(!current_cell)
+					continue
 				if(map[current_cell] == EMPTY_CHAR)
 					if((search_neighbors_for(FLOOR_CHAR,x,y)) || (x == 1 || y == 1 || x == limit_x || y == limit_y))
 						map[current_cell] = FLOOR_CHAR
@@ -113,7 +124,8 @@
 	for(var/x = 1, x <= limit_x, x++)
 		for(var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
-			if(!current_cell) continue
+			if(!current_cell)
+				continue
 			if(map[current_cell] == EMPTY_CHAR)
 				floor_turfs |= current_cell
 
@@ -121,7 +133,8 @@
 	for(var/x = 1, x <= limit_x, x++)
 		for(var/y = 1, y <= limit_y, y++)
 			var/current_cell = get_map_cell(x,y)
-			if(!current_cell || map[current_cell] != EMPTY_CHAR) continue
+			if(!current_cell || map[current_cell] != EMPTY_CHAR)
+				continue
 			if(search_neighbors_for(WALL_CHAR,x,y))
 				map[current_cell] = DOOR_CHAR
 

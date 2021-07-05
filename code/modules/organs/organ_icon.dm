@@ -49,7 +49,8 @@ var/global/list/limb_icon_cache = list()
 
 	if(owner)
 		var/obj/item/organ/internal/eyes/eyes = owner.internal_organs_by_name[O_EYES]
-		if(eyes) eyes.update_colour()
+		if(eyes)
+			eyes.update_colour()
 
 /obj/item/organ/external/head/proc/get_hair_icon()
 	var/image/res = image('icons/mob/human_face.dmi',"bald_s")
@@ -188,7 +189,8 @@ var/global/list/limb_icon_cache = list()
 		//VOREStation Edit End
 
 	// Translucency.
-	if(transparent) applying += rgb(,,,180) // SO INTUITIVE TY BYOND //VOREStation Edit
+	if(transparent)
+		applying += rgb(,,,180) // SO INTUITIVE TY BYOND //VOREStation Edit
 
 	return applying
 

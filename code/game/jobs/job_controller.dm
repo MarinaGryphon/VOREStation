@@ -23,8 +23,10 @@ var/global/datum/controller/occupations/job_master
 		return 0
 	for(var/J in all_jobs)
 		var/datum/job/job = new J()
-		if(!job)	continue
-		if(job.faction != faction)	continue
+		if(!job)
+			continue
+		if(job.faction != faction)
+			continue
 		occupations += job
 	sortTim(occupations, /proc/cmp_job_datums)
 
@@ -33,16 +35,20 @@ var/global/datum/controller/occupations/job_master
 
 
 /datum/controller/occupations/proc/Debug(var/text)
-	if(!Debug2)	return 0
+	if(!Debug2)
+		return 0
 	job_debug.Add(text)
 	return 1
 
 
 /datum/controller/occupations/proc/GetJob(var/rank)
-	if(!rank)	return null
+	if(!rank)
+		return null
 	for(var/datum/job/J in occupations)
-		if(!J)	continue
-		if(J.title == rank)	return J
+		if(!J)
+			continue
+		if(J.title == rank)
+			return J
 	return null
 
 /datum/controller/occupations/proc/GetPlayerAltTitle(mob/new_player/player, rank)
@@ -169,15 +175,18 @@ var/global/datum/controller/occupations/job_master
 	for(var/level = 1 to 3)
 		for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 			var/datum/job/job = GetJob(command_position)
-			if(!job)	continue
+			if(!job)
+				continue
 			var/list/candidates = FindOccupationCandidates(job, level)
-			if(!candidates.len)	continue
+			if(!candidates.len)
+				continue
 
 			// Build a weighted list, weight by age.
 			var/list/weightedCandidates = list()
 			for(var/mob/V in candidates)
 				// Log-out during round-start? What a bad boy, no head position for you!
-				if(!V.client) continue
+				if(!V.client)
+					continue
 				var/age = V.client.prefs.age
 
 				if(age < job.minimum_character_age) // Nope.
@@ -196,7 +205,8 @@ var/global/datum/controller/occupations/job_master
 						weightedCandidates[V] = 3 // Geezer.
 					else
 						// If there's ABSOLUTELY NOBODY ELSE
-						if(candidates.len == 1) weightedCandidates[V] = 1
+						if(candidates.len == 1)
+							weightedCandidates[V] = 1
 
 
 			var/mob/new_player/candidate = pickweight(weightedCandidates)
@@ -209,9 +219,11 @@ var/global/datum/controller/occupations/job_master
 /datum/controller/occupations/proc/CheckHeadPositions(var/level)
 	for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 		var/datum/job/job = GetJob(command_position)
-		if(!job)	continue
+		if(!job)
+			continue
 		var/list/candidates = FindOccupationCandidates(job, level)
-		if(!candidates.len)	continue
+		if(!candidates.len)
+			continue
 		var/mob/new_player/candidate = pick(candidates)
 		AssignRole(candidate, command_position)
 	return
@@ -239,7 +251,8 @@ var/global/datum/controller/occupations/job_master
 			unassigned += player
 
 	Debug("DO, Len: [unassigned.len]")
-	if(unassigned.len == 0)	return 0
+	if(unassigned.len == 0)
+		return 0
 
 	//Shuffle players and jobs
 	unassigned = shuffle(unassigned)
@@ -352,7 +365,8 @@ var/global/datum/controller/occupations/job_master
 
 
 /datum/controller/occupations/proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0)
-	if(!H)	return null
+	if(!H)
+		return null
 
 	var/datum/job/job = GetJob(rank)
 	var/list/spawn_in_storage = list()
@@ -361,7 +375,8 @@ var/global/datum/controller/occupations/job_master
 		var/obj/S = null
 		var/list/possible_spawns = list()
 		for(var/obj/effect/landmark/start/sloc in landmarks_list)
-			if(sloc.name != rank)	continue
+			if(sloc.name != rank)
+				continue
 			if(locate(/mob/living) in sloc.loc)	continue
 			possible_spawns.Add(sloc)
 		if(possible_spawns.len)
@@ -602,7 +617,8 @@ var/global/datum/controller/occupations/job_master
 
 		if(name && value)
 			var/datum/job/J = GetJob(name)
-			if(!J)	continue
+			if(!J)
+				continue
 			J.total_positions = text2num(value)
 			J.spawn_positions = text2num(value)
 			if(J.mob_type & JOB_SILICON)
@@ -641,7 +657,8 @@ var/global/datum/controller/occupations/job_master
 				level2++
 			else if(player.client.prefs.GetJobDepartment(job, 3) & job.flag)
 				level3++
-			else level4++ //not selected
+			else
+				level4++ //not selected
 
 		tmp_str += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
 		feedback_add_details("job_preferences",tmp_str)

@@ -190,10 +190,12 @@ var/hadevent    = 0
 				temp_closet.icon_state = "closed_unlocked"
 
 			for (var/obj/machinery/door/airlock/security/temp_airlock in A)
-				spawn(0) temp_airlock.prison_open()
+				spawn(0)
+					temp_airlock.prison_open()
 
 			for (var/obj/machinery/door/airlock/glass_security/temp_glassairlock in A)
-				spawn(0) temp_glassairlock.prison_open()
+				spawn(0)
+					temp_glassairlock.prison_open()
 
 			for (var/obj/machinery/door_timer/temp_timer in A)
 				temp_timer.timer_duration = 1

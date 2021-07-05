@@ -99,7 +99,8 @@ Class Procs:
 	ASSERT(isturf(B))
 	#endif
 	var/ablock = A.c_airblock(B)
-	if(ablock == BLOCKED) return BLOCKED
+	if(ablock == BLOCKED)
+		return BLOCKED
 	return ablock | B.c_airblock(A)
 
 /datum/controller/subsystem/air/proc/has_valid_zone(turf/simulated/T)
@@ -134,7 +135,8 @@ Class Procs:
 	#endif
 
 	var/block = air_master.air_blocked(A,B)
-	if(block & AIR_BLOCKED) return
+	if(block & AIR_BLOCKED)
+		return
 
 	var/direct = !(block & ZONE_BLOCKED)
 	var/space = !istype(B)
@@ -147,13 +149,16 @@ Class Procs:
 	var/a_to_b = get_dir(A,B)
 	var/b_to_a = get_dir(B,A)
 
-	if(!A.connections) A.connections = new
-	if(!B.connections) B.connections = new
+	if(!A.connections)
+		A.connections = new
+	if(!B.connections)
+		B.connections = new
 
 	if(A.connections.get(a_to_b)) return
 	if(B.connections.get(b_to_a)) return
 	if(!space)
-		if(A.zone == B.zone) return
+		if(A.zone == B.zone)
+			return
 
 
 	var/connection/c = new /connection(A,B)
@@ -161,13 +166,15 @@ Class Procs:
 	A.connections.place(c, a_to_b)
 	B.connections.place(c, b_to_a)
 
-	if(direct) c.mark_direct()
+	if(direct)
+		c.mark_direct()
 
 /datum/controller/subsystem/air/proc/mark_for_update(turf/T)
 	#ifdef ZASDBG
 	ASSERT(isturf(T))
 	#endif
-	if(T.needs_air_update) return
+	if(T.needs_air_update)
+		return
 	tiles_to_update |= T
 	#ifdef ZASDBG
 	T.add_overlay(mark)
@@ -178,7 +185,8 @@ Class Procs:
 	#ifdef ZASDBG
 	ASSERT(istype(Z))
 	#endif
-	if(Z.needs_update) return
+	if(Z.needs_update)
+		return
 	zones_to_update.Add(Z)
 	Z.needs_update = 1
 
@@ -186,7 +194,8 @@ Class Procs:
 	#ifdef ZASDBG
 	ASSERT(istype(E))
 	#endif
-	if(E.sleeping) return
+	if(E.sleeping)
+		return
 	active_edges.Remove(E)
 	E.sleeping = 1
 
@@ -194,7 +203,8 @@ Class Procs:
 	#ifdef ZASDBG
 	ASSERT(istype(E))
 	#endif
-	if(!E.sleeping) return
+	if(!E.sleeping)
+		return
 	active_edges.Add(E)
 	E.sleeping = 0
 
@@ -219,13 +229,19 @@ Class Procs:
 		return edge
 
 /datum/controller/subsystem/air/proc/has_same_air(turf/A, turf/B)
-	if(A.oxygen != B.oxygen) return 0
-	if(A.nitrogen != B.nitrogen) return 0
-	if(A.phoron != B.phoron) return 0
-	if(A.carbon_dioxide != B.carbon_dioxide) return 0
-	if(A.temperature != B.temperature) return 0
+	if(A.oxygen != B.oxygen)
+		return 0
+	if(A.nitrogen != B.nitrogen)
+		return 0
+	if(A.phoron != B.phoron)
+		return 0
+	if(A.carbon_dioxide != B.carbon_dioxide)
+		return 0
+	if(A.temperature != B.temperature)
+		return 0
 	return 1
 
 /datum/controller/subsystem/air/proc/remove_edge(connection_edge/E)
 	edges.Remove(E)
-	if(!E.sleeping) active_edges.Remove(E)
+	if(!E.sleeping)
+		active_edges.Remove(E)

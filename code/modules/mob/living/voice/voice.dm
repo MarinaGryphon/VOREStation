@@ -138,5 +138,6 @@
 	return ..()
 
 /mob/living/voice/custom_emote(var/m_type = VISIBLE_MESSAGE, var/message = null, var/range = world.view)
-	if(!comm) return
+	if(!comm)
+		return
 	..(m_type,message,comm.video_range)

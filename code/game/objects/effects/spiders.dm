@@ -222,7 +222,8 @@
 		skitter()
 
 	else if(isorgan(loc))
-		if(amount_grown < 0) amount_grown = 1
+		if(amount_grown < 0)
+			amount_grown = 1
 		var/obj/item/organ/external/O = loc
 		if(!O.owner || O.owner.stat == DEAD || amount_grown > 80)
 			O.implants -= src

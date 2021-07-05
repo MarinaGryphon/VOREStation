@@ -62,8 +62,10 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 //Restores our verbs. It will only restore verbs allowed during lesser (monkey) form if we are not human
 /mob/proc/make_changeling()
 
-	if(!mind)				return
-	if(!mind.changeling)	mind.changeling = new /datum/changeling(gender)
+	if(!mind)
+		return
+	if(!mind.changeling)
+		mind.changeling = new /datum/changeling(gender)
 
 	verbs.Add(/datum/changeling/proc/EvolutionMenu)
 	verbs.Add(/mob/proc/changeling_respec)
@@ -83,7 +85,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 
 	for(var/datum/power/changeling/P in mind.changeling.purchased_powers)
 		if(P.isVerb)
-			if(lesser_form && !P.allowduringlesserform)	continue
+			if(lesser_form && !P.allowduringlesserform)
+				continue
 			if(!(P in src.verbs))
 				verbs.Add(P.verbpath)
 			if(P.make_hud_button)
@@ -109,7 +112,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 
 //removes our changeling verbs
 /mob/proc/remove_changeling_powers()
-	if(!mind || !mind.changeling)	return
+	if(!mind || !mind.changeling)
+		return
 	for(var/datum/power/changeling/P in mind.changeling.purchased_powers)
 		if(P.isVerb)
 			verbs.Remove(P.verbpath)
@@ -121,7 +125,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 //Helper proc. Does all the checks and stuff for us to avoid copypasta
 /mob/proc/changeling_power(var/required_chems=0, var/required_dna=0, var/max_genetic_damage=100, var/max_stat=0)
 
-	if(!src.mind)		return
+	if(!src.mind)
+		return
 	if(!iscarbon(src))	return
 
 	var/datum/changeling/changeling = src.mind.changeling
@@ -216,7 +221,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 //Handles the general sting code to reduce on copypasta (seeming as somebody decided to make SO MANY dumb abilities)
 /mob/proc/changeling_sting(var/required_chems=0, var/verb_path)
 	var/datum/changeling/changeling = changeling_power(required_chems)
-	if(!changeling)								return
+	if(!changeling)
+		return
 
 	var/list/victims = list()
 	for(var/mob/living/carbon/C in oview(changeling.sting_range))
@@ -235,9 +241,11 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	changeling.chem_charges -= required_chems
 	changeling.sting_range = 1
 	src.verbs -= verb_path
-	spawn(10)	src.verbs += verb_path
+	spawn(10)
+		src.verbs += verb_path
 
 	to_chat(src, "<span class='notice'>We stealthily sting [T].</span>")
-	if(!T.mind || !T.mind.changeling)	return T	//T will be affected by the sting
+	if(!T.mind || !T.mind.changeling)
+		return T	//T will be affected by the sting
 	to_chat(T, "<span class='warning'>You feel a tiny prick.</span>")
 	return

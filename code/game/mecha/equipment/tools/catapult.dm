@@ -54,7 +54,8 @@
 			else
 				atoms = orange(target,3)
 			for(var/atom/movable/A in atoms)
-				if(A.anchored) continue
+				if(A.anchored)
+					continue
 				spawn(0)
 					var/iter = 5-get_dist(A,target)
 					for(var/i=0 to iter)

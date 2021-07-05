@@ -5,7 +5,8 @@
 	var/list/potentialRandomZlevels = list()
 	admin_notice("<font color='red'><B> Searching for away missions...</B></font>", R_DEBUG)
 	var/list/Lines = file2list("maps/RandomZLevels/fileList.txt")
-	if(!Lines.len)	return
+	if(!Lines.len)
+		return
 	for (var/t in Lines)
 		if (!t)
 			continue

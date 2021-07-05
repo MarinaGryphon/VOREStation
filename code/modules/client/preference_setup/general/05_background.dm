@@ -23,10 +23,14 @@
 	S["economic_status"]		<< pref.economic_status
 
 /datum/category_item/player_setup_item/general/background/sanitize_character()
-	if(!pref.home_system) pref.home_system = "Unset"
-	if(!pref.citizenship) pref.citizenship = "None"
-	if(!pref.faction)     pref.faction =     "None"
-	if(!pref.religion)    pref.religion =    "None"
+	if(!pref.home_system)
+		pref.home_system = "Unset"
+	if(!pref.citizenship)
+		pref.citizenship = "None"
+	if(!pref.faction)
+		pref.faction =     "None"
+	if(!pref.religion)
+		pref.religion =    "None"
 
 	pref.economic_status = sanitize_inlist(pref.economic_status, ECONOMIC_CLASS, initial(pref.economic_status))
 

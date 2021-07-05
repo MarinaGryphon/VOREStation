@@ -63,7 +63,8 @@
 
 	for(var/obj/item/device/communicator/comm in communicating)
 		var/turf/T = get_turf(comm)
-		if(!T) return
+		if(!T)
+			return
 
 		var/icon_object = src
 
@@ -120,7 +121,8 @@
 		who = comm.owner
 		comm.im_contacts |= src
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
-	else return
+	else
+		return
 
 	im_contacts |= candidate
 

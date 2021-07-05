@@ -119,7 +119,8 @@
 					tmp_step_energy_drain = step_energy_drain*2
 
 		can_move = 0
-		spawn(tmp_step_in) can_move = 1
+		spawn(tmp_step_in)
+			can_move = 1
 		use_power(tmp_step_energy_drain)
 		return 1
 	return 0

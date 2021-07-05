@@ -31,7 +31,8 @@
 			CRASH("Invalid can_atmos_pass = [can_atmos_pass] on [src] ([type])")
 
 /turf/CanPass(atom/movable/mover, turf/target)
-	if(!target) return FALSE
+	if(!target)
+		return FALSE
 
 	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
 		return !density
@@ -105,5 +106,6 @@
 					return BLOCKED
 			if(ATMOS_PASS_PROC)
 				result |= M.c_airblock(other)
-		if(result == BLOCKED) return BLOCKED
+		if(result == BLOCKED)
+			return BLOCKED
 	return result

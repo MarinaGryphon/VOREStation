@@ -120,9 +120,11 @@
 /obj/machinery/implantchair/proc/implant(var/mob/M)
 	if (!istype(M, /mob/living/carbon))
 		return
-	if(!implant_list.len)	return
+	if(!implant_list.len)
+		return
 	for(var/obj/item/weapon/implant/loyalty/imp in implant_list)
-		if(!imp)	continue
+		if(!imp)
+			continue
 		if(istype(imp, /obj/item/weapon/implant/loyalty))
 			for (var/mob/O in viewers(M, null))
 				O.show_message("<span class='warning'>\The [M] has been implanted by \the [src].</span>", 1)

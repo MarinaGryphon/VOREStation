@@ -17,7 +17,8 @@
 /spell/targeted/ethereal_jaunt/cast(list/targets) //magnets, so mostly hardcoded
 	for(var/mob/living/target in targets)
 		target.transforming = 1 //protects the mob from being transformed (replaced) midjaunt and getting stuck in bluespace
-		if(target.buckled) target.buckled = null
+		if(target.buckled)
+			target.buckled = null
 		spawn(0)
 			var/mobloc = get_turf(target.loc)
 			var/obj/effect/dummy/spell_jaunt/holder = new /obj/effect/dummy/spell_jaunt( mobloc )
@@ -99,7 +100,8 @@
 	else
 		to_chat(user, "<span class='warning'>Some strange aura is blocking the way!</span>")
 	src.canmove = 0
-	spawn(2) src.canmove = 1
+	spawn(2)
+		src.canmove = 1
 
 /obj/effect/dummy/spell_jaunt/ex_act(blah)
 	return

@@ -37,7 +37,8 @@
 
 //If reset is set, then assume the client has none of our overlays, otherwise we only send new overlays.
 /obj/item/device/t_scanner/process()
-	if(!on) return
+	if(!on)
+		return
 
 	//handle clients changing
 	var/client/loc_client = null
@@ -47,7 +48,8 @@
 	set_user_client(loc_client)
 
 	//no sense processing if no-one is going to see it.
-	if(!user_client) return
+	if(!user_client)
+		return
 
 	//get all objects in scan range
 	var/list/scanned = get_scanned_objects(scan_range)
@@ -102,7 +104,8 @@
 	. = list()
 
 	var/turf/center = get_turf(src.loc)
-	if(!center) return
+	if(!center)
+		return
 
 	for(var/turf/T in range(scan_range, center))
 		if(!!T.is_plating())

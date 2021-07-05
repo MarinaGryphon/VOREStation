@@ -171,7 +171,8 @@
 		if(target == user && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
 			V.show_message("[usr] starts climbing into the disposal.", 3)
 		if(target != user && !user.restrained() && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
-			if(target.anchored) return
+			if(target.anchored)
+				return
 			V.show_message("[usr] starts stuffing [target.name] into the disposal.", 3)
 	if(!do_after(usr, 20))
 		return
@@ -642,7 +643,8 @@
 	var/obj/structure/disposalpipe/last
 	while(active)
 		sleep(1)		// was 1
-		if(!loc) return // check if we got GC'd
+		if(!loc)
+			return // check if we got GC'd
 
 		if(hasmob && prob(3))
 			for(var/mob/living/H in src)
@@ -653,7 +655,8 @@
 		last = curr
 		curr = curr.transfer(src)
 
-		if(!loc) return //side effects
+		if(!loc)
+			return //side effects
 
 		if(!curr)
 			last.expel(src, loc, dir)
@@ -1240,7 +1243,8 @@
 /obj/structure/disposalpipe/tagger/New()
 	. = ..()
 	dpdir = dir | turn(dir, 180)
-	if(sort_tag) GLOB.tagger_locations |= sort_tag
+	if(sort_tag)
+		GLOB.tagger_locations |= sort_tag
 	updatename()
 	updatedesc()
 	update()
@@ -1306,7 +1310,8 @@
 
 /obj/structure/disposalpipe/sortjunction/New()
 	. = ..()
-	if(sortType) GLOB.tagger_locations |= sortType
+	if(sortType)
+		GLOB.tagger_locations |= sortType
 
 	updatedir()
 	updatename()

@@ -31,7 +31,8 @@
 		command_announcement.Announce("Confirmed outbreak of level [level] biohazard aboard \the [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak5.ogg')
 
 /datum/event/viral_infection/start()
-	if(!viruses.len) return
+	if(!viruses.len)
+		return
 
 	var/list/candidates = list()	//list of candidate keys
 	for(var/mob/living/carbon/human/G in player_list)
@@ -39,7 +40,8 @@
 			var/turf/T = get_turf(G)
 			if(T.z in using_map.station_levels)
 				candidates += G
-	if(!candidates.len)	return
+	if(!candidates.len)
+		return
 	candidates = shuffle(candidates)//Incorporating Donkie's list shuffle
 
 	var/list/used_viruses = list()

@@ -57,7 +57,8 @@
 
 /datum/reagent/sizeoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.make_dizzy(1)
-	if(!M.confused) M.confused = 1
+	if(!M.confused)
+		M.confused = 1
 	M.confused = max(M.confused, 20)
 	return
 
@@ -98,7 +99,8 @@
 /datum/reagent/unsorbitol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.make_dizzy(1)
 	M.adjustHalLoss(1)
-	if(!M.confused) M.confused = 1
+	if(!M.confused)
+		M.confused = 1
 	M.confused = max(M.confused, 20)
 	M.hallucination += 15
 

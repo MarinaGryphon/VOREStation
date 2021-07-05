@@ -34,8 +34,10 @@
 		auto_open_doors = 1
 
 	//Make sure there is a clear midpoint.
-	if(limit_x % 2 == 0) limit_x++
-	if(limit_y % 2 == 0) limit_y++
+	if(limit_x % 2 == 0)
+		limit_x++
+	if(limit_y % 2 == 0)
+		limit_y++
 	..()
 
 /datum/random_map/droppod/generate_map()

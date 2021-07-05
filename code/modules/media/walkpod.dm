@@ -139,7 +139,8 @@
 // Advance to the next track - Don't start playing it unless we were already playing
 /obj/item/device/walkpod/proc/NextTrack()
 	var/list/tracks = getTracksList()
-	if(!tracks.len) return
+	if(!tracks.len)
+		return
 	var/curTrackIndex = max(1, tracks.Find(current_track))
 	var/newTrackIndex = (curTrackIndex % tracks.len) + 1  // Loop back around if past end
 	current_track = tracks[newTrackIndex]
@@ -150,7 +151,8 @@
 // Unadvance to the notnext track - Don't start playing it unless we were already playing
 /obj/item/device/walkpod/proc/PrevTrack()
 	var/list/tracks = getTracksList()
-	if(!tracks.len) return
+	if(!tracks.len)
+		return
 	var/curTrackIndex = max(1, tracks.Find(current_track))
 	var/newTrackIndex = curTrackIndex == 1 ? tracks.len : curTrackIndex - 1
 	current_track = tracks[newTrackIndex]

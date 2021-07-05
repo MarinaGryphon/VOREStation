@@ -94,12 +94,15 @@ Class Procs:
 		var/atom/movable/M = movable[i]
 
 		//If they're already being tossed, don't do it again.
-		if(M.last_airflow > world.time - vsc.airflow_delay) continue
-		if(M.airflow_speed) continue
+		if(M.last_airflow > world.time - vsc.airflow_delay)
+			continue
+		if(M.airflow_speed)
+			continue
 
 		//Check for knocking people over
 		if(ismob(M) && differential > vsc.airflow_stun_pressure)
-			if(M:status_flags & GODMODE) continue
+			if(M:status_flags & GODMODE)
+				continue
 			M:airflow_stun()
 
 		if(M.check_airflow_movable(differential))
@@ -107,12 +110,19 @@ Class Procs:
 			var/list/close_turfs = list()
 			for(var/turf/U in connecting_turfs)
 				if(get_dist(M,U) < world.view) close_turfs += U
-			if(!close_turfs.len) continue
+			if(!close_turfs.len)
+				continue
 
 			M.airflow_dest = pick(close_turfs) //Pick a random midpoint to fly towards.
 
-			if(repelled) spawn if(M) M.RepelAirflowDest(differential/5)
-			else spawn if(M) M.GotoAirflowDest(differential/10)
+			if(repelled)
+				spawn
+					if(M)
+						M.RepelAirflowDest(differential/5)
+			else
+				spawn
+					if(M)
+						M.GotoAirflowDest(differential/10)
 
 
 
@@ -185,8 +195,10 @@ Class Procs:
 
 //Helper proc to get connections for a zone.
 /connection_edge/zone/proc/get_connected_zone(zone/from)
-	if(A == from) return B
-	else return A
+	if(A == from)
+		return B
+	else
+		return A
 
 /connection_edge/unsimulated
 	var/turf/B

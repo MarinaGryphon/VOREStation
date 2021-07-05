@@ -13,7 +13,8 @@
 	if(!action_checks(target) || src.loc.z == 2) return
 	var/list/theareas = list()
 	for(var/area/AR in orange(100, chassis))
-		if(AR in theareas) continue
+		if(AR in theareas)
+			continue
 		theareas += AR
 	if(!theareas.len)
 		return

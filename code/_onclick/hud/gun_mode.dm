@@ -18,7 +18,8 @@
 	if(..())
 		var/mob/living/user = usr
 		if(istype(user))
-			if(!user.aiming) user.aiming = new(user)
+			if(!user.aiming)
+				user.aiming = new(user)
 			user.aiming.toggle_permission(TARGET_CAN_MOVE)
 		return 1
 	return 0
@@ -32,7 +33,8 @@
 	if(..())
 		var/mob/living/user = usr
 		if(istype(user))
-			if(!user.aiming) user.aiming = new(user)
+			if(!user.aiming)
+				user.aiming = new(user)
 			user.aiming.toggle_permission(TARGET_CAN_CLICK)
 		return 1
 	return 0
@@ -46,7 +48,8 @@
 	if(..())
 		var/mob/living/user = usr
 		if(istype(user))
-			if(!user.aiming) user.aiming = new(user)
+			if(!user.aiming)
+				user.aiming = new(user)
 			user.aiming.toggle_active()
 		return 1
 	return 0
@@ -60,7 +63,8 @@
 	if(..())
 		var/mob/living/user = usr
 		if(istype(user))
-			if(!user.aiming) user.aiming = new(user)
+			if(!user.aiming)
+				user.aiming = new(user)
 			user.aiming.toggle_permission(TARGET_CAN_RADIO)
 		return 1
 	return 0

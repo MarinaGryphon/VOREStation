@@ -151,7 +151,8 @@
 	..()
 
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return 0	//godmode
 	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
 		if(species.flags & IS_PLANT)
 			return 0
@@ -290,7 +291,8 @@
 				AdjustSleeping(-5)
 				if(src.sleeping == 0)
 					src.resting = 0
-				if(H) H.in_stasis = 0 //VOREStation Add - Just In Case
+				if(H)
+					H.in_stasis = 0 //VOREStation Add - Just In Case
 				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
 									"<span class='notice'>You shake [src] trying to wake [T.him] up!</span>")
 			else
@@ -358,7 +360,8 @@
 	return
 
 /mob/living/carbon/u_equip(obj/item/W as obj)
-	if(!W)	return 0
+	if(!W)
+		return 0
 
 	else if (W == handcuffed)
 		handcuffed = null

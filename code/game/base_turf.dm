@@ -17,7 +17,8 @@
 	set name = "Set Base Turf"
 	set desc = "Set the base turf for a z-level."
 
-	if(!holder)	return
+	if(!holder)
+		return
 
 	var/choice = input(usr, "Which Z-level do you wish to set the base turf for?") as num|null
 	if(!choice)

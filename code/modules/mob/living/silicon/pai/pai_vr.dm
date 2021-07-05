@@ -78,7 +78,8 @@
 	var/choice
 
 	choice = tgui_input_list(usr, "What would you like to use for your mobile chassis icon?", "Chassis Choice", possible_chassis)
-	if(!choice) return
+	if(!choice)
+		return
 	chassis = possible_chassis[choice]
 	verbs |= /mob/living/proc/hide
 	update_icon()

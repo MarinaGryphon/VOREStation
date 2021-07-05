@@ -109,9 +109,11 @@
 /datum/species/xenos/handle_environment_special(var/mob/living/carbon/human/H)
 
 	var/turf/T = H.loc
-	if(!T) return
+	if(!T)
+		return
 	var/datum/gas_mixture/environment = T.return_air()
-	if(!environment) return
+	if(!environment)
+		return
 
 	if(environment.gas["phoron"] > 0 || locate(/obj/effect/alien/weeds) in T)
 		if(!regenerate(H))

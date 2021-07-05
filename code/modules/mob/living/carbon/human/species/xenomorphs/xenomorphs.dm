@@ -1,7 +1,8 @@
 /proc/create_new_xenomorph(var/alien_caste,var/target)
 
 	target = get_turf(target)
-	if(!target || !alien_caste) return
+	if(!target || !alien_caste)
+		return
 
 	var/mob/living/carbon/human/new_alien = new(target)
 	new_alien.set_species("Xenomorph [alien_caste]")

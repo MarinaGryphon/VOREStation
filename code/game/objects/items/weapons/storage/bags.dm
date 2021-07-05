@@ -51,7 +51,8 @@
 		icon_state = "trashbag1"
 	else if(contents.len < 18)
 		icon_state = "trashbag2"
-	else icon_state = "trashbag3"
+	else
+		icon_state = "trashbag3"
 
 /obj/item/weapon/storage/bag/trash/holding
 	name = "trash bag of holding"

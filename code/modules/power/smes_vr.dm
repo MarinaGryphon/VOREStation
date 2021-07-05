@@ -12,7 +12,8 @@
 
 /obj/machinery/power/smes/buildable/hybrid/update_icon()
 	cut_overlays()
-	if(stat & BROKEN)	return
+	if(stat & BROKEN)
+		return
 
 	add_overlay("smes-op[outputting]")
 

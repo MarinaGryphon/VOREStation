@@ -41,15 +41,23 @@
 			var/ore_type
 
 			switch(metal)
-				if("silicates", "carbon", "marble", "quartz")	ore_type = "surface minerals"
-				if("hematite", "tin", "copper", "bauxite", "lead")	ore_type = "industrial metals"
-				if("gold", "silver", "rutile")					ore_type = "precious metals"
-				if("diamond", "painite")	ore_type = "precious gems"
-				if("uranium")									ore_type = "nuclear fuel"
-				if("phoron", "osmium", "hydrogen")				ore_type = "exotic matter"
-				if("verdantium", "void opal")				ore_type = "anomalous matter"
+				if("silicates", "carbon", "marble", "quartz")
+					ore_type = "surface minerals"
+				if("hematite", "tin", "copper", "bauxite", "lead")
+					ore_type = "industrial metals"
+				if("gold", "silver", "rutile")
+					ore_type = "precious metals"
+				if("diamond", "painite")
+					ore_type = "precious gems"
+				if("uranium")
+					ore_type = "nuclear fuel"
+				if("phoron", "osmium", "hydrogen")
+					ore_type = "exotic matter"
+				if("verdantium", "void opal")
+					ore_type = "anomalous matter"
 
-			if(ore_type) metals[ore_type] += T.resources[metal]
+			if(ore_type)
+				metals[ore_type] += T.resources[metal]
 
 	var/message = "[bicon(src)] <span class='notice'>The scanner beeps and displays a readout.</span>"
 
@@ -58,9 +66,12 @@
 
 		if(!exact)
 			switch(metals[ore_type])
-				if(1 to 25) result = "trace amounts"
-				if(26 to 75) result = "significant amounts"
-				if(76 to INFINITY) result = "huge quantities"
+				if(1 to 25)
+					result = "trace amounts"
+				if(26 to 75)
+					result = "significant amounts"
+				if(76 to INFINITY)
+					result = "huge quantities"
 
 		else
 			result = metals[ore_type]

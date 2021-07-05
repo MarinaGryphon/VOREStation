@@ -86,7 +86,8 @@
 	reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
 
 /obj/item/device/bluespaceradio/proc/reattach_handset(var/mob/user)
-	if(!handset) return
+	if(!handset)
+		return
 
 	if(ismob(handset.loc))
 		var/mob/M = handset.loc

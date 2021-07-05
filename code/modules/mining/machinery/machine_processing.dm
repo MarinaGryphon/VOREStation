@@ -104,10 +104,14 @@
 				if(!new_setting)
 					return
 				switch(new_setting)
-					if("Nothing") new_setting = PROCESS_NONE
-					if("Smelting") new_setting = PROCESS_SMELT
-					if("Compressing") new_setting = PROCESS_COMPRESS
-					if("Alloying") new_setting = PROCESS_ALLOY
+					if("Nothing")
+						new_setting = PROCESS_NONE
+					if("Smelting")
+						new_setting = PROCESS_SMELT
+					if("Compressing")
+						new_setting = PROCESS_COMPRESS
+					if("Alloying")
+						new_setting = PROCESS_ALLOY
 			machine.ores_processing[ore] = new_setting
 			. = TRUE
 		if("power")
@@ -199,10 +203,12 @@
 	//Locate our output and input machinery.
 	for (var/dir in cardinal)
 		src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
-		if(src.input) break
+		if(src.input)
+			break
 	for (var/dir in cardinal)
 		src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
-		if(src.output) break
+		if(src.output)
+			break
 	return
 
 /obj/machinery/mineral/processing_unit/proc/toggle_speed(var/forced)
@@ -249,13 +255,15 @@
 	var/sheets = 0
 	for(var/metal in ores_stored)
 
-		if(sheets >= sheets_per_tick) break
+		if(sheets >= sheets_per_tick)
+			break
 
 		if(ores_stored[metal] > 0 && ores_processing[metal] != 0)
 
 			var/ore/O = GLOB.ore_data[metal]
 
-			if(!O) continue
+			if(!O)
+				continue
 
 			if(ores_processing[metal] == PROCESS_ALLOY && O.alloy) //Alloying.
 
@@ -293,7 +301,8 @@
 			else if(ores_processing[metal] == PROCESS_COMPRESS && O.compresses_to) //Compressing.
 
 				var/can_make = CLAMP(ores_stored[metal],0,sheets_per_tick-sheets)
-				if(can_make%2>0) can_make--
+				if(can_make%2>0)
+					can_make--
 
 				var/datum/material/M = get_material_by_name(O.compresses_to)
 

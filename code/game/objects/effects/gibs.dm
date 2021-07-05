@@ -12,8 +12,10 @@
 /obj/effect/gibspawner/New(location, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor)
 	..()
 
-	if(fleshcolor) src.fleshcolor = fleshcolor
-	if(bloodcolor) src.bloodcolor = bloodcolor
+	if(fleshcolor)
+		src.fleshcolor = fleshcolor
+	if(bloodcolor)
+		src.bloodcolor = bloodcolor
 	Gib(loc,MobDNA)
 
 /obj/effect/gibspawner/proc/Gib(atom/location, var/datum/dna/MobDNA = null)

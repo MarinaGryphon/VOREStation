@@ -153,7 +153,8 @@
 			return
 
 		var/list/cur_pos = src.get_global_map_pos()
-		if(!cur_pos) return
+		if(!cur_pos)
+			return
 		cur_x = cur_pos["x"]
 		cur_y = cur_pos["y"]
 		next_x = (--cur_x||global_map.len)
@@ -178,7 +179,8 @@
 			return
 
 		var/list/cur_pos = src.get_global_map_pos()
-		if(!cur_pos) return
+		if(!cur_pos)
+			return
 		cur_x = cur_pos["x"]
 		cur_y = cur_pos["y"]
 		next_x = (++cur_x > global_map.len ? 1 : cur_x)
@@ -202,7 +204,8 @@
 			qdel(A)
 			return
 		var/list/cur_pos = src.get_global_map_pos()
-		if(!cur_pos) return
+		if(!cur_pos)
+			return
 		cur_x = cur_pos["x"]
 		cur_y = cur_pos["y"]
 		y_arr = global_map[cur_x]
@@ -227,7 +230,8 @@
 			qdel(A)
 			return
 		var/list/cur_pos = src.get_global_map_pos()
-		if(!cur_pos) return
+		if(!cur_pos)
+			return
 		cur_x = cur_pos["x"]
 		cur_y = cur_pos["y"]
 		y_arr = global_map[cur_x]

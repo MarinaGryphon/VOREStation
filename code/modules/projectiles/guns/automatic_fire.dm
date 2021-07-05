@@ -32,7 +32,8 @@
 	if(active == 1)
 		return
 	sleep(20)
-	if(!src) return//Might not really be needed
+	if(!src)
+		return//Might not really be needed
 	if(delay_del)//This says we want to wait another X seconds before trying to del
 		delay_del = 0
 		autodel()

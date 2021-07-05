@@ -53,7 +53,8 @@
 
 	var/mob/living/T = tgui_input_list(src, "Who do you wish to tackle?", "Target Choice", choices)
 
-	if(!T || !src || src.stat) return
+	if(!T || !src || src.stat)
+		return
 
 	if(!Adjacent(T)) return
 
@@ -92,13 +93,15 @@
 	targets += getmobs() //Fill list, prompt user with list
 	target = tgui_input_list(usr, "Select a creature!", "Speak to creature", targets)
 
-	if(!target) return
+	if(!target)
+		return
 
 	text = input(usr, "What would you like to say?", "Speak to creature", null, null)
 
 	text = sanitize(text)
 
-	if(!text) return
+	if(!text)
+		return
 
 	var/mob/M = targets[target]
 
@@ -206,7 +209,8 @@
 	set desc = "Run an internal self-diagnostic to check for damage."
 	set category = "IC"
 
-	if(stat == DEAD) return
+	if(stat == DEAD)
+		return
 
 	to_chat(src, "<span class='notice'>Performing self-diagnostic, please wait...</span>")
 

@@ -147,7 +147,8 @@
 
 //attack_as_weapon
 /obj/item/device/flash/attack(mob/living/M, mob/living/user, var/target_zone)
-	if(!user || !M)	return	//sanity
+	if(!user || !M)
+		return	//sanity
 
 	add_attack_logs(user,M,"Flashed (attempt) with [src]")
 
@@ -275,7 +276,8 @@
 	return
 
 /obj/item/device/flash/emp_act(severity)
-	if(broken)	return
+	if(broken)
+		return
 	flash_recharge()
 	if(!check_capacitor())
 		return

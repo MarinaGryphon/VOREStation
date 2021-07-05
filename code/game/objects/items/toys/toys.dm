@@ -47,7 +47,8 @@
 	return
 
 /obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to_obj(src, 10)
 		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
@@ -182,7 +183,8 @@
 
 /obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
 	if(!isturf(target.loc) || target == user) return
-	if(flag) return
+	if(flag)
+		return
 
 	if (locate (/obj/structure/table, src.loc))
 		return
@@ -196,12 +198,14 @@
 
 		for(var/i=0, i<6, i++)
 			if (D)
-				if(D.loc == trg) break
+				if(D.loc == trg)
+					break
 				step_towards(D,trg)
 
 				for(var/mob/living/M in D.loc)
 					if(!istype(M,/mob/living)) continue
-					if(M == user) continue
+					if(M == user)
+						continue
 					for(var/mob/O in viewers(world.view, D))
 						O.show_message(text("<span class='warning'>\The [] was hit by the foam dart!</span>", M), 1)
 					new /obj/item/toy/ammo/crossbow(M.loc)
@@ -209,7 +213,8 @@
 					return
 
 				for(var/atom/A in D.loc)
-					if(A == user) continue
+					if(A == user)
+						continue
 					if(A.density)
 						new /obj/item/toy/ammo/crossbow(A.loc)
 						qdel(D)
@@ -1384,7 +1389,8 @@
 		playsound(src, 'sound/machines/click.ogg', 20, 1)
 		visible_message("<span class='danger'>[message]</span>")
 		cooldown = 1
-		spawn(30) cooldown = 0
+		spawn(30)
+			cooldown = 0
 		return
 	..()
 */
@@ -1403,7 +1409,8 @@
 		//playsound(src, 'sound/misc/hoot.ogg', 25, 1)
 		visible_message("<span class='danger'>[message]</span>")
 		cooldown = 1
-		spawn(30) cooldown = 0
+		spawn(30)
+			cooldown = 0
 		return
 	..()
 
@@ -1422,7 +1429,8 @@
 		//playsound(src, 'sound/misc/caw.ogg', 25, 1)
 		visible_message("<span class='danger'>[message]</span>")
 		cooldown = 1
-		spawn(30) cooldown = 0
+		spawn(30)
+			cooldown = 0
 		return
 	..()
 

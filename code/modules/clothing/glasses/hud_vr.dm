@@ -199,7 +199,8 @@
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(usr.stat)
+		return
 	if(toggleable)
 		if(active)
 			active = 0
@@ -245,7 +246,8 @@
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	eye = !eye
 	if(eye)
@@ -269,7 +271,8 @@
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	eye = !eye
 	if(eye)

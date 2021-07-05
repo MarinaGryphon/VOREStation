@@ -11,7 +11,8 @@
 
 /obj/item/weapon/matter_decompiler/swarm/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
 
-	if(!proximity) return //Not adjacent.
+	if(!proximity)
+		return //Not adjacent.
 
 	//We only want to deal with using this on turfs. Specific items aren't important.
 	var/turf/T = get_turf(target)
@@ -45,7 +46,8 @@
 				to_chat(D, "<span class='danger'>You need to remain still while decompiling such a large object.</span>")
 				return
 
-			if(!M || !D) return
+			if(!M || !D)
+				return
 
 			to_chat(D, "<span class='danger'>You carefully and thoroughly decompile [M], storing as much of its resources as you can within yourself.</span>")
 			qdel(M)

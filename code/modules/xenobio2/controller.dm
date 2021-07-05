@@ -5,7 +5,8 @@
 	set name = "Show Xenobio Genes"
 	set desc = "Prints the round's plant xenobio masks."
 
-	if(!holder)	return
+	if(!holder)
+		return
 
 	if(!xenobio_controller || !xenobio_controller.gene_tag_masks)
 		to_chat(usr, "Gene masks not set.")

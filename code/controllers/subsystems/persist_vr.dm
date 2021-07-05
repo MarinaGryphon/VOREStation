@@ -98,7 +98,8 @@ SUBSYSTEM_DEF(persist)
 		var/recorded_rank = R.fields["real_rank"]
 		if(recorded_rank)
 			. = job_master.GetJob(recorded_rank)
-			if(.) return
+			if(.)
+				return
 
 	// They have a custom title, aren't crew, or someone deleted their record, so we need a fallback method.
 	// Let's check the mind.

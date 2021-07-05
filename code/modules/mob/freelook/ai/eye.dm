@@ -50,7 +50,8 @@
 	var/obj/machinery/hologram/holopad/holo = null
 
 /mob/living/silicon/ai/proc/destroy_eyeobj(var/atom/new_eye)
-	if(!eyeobj) return
+	if(!eyeobj)
+		return
 	if(!new_eye)
 		new_eye = src
 	eyeobj.owner = null

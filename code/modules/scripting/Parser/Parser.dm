@@ -133,7 +133,8 @@
 	curBlock=B
 
 /n_Parser/nS_Parser/proc/EndBlock()
-	if(curBlock==global_block) return 0
+	if(curBlock==global_block)
+		return 0
 	curBlock=blocks.Pop()
 	return 1
 

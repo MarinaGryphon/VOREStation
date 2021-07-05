@@ -44,7 +44,8 @@
 		pref.nif_durability = null
 		pref.nif_savedata = null
 		var/savefile/S = new /savefile(pref.path)
-		if(!S) WARNING ("Couldn't load NIF save savefile? [pref.real_name]")
+		if(!S)
+			WARNING ("Couldn't load NIF save savefile? [pref.real_name]")
 		S.cd = "/character[pref.default_slot]"
 		save_character(S)
 

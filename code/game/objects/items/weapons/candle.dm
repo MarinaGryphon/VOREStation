@@ -20,7 +20,8 @@
 		i = 1
 	else if(wax > 800)
 		i = 2
-	else i = 3
+	else
+		i = 3
 	icon_state = "[icon_type][i][lit ? "_lit" : ""]"
 
 

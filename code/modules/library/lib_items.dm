@@ -78,7 +78,8 @@
 		if(2.0)
 			for(var/obj/item/weapon/book/b in contents)
 				if (prob(50)) b.loc = (get_turf(src))
-				else qdel(b)
+				else
+					qdel(b)
 			qdel(src)
 			return
 		if(3.0)
@@ -282,7 +283,8 @@ Book Cart End
 					scanner.computer.inventory.Add(src)
 					to_chat(user, "[W]'s screen flashes: 'Book stored in buffer. Title added to general inventory.'")
 	else if(istype(W, /obj/item/weapon/material/knife) || W.is_wirecutter())
-		if(carved)	return
+		if(carved)
+			return
 		to_chat(user, "<span class='notice'>You begin to carve out [title].</span>")
 		if(do_after(user, 30))
 			to_chat(user, "<span class='notice'>You carve out the pages from [title]! You didn't want to read it anyway.</span>")

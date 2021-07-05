@@ -444,7 +444,8 @@
 
 /proc/Show2Group4Delay(obj/O, list/group, delay=0)
 	if(!isobj(O))	return
-	if(!group)	group = GLOB.clients
+	if(!group)
+		group = GLOB.clients
 	for(var/client/C in group)
 		C.screen += O
 	if(delay)

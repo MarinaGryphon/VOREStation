@@ -110,7 +110,8 @@
 
 /obj/item/rig_module/device/New()
 	..()
-	if(device_type) device = new device_type(src)
+	if(device_type)
+		device = new device_type(src)
 
 /obj/item/rig_module/device/engage(atom/target)
 	if(!..() || !device)
@@ -245,7 +246,8 @@
 	target_mob.reagents.add_reagent(charge.display_name, chems_to_use)
 
 	charge.charges -= chems_to_use
-	if(charge.charges < 0) charge.charges = 0
+	if(charge.charges < 0)
+		charge.charges = 0
 
 	return 1
 

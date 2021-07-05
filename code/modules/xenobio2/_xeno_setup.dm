@@ -125,7 +125,8 @@ var/global/list/xenoChemList = list("mutationtoxin",
 	
 /datum/xeno/traits/proc/get_gene(var/genetype)
 	
-	if(!genetype) return 0
+	if(!genetype)
+		return 0
 	
 	var/datum/xeno/genes/G = new()
 	G.genetype = genetype
@@ -169,7 +170,8 @@ var/global/list/xenoChemList = list("mutationtoxin",
 	return G
 			
 /datum/xeno/traits/proc/apply_gene(var/datum/xeno/genes/genes)
-	if(!genes.genetype) return 0
+	if(!genes.genetype)
+		return 0
 	
 	switch(genes.genetype)
 		if(GENE_XENO_BIOCHEMISTRY)

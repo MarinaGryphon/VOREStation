@@ -134,7 +134,8 @@
 	return 0
 
 /obj/vehicle/bike/Move(var/turf/destination)
-	if(kickstand) return 0
+	if(kickstand)
+		return 0
 
 	if(on && (!cell || cell.charge < charge_use))
 		turn_off()

@@ -171,13 +171,14 @@ var/list/sacrificed = list()
 				to_chat(target, "<span class='cult'>Your blood pulses. Your head throbs. The world goes red. All at once you are aware of a horrible, horrible truth. The veil of reality has been ripped away and in the festering wound left behind something sinister takes root.</span>")
 				to_chat(target, "<span class='danger'>And you were able to force it out of your mind. You now know the truth, there's something horrible out there, stop it and its minions at all costs.</span>")
 
-			else spawn()
-				var/choice = tgui_alert(target,"Do you want to join the cult?","Submit to Nar'Sie",list("Resist","Submit"))
-				waiting_for_input[target] = 0
-				if(choice == "Submit") //choosing 'Resist' does nothing of course.
-					cult.add_antagonist(target.mind)
-					converting -= target
-					target.hallucination = 0 //sudden clarity
+			else
+				spawn()
+					var/choice = tgui_alert(target,"Do you want to join the cult?","Submit to Nar'Sie",list("Resist","Submit"))
+					waiting_for_input[target] = 0
+					if(choice == "Submit") //choosing 'Resist' does nothing of course.
+						cult.add_antagonist(target.mind)
+						converting -= target
+						target.hallucination = 0 //sudden clarity
 
 		sleep(100) //proc once every 10 seconds
 	return 1
@@ -451,9 +452,11 @@ var/list/sacrificed = list()
 		return this_rune.fizzle()
 	var/mob/observer/dead/ghost
 	for(var/mob/observer/dead/O in this_rune.loc)
-		if(!O.client)	continue
+		if(!O.client)
+			continue
 		if(!O.MayRespawn()) continue
-		if(O.mind && O.mind.current && O.mind.current.stat != DEAD)	continue
+		if(O.mind && O.mind.current && O.mind.current.stat != DEAD)
+			continue
 		if(!(O.client.prefs.be_special & BE_CULTIST)) continue
 		ghost = O
 		break

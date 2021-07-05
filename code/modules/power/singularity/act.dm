@@ -59,7 +59,8 @@
 		step_towards(src,S)
 	else if(current_size > STAGE_ONE)
 		step_towards(src,S)
-	else ..()
+	else
+		..()
 
 /obj/effect/beam/singularity_pull()
 	return

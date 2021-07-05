@@ -93,7 +93,8 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /decl/overmap_event_handler, new)
 			LAZYREMOVE(ship_events[ship], E)
 
 /decl/overmap_event_handler/proc/is_event_active(var/ship, var/event_type, var/severity)
-	if(!ship_events[ship])	return
+	if(!ship_events[ship])
+		return
 	for(var/datum/event/E in ship_events[ship])
 		if(E.type == event_type && E.severity == severity)
 			return E

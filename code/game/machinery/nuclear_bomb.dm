@@ -116,7 +116,8 @@ var/bomb_set
 
 					playsound(src, O.usesound, 50, 1)
 					if(do_after(user,15 * O.toolspeed))
-						if(!src || !user) return
+						if(!src || !user)
+							return
 						user.visible_message("[user] forces open the bolt covers on [src].", "You force open the bolt covers.")
 						removal_stage = 2
 				return
@@ -144,7 +145,8 @@ var/bomb_set
 					user.visible_message("[user] begins unwrenching the anchoring bolts on [src].", "You begin unwrenching the anchoring bolts...")
 					playsound(src, O.usesound, 50, 1)
 					if(do_after(user,50 * O.toolspeed))
-						if(!src || !user) return
+						if(!src || !user)
+							return
 						user.visible_message("[user] unwrenches the anchoring bolts on [src].", "You unwrench the anchoring bolts.")
 						removal_stage = 4
 				return
@@ -155,7 +157,8 @@ var/bomb_set
 					user.visible_message("[user] begins lifting [src] off of the anchors.", "You begin lifting the device off the anchors...")
 					playsound(src, O.usesound, 50, 1)
 					if(do_after(user,80 * O.toolspeed))
-						if(!src || !user) return
+						if(!src || !user)
+							return
 						user.visible_message("[user] crowbars [src] off of the anchors. It can now be moved.", "You jam the crowbar under the nuclear device and lift it off its anchors. You can now move it!")
 						anchored = 0
 						removal_stage = 5
@@ -246,13 +249,15 @@ var/bomb_set
 					else
 						if(light_wire == temp_wire)
 							lighthack = !lighthack
-							spawn(100) lighthack = !lighthack
+							spawn(100)
+								lighthack = !lighthack
 						if(timing_wire == temp_wire)
 							if(timing)
 								explode()
 						if(safety_wire == temp_wire)
 							safety = !safety
-							spawn(100) safety = !safety
+							spawn(100)
+								safety = !safety
 							if(safety == 1)
 								visible_message("<span class='notice'>The [src] quiets down.</span>")
 								if(!lighthack)

@@ -66,7 +66,8 @@
 
 /obj/item/weapon/energy_net/dropped()
 	spawn(10)
-		if(src) qdel(src)
+		if(src)
+			qdel(src)
 
 /obj/item/weapon/energy_net/throw_impact(atom/hit_atom)
 	..()
@@ -86,7 +87,8 @@
 
 	// If we miss or hit an obstacle, we still want to delete the net.
 	spawn(10)
-		if(src) qdel(src)
+		if(src)
+			qdel(src)
 
 /obj/effect/energy_net
 	name = "energy net"

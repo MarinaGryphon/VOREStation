@@ -6,7 +6,8 @@
 	if(!check_rights(R_FUN)) return
 
 	var/mob/living/carbon/human/H = tgui_input_list(usr, "Select mob.", "Change Mob Appearance - Admin", human_mob_list)
-	if(!H) return
+	if(!H)
+		return
 
 	log_and_message_admins("is altering the appearance of [H].")
 	H.change_appearance(APPEARANCE_ALL, usr, check_species_whitelist = 0, state = GLOB.tgui_admin_state)
@@ -20,7 +21,8 @@
 	if(!check_rights(R_FUN)) return
 
 	var/mob/living/carbon/human/H = tgui_input_list(usr, "Select mob.", "Change Mob Appearance - Self", human_mob_list)
-	if(!H) return
+	if(!H)
+		return
 
 	if(!H.client)
 		to_chat(usr, "<span class='filter_arning'> Only mobs with clients can alter their own appearance.</span>")

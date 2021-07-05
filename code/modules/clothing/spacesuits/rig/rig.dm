@@ -242,7 +242,8 @@
 	offline = 2
 	canremove = 1
 	for(var/obj/item/piece in list(helmet,boots,gloves,chest))
-		if(!piece) continue
+		if(!piece)
+			continue
 		piece.icon_state = "[suit_state]"
 		if(airtight)
 			update_airtight(piece, 0) // Unseal
@@ -259,7 +260,8 @@
 
 /obj/item/weapon/rig/proc/toggle_seals(var/mob/living/carbon/human/M,var/instant)
 
-	if(sealing) return
+	if(sealing)
+		return
 
 	if(!check_power_cost(M))
 		return 0
@@ -359,7 +361,8 @@
 		qdel(booting_L)
 		qdel(booting_R)
 		for(var/obj/item/piece in list(helmet,boots,gloves,chest))
-			if(!piece) continue
+			if(!piece)
+				continue
 			piece.icon_state = "[suit_state][!seal_target ? "" : "_sealed"]"
 		canremove = !seal_target
 		if(airtight)
@@ -788,7 +791,8 @@
 			malfunction_delay = max(malfunction_delay, round(30/severity_class))
 
 	//drain some charge
-	if(cell) cell.emp_act(severity_class + 15)
+	if(cell)
+		cell.emp_act(severity_class + 15)
 
 	//possibly damage some modules
 	take_hit((100/severity_class), "electrical pulse", 1)
@@ -832,7 +836,8 @@
 	else if(valid_modules.len)
 		dam_module = pick(valid_modules)
 
-	if(!dam_module) return
+	if(!dam_module)
+		return
 
 	dam_module.damage++
 

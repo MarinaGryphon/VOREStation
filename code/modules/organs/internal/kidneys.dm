@@ -8,7 +8,8 @@
 /obj/item/organ/internal/kidneys/process()
 	..()
 
-	if(!owner) return
+	if(!owner)
+		return
 
 	// Coffee is really bad for you with busted kidneys.
 	// This should probably be expanded in some way, but fucked if I know
@@ -29,7 +30,8 @@
 
 /obj/item/organ/internal/kidneys/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
 	//Pyelonephritis
 	if (. >= 1)

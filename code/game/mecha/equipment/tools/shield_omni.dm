@@ -56,7 +56,8 @@
 		toggle_shield()
 
 /obj/item/mecha_parts/mecha_equipment/omni_shield/get_equip_info()
-	if(!chassis) return
+	if(!chassis)
+		return
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[src.name] - <a href='?src=\ref[src];toggle_omnishield=1'>[shields?.active?"Dea":"A"]ctivate</a>"
 
 

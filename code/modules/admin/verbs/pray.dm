@@ -7,7 +7,8 @@
 		return
 
 	msg = sanitize(msg)
-	if(!msg)	return
+	if(!msg)
+		return
 
 	if(usr.client)
 		if(msg)

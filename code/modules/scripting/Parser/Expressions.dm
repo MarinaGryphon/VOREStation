@@ -44,7 +44,8 @@ Proc: GetExpression
 Takes a token expected to represent a value and returns an <expression> node.
 */
 /n_Parser/nS_Parser/proc/GetExpression(token/T)
-	if(!T) return
+	if(!T)
+		return
 	if(istype(T, /node/expression))
 		return T
 	switch(T.type)
@@ -93,9 +94,11 @@ See Also:
 	if(istype(O, /token)) O=O:value //sets O to text
 	if(istext(O))										//sets O to path
 		if(L.Find(O)) O=L[O]
-		else return null
+		else
+			return null
 	if(ispath(O))O=new O						//catches path from last check
-	else return null								//Unknown type
+	else
+		return null								//Unknown type
 	return O
 
 /*
@@ -129,7 +132,8 @@ of the val stack.
 */
 /n_Parser/nS_Parser/proc/Reduce(stack/opr, stack/val)
 	var/node/expression/operator/O=opr.Pop()
-	if(!O) return
+	if(!O)
+		return
 	if(!istype(O))
 		errors+=new/scriptError("Error reducing expression - invalid operator.")
 		return

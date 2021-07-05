@@ -25,15 +25,19 @@
 	. = ..()
 
 /obj/structure/mirror/attack_hand(mob/user as mob)
-	if(!glass) return
-	if(shattered)	return
+	if(!glass)
+		return
+	if(shattered)
+		return
 
 	if(ishuman(user))
 		M.tgui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
-	if(!glass) return
-	if(shattered)	return
+	if(!glass)
+		return
+	if(shattered)
+		return
 	shattered = 1
 	icon_state = "mirror_broke"
 	playsound(src, "shatter", 70, 1)

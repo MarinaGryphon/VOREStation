@@ -230,7 +230,8 @@ var/global/list/all_objectives = list()
 	var/area/shuttle = locate(/area/shuttle/escape/centcom)
 	var/list/protected_mobs = list(/mob/living/silicon/ai, /mob/living/silicon/pai)
 	for(var/mob/living/player in player_list)
-		if(player.type in protected_mobs)	continue
+		if(player.type in protected_mobs)
+			continue
 		if (player.mind && (player.mind != owner))
 			if(player.stat != DEAD)			//they're not dead!
 				if(get_turf(player) in shuttle)
@@ -252,7 +253,8 @@ var/global/list/all_objectives = list()
 	var/area/shuttle = locate(/area/shuttle/escape/centcom)
 	var/protected_mobs[] = list(/mob/living/silicon/ai, /mob/living/silicon/pai, /mob/living/silicon/robot)
 	for(var/mob/living/player in player_list)
-		if(player.type in protected_mobs)	continue
+		if(player.type in protected_mobs)
+			continue
 		if (player.mind)
 			if (player.stat != 2)
 				if (get_turf(player) in shuttle)
@@ -272,7 +274,8 @@ var/global/list/all_objectives = list()
 		if(player.mind)
 			if(player.stat != DEAD)
 				var/turf/T = get_turf(player)
-				if(!T)	continue
+				if(!T)
+					continue
 				switch(T.loc.type)
 					if(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom, /area/shuttle/escape_pod2/centcom, /area/shuttle/escape_pod3/centcom, /area/shuttle/escape_pod5/centcom)
 						return 0
@@ -491,7 +494,8 @@ var/global/list/all_objectives = list()
 	return steal_target
 
 /datum/objective/steal/check_completion()
-	if(!steal_target || !owner.current)	return 0
+	if(!steal_target || !owner.current)
+		return 0
 	if(!isliving(owner.current))	return 0
 	var/list/all_items = owner.current.get_contents()
 	switch (target_name)
@@ -715,13 +719,15 @@ var/global/list/all_objectives = list()
 		if(istype(O,target)) total_amount++
 		for(var/obj/I in O.contents)
 			if(istype(I,target)) total_amount++
-		if(total_amount >= target_amount) return 1
+		if(total_amount >= target_amount)
+			return 1
 
 	for(var/datum/mind/raider in raiders.current_antagonists)
 		if(raider.current)
 			for(var/obj/O in raider.current.get_contents())
 				if(istype(O,target)) total_amount++
-				if(total_amount >= target_amount) return 1
+				if(total_amount >= target_amount)
+					return 1
 
 	return 0
 
@@ -779,7 +785,8 @@ var/global/list/all_objectives = list()
 						var/obj/item/stack/material/S = O
 						total_amount += S.get_amount()
 
-	if(total_amount >= target_amount) return 1
+	if(total_amount >= target_amount)
+		return 1
 	return 0
 
 
@@ -816,7 +823,8 @@ var/global/list/all_objectives = list()
 	if(owner)
 		for(var/datum/mind/ninja in get_antags("ninja"))
 			if(ninja != owner)
-				if(ninja.current.stat < 2) return 0
+				if(ninja.current.stat < 2)
+					return 0
 		return 1
 	return 0
 
@@ -859,7 +867,8 @@ var/global/list/all_objectives = list()
 				possible_targets += player.mind
 	if(possible_targets.len > 0)
 		target = pick(possible_targets)
-	if(target) explanation_text = "Sacrifice [target.name], the [target.assigned_role]. You will need the sacrifice rune (Hell blood join) and three acolytes to do so."
+	if(target)
+		explanation_text = "Sacrifice [target.name], the [target.assigned_role]. You will need the sacrifice rune (Hell blood join) and three acolytes to do so."
 
 /datum/objective/cult/sacrifice/check_completion()
 	return (target && cult && !cult.sacrificed.Find(target))

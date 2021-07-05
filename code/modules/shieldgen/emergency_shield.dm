@@ -52,7 +52,8 @@
 
 	check_failure()
 	set_opacity(1)
-	spawn(20) if(!QDELETED(src)) set_opacity(0)
+	spawn(20)
+		if(!QDELETED(src)) set_opacity(0)
 
 	..()
 
@@ -61,7 +62,8 @@
 	..()
 	check_failure()
 	set_opacity(1)
-	spawn(20) if(!QDELETED(src)) set_opacity(0)
+	spawn(20)
+		if(!QDELETED(src)) set_opacity(0)
 
 /obj/machinery/shield/ex_act(severity)
 	switch(severity)
@@ -111,7 +113,8 @@
 
 	//The shield becomes dense to absorb the blow.. purely asthetic.
 	set_opacity(1)
-	spawn(20) if(!QDELETED(src)) set_opacity(0)
+	spawn(20)
+		if(!QDELETED(src)) set_opacity(0)
 
 	..()
 	return
@@ -146,7 +149,8 @@
 	..()
 
 /obj/machinery/shieldgen/proc/shields_up()
-	if(active) return 0 //If it's already turned on, how did this get called?
+	if(active)
+		return 0 //If it's already turned on, how did this get called?
 
 	src.active = 1
 	update_icon()
@@ -160,7 +164,8 @@
 	update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/shieldgen/proc/shields_down()
-	if(!active) return 0 //If it's already off, how did this get called?
+	if(!active)
+		return 0 //If it's already off, how did this get called?
 
 	src.active = 0
 	update_icon()
@@ -183,7 +188,8 @@
 
 /obj/machinery/shieldgen/power_change()
 	..()
-	if(!active) return
+	if(!active)
+		return
 	if (stat & NOPOWER)
 		collapse_shields()
 	else

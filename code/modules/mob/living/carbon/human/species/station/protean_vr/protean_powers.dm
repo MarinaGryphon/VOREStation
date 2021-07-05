@@ -210,7 +210,8 @@
 	var/substance = matstack.material.name
 	var allowed = FALSE
 	for(var/material in PROTEAN_EDIBLE_MATERIALS)
-		if(material == substance) allowed = TRUE
+		if(material == substance)
+			allowed = TRUE
 	if(!allowed)
 		to_chat(src,"<span class='warning'>You can't process [substance]!</span>")
 		return //Only a few things matter, the rest are best not cluttering the lists.

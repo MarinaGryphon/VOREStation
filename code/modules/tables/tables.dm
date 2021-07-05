@@ -242,7 +242,8 @@ var/list/table_icon_cache = list()
 		to_chat(user, "<span class='warning'>You cannot [verb]e \the [src] with \the [S].</span>")
 		return null
 
-	if(manipulating) return M
+	if(manipulating)
+		return M
 	manipulating = 1
 	to_chat(user, "<span class='notice'>You begin [verb]ing \the [src] with [M.display_name].</span>")
 	if(!do_after(user, 20) || !S.use(1))
@@ -258,7 +259,8 @@ var/list/table_icon_cache = list()
 		to_chat(user, "<span class='warning'>You are unable to remove the [what] from this [src]!</span>")
 		return M
 
-	if(manipulating) return M
+	if(manipulating)
+		return M
 	manipulating = 1
 	user.visible_message("<span class='notice'>\The [user] begins removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>",
 	                              "<span class='notice'>You begin removing the [type_holding] holding \the [src]'s [M.display_name] [what] in place.</span>")
@@ -280,7 +282,8 @@ var/list/table_icon_cache = list()
 	material = common_material_remove(user, material, 20 * W.toolspeed, "plating", "bolts", W.usesound)
 
 /obj/structure/table/proc/dismantle(obj/item/W, mob/user)
-	if(manipulating) return
+	if(manipulating)
+		return
 	manipulating = 1
 	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",
 	                              "<span class='notice'>You begin dismantling \the [src].</span>")
@@ -310,13 +313,15 @@ var/list/table_icon_cache = list()
 			reinforced.place_sheet(loc)
 		else
 			S = reinforced.place_shard(loc)
-			if(S) shards += S
+			if(S)
+				shards += S
 	if(material)
 		if(material.stack_type && (full_return || prob(20)))
 			material.place_sheet(loc)
 		else
 			S = material.place_shard(loc)
-			if(S) shards += S
+			if(S)
+				shards += S
 	if(carpeted && (full_return || prob(50))) // Higher chance to get the carpet back intact, since there's no non-intact option
 		new carpeted_type(src.loc)
 	if(full_return || prob(20))
@@ -324,7 +329,8 @@ var/list/table_icon_cache = list()
 	else
 		var/datum/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
 		S = M.place_shard(loc)
-		if(S) shards += S
+		if(S)
+			shards += S
 	qdel(src)
 	return shards
 

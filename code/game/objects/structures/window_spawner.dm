@@ -33,7 +33,8 @@
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/wingrille_spawn/proc/activate()
-	if(activated) return
+	if(activated)
+		return
 	if (!locate(/obj/structure/grille) in get_turf(src))
 		var/obj/structure/grille/G = new /obj/structure/grille(src.loc)
 		handle_grille_spawn(G)
@@ -56,7 +57,8 @@
 			neighbours |= other
 	activated = 1
 	for(var/obj/effect/wingrille_spawn/other in neighbours)
-		if(!other.activated) other.activate()
+		if(!other.activated)
+			other.activate()
 	if(initialized && !QDELETED(src))
 		qdel(src)
 

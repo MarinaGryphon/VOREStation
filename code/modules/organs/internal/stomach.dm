@@ -33,7 +33,8 @@
 
 /obj/item/organ/internal/stomach/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
 	//Bacterial Gastroenteritis
 	if (. >= 1)

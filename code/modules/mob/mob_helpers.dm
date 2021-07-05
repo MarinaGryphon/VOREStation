@@ -94,7 +94,8 @@
 */
 
 /proc/check_zone(zone)
-	if(!zone)	return BP_TORSO
+	if(!zone)
+		return BP_TORSO
 	switch(zone)
 		if(O_EYES)
 			zone = BP_HEAD
@@ -204,9 +205,12 @@
 			if(lowertext(newletter)=="a")	newletter="ah"
 			if(lowertext(newletter)=="c")	newletter="k"
 		switch(rand(1,15))
-			if(1,3,5,8)	newletter="[lowertext(newletter)]"
-			if(2,4,6,15)	newletter="[uppertext(newletter)]"
-			if(7)	newletter+="'"
+			if(1,3,5,8)
+				newletter="[lowertext(newletter)]"
+			if(2,4,6,15)
+				newletter="[uppertext(newletter)]"
+			if(7)
+				newletter+="'"
 			//if(9,10)	newletter="<b>[newletter]</b>"
 			//if(11,12)	newletter="<big>[newletter]</big>"
 			//if(13)	newletter="<small>[newletter]</small>"
@@ -323,16 +327,24 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 /proc/intent_numeric(argument)
 	if(istext(argument))
 		switch(argument)
-			if(I_HELP)		return 0
-			if(I_DISARM)	return 1
-			if(I_GRAB)		return 2
-			else			return 3
+			if(I_HELP)
+				return 0
+			if(I_DISARM)
+				return 1
+			if(I_GRAB)
+				return 2
+			else
+				return 3
 	else
 		switch(argument)
-			if(0)			return I_HELP
-			if(1)			return I_DISARM
-			if(2)			return I_GRAB
-			else			return I_HURT
+			if(0)
+				return I_HELP
+			if(1)
+				return I_DISARM
+			if(2)
+				return I_GRAB
+			else
+				return I_HURT
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 /mob/verb/a_intent_change(input as text)

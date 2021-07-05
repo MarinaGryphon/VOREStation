@@ -54,7 +54,8 @@
 
 	if (location)
 		var/obj/machinery/light/small/readylight/light = locate() in shuttle_area
-		if(light) light.set_state(0)
+		if(light)
+			light.set_state(0)
 
 	//launch
 	radio_announce("ALERT: INITIATING LAUNCH SEQUENCE")
@@ -75,7 +76,8 @@
 				to_chat(M, "<span class='danger'>You have arrived at [station_name()]. Commence operation!</span>")
 
 				var/obj/machinery/light/small/readylight/light = locate() in T
-				if(light) light.set_state(1)
+				if(light)
+					light.set_state(1)
 
 /datum/shuttle/autodock/ferry/specops/cancel_launch()
 	if (!can_cancel())

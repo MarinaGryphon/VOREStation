@@ -15,7 +15,8 @@ function SetMusic(url, time, volume) {
 		player.currentTime = time;
 		player.play();
 	}
-	if(url != "") player.addEventListener("canplay", setTime, false);
+	if(url != "")
+		player.addEventListener("canplay", setTime, false);
 	player.src = url;
 }
 </script>

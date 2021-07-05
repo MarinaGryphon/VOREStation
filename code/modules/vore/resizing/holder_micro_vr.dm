@@ -17,8 +17,10 @@
 
 /obj/item/weapon/holder/MouseDrop(mob/M)
 	..()
-	if(M != usr) return
-	if(usr == src) return
+	if(M != usr)
+		return
+	if(usr == src)
+		return
 	if(!Adjacent(usr)) return
 	if(isAI(M)) return
 	for(var/mob/living/carbon/human/O in contents)

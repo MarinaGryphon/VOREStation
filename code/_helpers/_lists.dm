@@ -20,10 +20,14 @@
 	// this proc cannot be merged with counting_english_list to maintain compatibility
 	// with shoddy use of this proc for code logic and for cases that require original order
 	switch(input.len)
-		if(0) return nothing_text
-		if(1) return "[input[1]]"
-		if(2) return "[input[1]][and_text][input[2]]"
-		else  return "[jointext(input, comma_text, 1, -1)][final_comma_text][and_text][input[input.len]]"
+		if(0)
+			return nothing_text
+		if(1)
+			return "[input[1]]"
+		if(2)
+			return "[input[1]][and_text][input[2]]"
+		else
+			return "[jointext(input, comma_text, 1, -1)][final_comma_text][and_text][input[input.len]]"
 
 //Returns a newline-separated list that counts equal-ish items, outputting count and item names, optionally with icons and specific determiners
 /proc/counting_english_list(var/list/input, output_icons = TRUE, determiners = DET_NONE, nothing_text = "nothing", line_prefix = "\t", first_item_prefix = "\n", last_item_suffix = "\n", and_text = "\n", comma_text = "\n", final_comma_text = ",")
@@ -55,10 +59,14 @@
 			if(output_icons && isicon(A.icon) && !ismob(A)) // mobs tend to have unusable icons
 				item_str += "[bicon(A)]&nbsp;"
 			switch(determiners)
-				if(DET_NONE) item_str += A.name
-				if(DET_DEFINITE) item_str += "\the [A]"
-				if(DET_INDEFINITE) item_str += "\a [A]"
-				else item_str += name
+				if(DET_NONE)
+					item_str += A.name
+				if(DET_DEFINITE)
+					item_str += "\the [A]"
+				if(DET_INDEFINITE)
+					item_str += "\a [A]"
+				else
+					item_str += name
 		else
 			// non-atoms use plain string conversion
 			item_str += name

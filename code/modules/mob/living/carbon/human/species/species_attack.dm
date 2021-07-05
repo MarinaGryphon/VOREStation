@@ -29,7 +29,8 @@
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]
 	var/datum/gender/TT = gender_datums[target.get_visible_gender()]
-	if(!skill)	skill = 1
+	if(!skill)
+		skill = 1
 	attack_damage = CLAMP(attack_damage, 1, 5)
 
 	if(target == user)
@@ -52,9 +53,12 @@
 		else
 			// ----- BODY ----- //
 			switch(attack_damage)
-				if(1 to 2)	user.visible_message("<span class='danger'>[user] scratched [target]'s [affecting.name]!</span>")
-				if(3 to 4)	user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [pick("", "", "the side of")] [target]'s [affecting.name]!</span>")
-				if(5)		user.visible_message("<span class='danger'>[user] tears [T.his] [pick(attack_noun)] [pick("deep into", "into", "across")] [target]'s [affecting.name]!</span>")
+				if(1 to 2)
+					user.visible_message("<span class='danger'>[user] scratched [target]'s [affecting.name]!</span>")
+				if(3 to 4)
+					user.visible_message("<span class='danger'>[user] [pick(attack_verb)] [pick("", "", "the side of")] [target]'s [affecting.name]!</span>")
+				if(5)
+					user.visible_message("<span class='danger'>[user] tears [T.his] [pick(attack_noun)] [pick("deep into", "into", "across")] [target]'s [affecting.name]!</span>")
 
 /datum/unarmed_attack/claws/strong
 	attack_name = "strong claws"

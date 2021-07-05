@@ -99,7 +99,8 @@
 
 	var/sample_type
 	if(choice == "Blood")
-		if(!A.blood_DNA || !A.blood_DNA.len) return
+		if(!A.blood_DNA || !A.blood_DNA.len)
+			return
 		dna = A.blood_DNA.Copy()
 		sample_type = "blood"
 

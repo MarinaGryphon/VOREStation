@@ -1,6 +1,7 @@
 /datum/disease2/disease/Topic(href, href_list)
 	. = ..()
-	if(.) return
+	if(.)
+		return
 
 	if(href_list["info"])
 		// spawn or admin privileges to see info about viruses
@@ -53,7 +54,8 @@
 	var/list/spawned_viruses = list()
 
 /datum/virus2_editor/proc/select(mob/user, stage)
-	if(stage < 1 || stage > 4) return
+	if(stage < 1 || stage > 4)
+		return
 
 	var/list/L = list()
 
@@ -65,7 +67,8 @@
 	var/datum/disease2/effect/Eff = s[stage]
 
 	var/C = tgui_input_list(usr, "Select effect for stage [stage]:", "Stage [stage]", L, Eff)
-	if(!C) return
+	if(!C)
+		return
 	return L[C]
 
 /datum/virus2_editor/proc/show_ui(mob/user)
@@ -90,8 +93,10 @@
 		var/datum/species/S = GLOB.all_species[k]
 		if(S.get_virus_immune())
 			continue
-		if(!f) H += " | "
-		else f = 0
+		if(!f)
+			H += " | "
+		else
+			f = 0
 		H += "<a href='?src=\ref[src];what=species;toggle=[k]' style='color:[(k in species) ? "#006600" : "#ff0000"]'>[k]</a>"
 	H += {"
 	<a href="?src=\ref[src];what=species;reset=1" style="color:#0000aa">Reset</a>
@@ -104,8 +109,10 @@
 	"}
 	f = 1
 	for(var/k in ALL_ANTIGENS)
-		if(!f) H += " | "
-		else f = 0
+		if(!f)
+			H += " | "
+		else
+			f = 0
 		H += "<a href='?src=\ref[src];what=antigen;toggle=[k]' style='color:[(k in antigens) ? "#006600" : "#ff0000"]'>[k]</a>"
 	H += {"
 	<a href="?src=\ref[src];what=antigen;reset=1" style="color:#0000aa">Reset</a>
@@ -123,7 +130,8 @@
 			var/stage = text2num(href_list["stage"])
 			if(href_list["effect"])
 				var/datum/disease2/effect/E = select(usr,stage)
-				if(!E) return
+				if(!E)
+					return
 				s[stage] = E
 				// set a default chance and multiplier of half the maximum (roughly average)
 				s_chance[stage] = max(1, round(initial(E.chance_maxm)/2))
@@ -152,15 +160,18 @@
 					infectee = null
 		if("ichance")
 			var/I = input(usr, "Input infection chance", "Infection Chance", infectionchance) as null|num
-			if(!I) return
+			if(!I)
+				return
 			infectionchance = I
 		if("stype")
 			var/S = tgui_alert(usr, "Which spread type?", "Spread Type", list("Contact", "Airborne", "Blood"))
-			if(!S) return
+			if(!S)
+				return
 			spreadtype = S
 		if("speed")
 			var/S = input(usr, "Input speed", "Speed", speed) as null|num
-			if(!S) return
+			if(!S)
+				return
 			speed = S
 		if("antigen")
 			if(href_list["toggle"])
@@ -174,7 +185,8 @@
 				antigens = list()
 		if("resistance")
 			var/S = input(usr, "Input % resistance to antibiotics", "Resistance", resistance) as null|num
-			if(!S) return
+			if(!S)
+				return
 			resistance = S
 		if("infectee")
 			var/list/candidates = list()
@@ -188,14 +200,16 @@
 				to_chat(usr, "No possible candidates found!")
 
 			var/I = tgui_input_list(usr, "Choose initial infectee", "Infectee", candidates)
-			if(!I || !candidates[I]) return
+			if(!I || !candidates[I])
+				return
 			infectee = candidates[I]
 			species |= infectee.species.get_bodytype()
 		if("go")
 			if(!antigens.len)
 				var/a = tgui_alert(usr, "This disease has no antigens; it will be impossible to permanently immunise anyone without them.\
 								It is strongly recommended to set at least one antigen. Do you want to go back and edit your virus?", "Antigens", list("Yes", "No"))
-				if(a == "Yes") return
+				if(a == "Yes")
+					return
 			var/datum/disease2/disease/D = new
 			D.infectionchance = infectionchance
 			D.spreadtype = spreadtype

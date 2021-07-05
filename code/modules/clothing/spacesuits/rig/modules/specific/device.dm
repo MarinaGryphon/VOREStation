@@ -11,7 +11,8 @@
 
 /obj/item/rig_module/device/New()
 	..()
-	if(device_type) device = new device_type(src)
+	if(device_type)
+		device = new device_type(src)
 
 /obj/item/rig_module/device/engage(atom/target)
 	if(!..() || !device)

@@ -26,7 +26,8 @@ var/list/datum/dna/hivemind_bank = list()
 	set desc = "Allows you to channel DNA in the airwaves to allow other changelings to absorb it."
 
 	var/datum/changeling/changeling = changeling_power(10,1)
-	if(!changeling)	return
+	if(!changeling)
+		return
 
 	var/list/names = list()
 	for(var/datum/absorbed_dna/DNA in changeling.absorbed_dna)
@@ -38,7 +39,8 @@ var/list/datum/dna/hivemind_bank = list()
 		return
 
 	var/S = tgui_input_list(src, "Select a DNA to channel:", "Channel DNA", names)
-	if(!S)	return
+	if(!S)
+		return
 
 	var/datum/absorbed_dna/chosen_dna = changeling.GetDNA(S)
 	if(!chosen_dna)
@@ -56,7 +58,8 @@ var/list/datum/dna/hivemind_bank = list()
 	set desc = "Allows you to absorb DNA that is being channeled in the airwaves."
 
 	var/datum/changeling/changeling = changeling_power(20,1)
-	if(!changeling)	return
+	if(!changeling)
+		return
 
 	var/list/names = list()
 	for(var/datum/absorbed_dna/DNA in hivemind_bank)
@@ -68,7 +71,8 @@ var/list/datum/dna/hivemind_bank = list()
 		return
 
 	var/S = tgui_input_list(src, "Select a DNA to absorb:", "Absorb DNA", names)
-	if(!S)	return
+	if(!S)
+		return
 	var/datum/absorbed_dna/chosen_dna = names[S]
 	if(!chosen_dna)
 		return

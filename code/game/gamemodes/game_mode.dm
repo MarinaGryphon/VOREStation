@@ -529,12 +529,14 @@ var/global/list/additional_antag_types = list()
 				dudes += man
 			else if(man.client.prefs.economic_status == CLASS_LOWMID && prob(50))
 				dudes += man
-	if(dudes.len == 0) return null
+	if(dudes.len == 0)
+		return null
 	return pick(dudes)
 
 /proc/show_objectives(var/datum/mind/player)
 
-	if(!player || !player.current) return
+	if(!player || !player.current)
+		return
 
 	var/obj_count = 1
 	to_chat(player.current, "<span class='notice'>Your current objectives:</span>")

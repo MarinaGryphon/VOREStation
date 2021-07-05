@@ -400,7 +400,8 @@
 
 	var/mob/living/T = tgui_input_list(src,"Who do you wish to leap at?","Target Choice", choices)
 
-	if(!T || !src || src.stat) return
+	if(!T || !src || src.stat)
+		return
 
 	if(get_dist(get_turf(T), get_turf(src)) > 3) return
 
@@ -423,7 +424,8 @@
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & LEAPING)
+		status_flags &= ~LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")

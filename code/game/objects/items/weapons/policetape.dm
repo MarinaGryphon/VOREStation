@@ -191,8 +191,10 @@ var/list/tape_roll_applications = list()
 		var/orientation = get_dir(start, end)
 		var/dir = 0
 		switch(orientation)
-			if(NORTH, SOUTH)	dir = NORTH|SOUTH	// North-South taping
-			if(EAST,   WEST)	dir =  EAST|WEST	// East-West taping
+			if(NORTH, SOUTH)
+				dir = NORTH|SOUTH	// North-South taping
+			if(EAST,   WEST)
+				dir =  EAST|WEST	// East-West taping
 
 		var/can_place = 1
 		while (can_place)

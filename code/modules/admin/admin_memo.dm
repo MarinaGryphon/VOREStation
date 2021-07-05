@@ -10,9 +10,12 @@
 	#endif
 	if(!check_rights(0))	return
 	switch(task)
-		if("write")		admin_memo_write()
-		if("show")		admin_memo_show()
-		if("delete")	admin_memo_delete()
+		if("write")
+			admin_memo_write()
+		if("show")
+			admin_memo_show()
+		if("delete")
+			admin_memo_delete()
 
 //write a message
 /client/proc/admin_memo_write()

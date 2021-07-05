@@ -134,7 +134,8 @@
 /obj/machinery/keycard_auth/proc/broadcast_request()
 	icon_state = "auth_on"
 	for(var/obj/machinery/keycard_auth/KA in machines)
-		if(KA == src) continue
+		if(KA == src)
+			continue
 		KA.reset()
 		spawn()
 			KA.receive_request(src)
@@ -182,7 +183,8 @@
 			feedback_inc("alert_keycard_auth_ert",1)
 
 /obj/machinery/keycard_auth/proc/is_ert_blocked()
-	if(config.ert_admin_call_only) return 1
+	if(config.ert_admin_call_only)
+		return 1
 	return ticker.mode && ticker.mode.ert_disabled
 
 var/global/maint_all_access = 0

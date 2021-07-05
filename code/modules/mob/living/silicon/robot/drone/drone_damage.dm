@@ -8,8 +8,10 @@
 	bruteloss -= brute
 	fireloss -= burn
 
-	if(bruteloss<0) bruteloss = 0
-	if(fireloss<0) fireloss = 0
+	if(bruteloss<0)
+		bruteloss = 0
+	if(fireloss<0)
+		fireloss = 0
 
 /mob/living/silicon/robot/drone/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/emp = 0)
 	take_overall_damage(brute,burn)

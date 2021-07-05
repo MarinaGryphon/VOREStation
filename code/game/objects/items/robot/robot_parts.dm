@@ -113,35 +113,40 @@
 		else
 			to_chat(user, "<span class='warning'>You need one sheet of metal to arm the robot frame.</span>")
 	if(istype(W, /obj/item/robot_parts/l_leg))
-		if(src.l_leg)	return
+		if(src.l_leg)
+			return
 		user.drop_item()
 		W.loc = src
 		src.l_leg = W
 		src.updateicon()
 
 	if(istype(W, /obj/item/robot_parts/r_leg))
-		if(src.r_leg)	return
+		if(src.r_leg)
+			return
 		user.drop_item()
 		W.loc = src
 		src.r_leg = W
 		src.updateicon()
 
 	if(istype(W, /obj/item/robot_parts/l_arm))
-		if(src.l_arm)	return
+		if(src.l_arm)
+			return
 		user.drop_item()
 		W.loc = src
 		src.l_arm = W
 		src.updateicon()
 
 	if(istype(W, /obj/item/robot_parts/r_arm))
-		if(src.r_arm)	return
+		if(src.r_arm)
+			return
 		user.drop_item()
 		W.loc = src
 		src.r_arm = W
 		src.updateicon()
 
 	if(istype(W, /obj/item/robot_parts/chest))
-		if(src.chest)	return
+		if(src.chest)
+			return
 		if(W:wires && W:cell)
 			user.drop_item()
 			W.loc = src
@@ -153,7 +158,8 @@
 			to_chat(user, "<span class='warning'>You need to attach a cell to it first!</span>")
 
 	if(istype(W, /obj/item/robot_parts/head))
-		if(src.head)	return
+		if(src.head)
+			return
 		if(W:flash2 && W:flash1)
 			user.drop_item()
 			W.loc = src
@@ -193,7 +199,8 @@
 					return
 
 			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot(get_turf(loc), unfinished = 1)
-			if(!O)	return
+			if(!O)
+				return
 
 			user.drop_item()
 

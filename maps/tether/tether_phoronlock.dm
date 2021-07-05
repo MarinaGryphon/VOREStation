@@ -172,7 +172,8 @@
 
 /datum/embedded_program/airlock/phoron/receive_signal(datum/signal/signal, receive_method, receive_param)
 	var/receive_tag = signal.data["tag"]
-	if(!receive_tag) return
+	if(!receive_tag)
+		return
 	if(..()) return 1
 
 	if(receive_tag==tag_chamber_sensor)

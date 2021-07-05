@@ -25,7 +25,8 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 //Updates strings and icon appropriately based on seed datum.
 /obj/item/seeds/proc/update_appearance()
-	if(!seed) return
+	if(!seed)
+		return
 
 	// Update icon.
 	cut_overlays()

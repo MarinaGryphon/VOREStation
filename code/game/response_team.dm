@@ -70,11 +70,14 @@ var/silent_ert = 0
 	var/deadcount = 0
 	for(var/mob/living/carbon/human/H in mob_list)
 		if(H.client) // Monkeys and mice don't have a client, amirite?
-			if(H.stat == 2) deadcount++
+			if(H.stat == 2)
+				deadcount++
 			total++
 
-	if(total == 0) return 0
-	else return round(100 * deadcount / total)
+	if(total == 0)
+		return 0
+	else
+		return round(100 * deadcount / total)
 
 // counts the number of antagonists in %
 /proc/percentage_antagonists()
@@ -85,8 +88,10 @@ var/silent_ert = 0
 			antagonists++
 		total++
 
-	if(total == 0) return 0
-	else return round(100 * antagonists / total)
+	if(total == 0)
+		return 0
+	else
+		return round(100 * antagonists / total)
 
 // Increments the ERT chance automatically, so that the later it is in the round,
 // the more likely an ERT is to be able to be called.
@@ -120,7 +125,8 @@ var/silent_ert = 0
 	send_team_chance += percentage_antagonists() // the more antagonists, the higher the chance
 	send_team_chance = min(send_team_chance, 100)
 
-	if(force) send_team_chance = 100
+	if(force)
+		send_team_chance = 100
 
 	// there's only a certain chance a team will be sent
 	if(!prob(send_team_chance))

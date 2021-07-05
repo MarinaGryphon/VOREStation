@@ -6,7 +6,8 @@
 
 /obj/item/organ/internal/intestine/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
 	//Viral Gastroenteritis
 	if (. >= 1)

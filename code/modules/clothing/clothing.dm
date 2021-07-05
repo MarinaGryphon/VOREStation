@@ -939,7 +939,8 @@
 			rolled_down = 0
 	else
 		rolled_down = -1
-	if(H) update_clothing_icon()
+	if(H)
+		update_clothing_icon()
 
 /obj/item/clothing/under/proc/update_rollsleeves_status()
 	var/mob/living/carbon/human/H
@@ -964,7 +965,8 @@
 			rolled_sleeves = 0
 	else
 		rolled_sleeves = -1
-	if(H) update_clothing_icon()
+	if(H)
+		update_clothing_icon()
 
 /obj/item/clothing/under/update_clothing_icon()
 	if (ismob(src.loc))
@@ -1029,7 +1031,8 @@
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	update_rolldown_status()
 	if(rolled_down == -1)
@@ -1062,7 +1065,8 @@
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	update_rollsleeves_status()
 	if(rolled_sleeves == -1)

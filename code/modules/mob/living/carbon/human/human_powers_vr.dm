@@ -3,7 +3,8 @@
 	set desc = "Empty yourself of any reagents you may have consumed or come into contact with."
 	set category = "IC"
 
-	if(stat == DEAD) return
+	if(stat == DEAD)
+		return
 
 	to_chat(src, "<span class='notice'>Performing reagent purge, please wait...</span>")
 	sleep(50)

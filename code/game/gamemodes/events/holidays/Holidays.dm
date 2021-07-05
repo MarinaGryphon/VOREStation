@@ -18,7 +18,8 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 
 //sets up the Holiday global variable. Shouldbe called on game configuration or something.
 /proc/Get_Holiday()
-	if(!Holiday)	return		// Holiday stuff was not enabled in the config!
+	if(!Holiday)
+		return		// Holiday stuff was not enabled in the config!
 
 	Holiday = list()			// reset our switch now so we can recycle it as our Holiday name
 
@@ -264,8 +265,10 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 			Floorlist = null
 			var/obj/structure/closet/C = locate(/obj/structure/closet) in F
 			var/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/wrapped/Egg
-			if( C )			Egg = new(C)
-			else			Egg = new(F)
+			if( C )
+				Egg = new(C)
+			else
+				Egg = new(F)
 */
 /*			var/list/obj/containers = list()
 			for(var/obj/item/weapon/storage/S in world)

@@ -124,7 +124,8 @@
 			var/mob/living/carbon/human/H = body
 			add_overlay(H.overlays_standing)
 
-	if(!T)	T = pick(latejoin)			//Safety in case we cannot find the body's position
+	if(!T)
+		T = pick(latejoin)			//Safety in case we cannot find the body's position
 	forceMove(T)
 
 	if(!name)							//To prevent nameless ghosts
@@ -175,8 +176,10 @@ Works together with spawning an observer, noted above.
 
 /mob/observer/dead/Life()
 	..()
-	if(!loc) return
-	if(!client) return 0
+	if(!loc)
+		return
+	if(!client)
+		return 0
 
 	handle_regular_hud_updates()
 	handle_vision()
@@ -253,7 +256,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/verb/reenter_corpse()
 	set category = "Ghost"
 	set name = "Re-enter Corpse"
-	if(!client)	return
+	if(!client)
+		return
 	if(!(mind && mind.current && can_reenter_corpse))
 		to_chat(src, "<span class='warning'>You have no body.</span>")
 		return
@@ -323,7 +327,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 	if(config.antag_hud_restricted && !has_enabled_antagHUD && !client.holder)
 		var/response = tgui_alert(src, "If you turn this on, you will not be able to take any part in the round.","Are you sure you want to turn this feature on?",list("Yes","No"))
-		if(response == "No") return
+		if(response == "No")
+			return
 		can_reenter_corpse = FALSE
 		set_respawn_timer(-1) // Foreeeever
 	if(!has_enabled_antagHUD && !client.holder)
@@ -382,7 +387,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 	
 	var/target = possible_mobs[input]
-	if(!target) return
+	if(!target)
+		return
 	ManualFollow(target)
 
 /mob/observer/dead/forceMove(atom/destination)
@@ -625,7 +631,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/response = tgui_alert(src, "Are you -sure- you want to become a mouse?","Are you sure you want to squeek?",list("Squeek!","Nope!"))
-	if(response != "Squeek!") return  //Hit the wrong key...again.
+	if(response != "Squeek!")
+		return  //Hit the wrong key...again.
 
 
 	//find a viable mouse candidate
@@ -661,7 +668,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 //This is called when a ghost is drag clicked to something.
 /mob/observer/dead/MouseDrop(atom/over)
-	if(!usr || !over) return
+	if(!usr || !over)
+		return
 	if (isobserver(usr) && usr.client && usr.client.holder && isliving(over))
 		if (usr.client.holder.cmd_ghost_drag(src,over))
 			return

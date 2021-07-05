@@ -225,7 +225,8 @@
 // Places the item on the target mob.
 /proc/place_custom_item(mob/living/carbon/human/M, var/datum/custom_item/citem)
 
-	if(!citem) return
+	if(!citem)
+		return
 	var/obj/item/newitem = citem.spawn_item()
 
 	if(M.equip_to_appropriate_slot(newitem))

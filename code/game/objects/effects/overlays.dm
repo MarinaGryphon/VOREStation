@@ -11,7 +11,8 @@
 
 /obj/effect/overlay/beam/New()
 	..()
-	spawn(10) qdel(src)
+	spawn(10)
+		qdel(src)
 
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"

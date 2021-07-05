@@ -60,10 +60,12 @@
 
 	// Damage to internal organs hurts a lot.
 	for(var/obj/item/organ/I in internal_organs)
-		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT) continue
-		if(I.damage > 2) if(prob(2))
-			var/obj/item/organ/external/parent = get_organ(I.parent_organ)
-			src.custom_pain("You feel a sharp pain in your [parent.name]", 50)
+		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT)
+			continue
+		if(I.damage > 2)
+			if(prob(2))
+				var/obj/item/organ/external/parent = get_organ(I.parent_organ)
+				src.custom_pain("You feel a sharp pain in your [parent.name]", 50)
 
 	if(prob(2))
 		switch(getToxLoss())

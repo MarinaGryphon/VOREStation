@@ -73,12 +73,18 @@ var/list/outfits_decls_by_type_
 /decl/hierarchy/outfit/proc/pre_equip(mob/living/carbon/human/H)
 	if(flags & OUTFIT_HAS_BACKPACK)
 		switch(H.backbag)
-			if(2) back = backpack
-			if(3) back = satchel_one
-			if(4) back = satchel_two
-			if(5) back = messenger_bag
-			if(6) back = sports_bag
-			else back = null
+			if(2)
+				back = backpack
+			if(3)
+				back = satchel_one
+			if(4)
+				back = satchel_two
+			if(5)
+				back = messenger_bag
+			if(6)
+				back = sports_bag
+			else
+				back = null
 
 /decl/hierarchy/outfit/proc/post_equip(mob/living/carbon/human/H)
 	if(flags & OUTFIT_HAS_JETPACK)

@@ -89,7 +89,8 @@ RSF
 
 /obj/item/weapon/rsf/afterattack(atom/A, mob/user as mob, proximity)
 
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	if(istype(user,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = user

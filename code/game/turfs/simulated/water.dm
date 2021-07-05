@@ -48,7 +48,8 @@
 		playsound(src, 'sound/effects/slosh.ogg', 25, 1)
 		return 1
 
-	else return ..()
+	else
+		return ..()
 
 /turf/simulated/floor/water/return_air_for_internal_lifeform(var/mob/living/L)
 	if(L && L.lying)

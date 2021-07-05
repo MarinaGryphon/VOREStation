@@ -69,7 +69,8 @@ var/list/name_to_material
 
 // Builds the datum list above.
 /proc/populate_material_list(force_remake=0)
-	if(name_to_material && !force_remake) return // Already set up!
+	if(name_to_material && !force_remake)
+		return // Already set up!
 	name_to_material = list()
 	for(var/type in subtypesof(/datum/material))
 		var/datum/material/new_mineral = new type

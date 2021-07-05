@@ -93,7 +93,8 @@
 	for(var/obj/O in T.contents)
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
-			if(S.climbable) continue
+			if(S.climbable)
+				continue
 		if(O && O.density && !(O.flags & ON_BORDER)) //ON_BORDER structures are handled by the Adjacent() check.
 			return O
 	return 0
@@ -126,7 +127,8 @@
 		climbers.Cut(1,2)
 
 	for(var/mob/living/M in get_turf(src))
-		if(M.lying) return //No spamming this on people.
+		if(M.lying)
+			return //No spamming this on people.
 
 		M.Weaken(3)
 		to_chat(M, "<span class='danger'>You topple as \the [src] moves under you!</span>")
@@ -187,7 +189,8 @@
 		return 0
 	visible_message("<span class='danger'>[user] [attack_verb] the [src] apart!</span>")
 	user.do_attack_animation(src)
-	spawn(1) qdel(src)
+	spawn(1)
+		qdel(src)
 	return 1
 
 /obj/structure/proc/can_visually_connect()

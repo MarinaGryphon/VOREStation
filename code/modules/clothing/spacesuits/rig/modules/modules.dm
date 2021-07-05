@@ -123,7 +123,8 @@
 			charge_dat.product_type = charge[3]
 			charge_dat.charges      = charge[4]
 
-			if(!charge_selected) charge_selected = charge_dat.short_name
+			if(!charge_selected)
+				charge_selected = charge_dat.short_name
 			processed_charges[charge_dat.short_name] = charge_dat
 
 		charges = processed_charges

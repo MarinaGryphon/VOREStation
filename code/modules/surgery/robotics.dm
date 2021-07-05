@@ -246,7 +246,8 @@
 	if (!hasorgans(target))
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	if(!affected) return
+	if(!affected)
+		return
 	var/is_organ_damaged = 0
 	for(var/obj/item/organ/I in affected.internal_organs)
 		if(I.damage > 0 && (I.robotic >= ORGAN_ROBOT))
@@ -469,7 +470,8 @@
 	spawn(0) //Name yourself on your own damn time
 		var/new_name = target.real_name
 		while(target.client)
-			if(!target) return
+			if(!target)
+				return
 			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
 			var/clean_name = sanitizeName(try_name, allow_numbers = TRUE)
 			if(clean_name)
@@ -563,7 +565,8 @@
 	spawn(0) //Name yourself on your own damn time
 		var/new_name = ""
 		while(!new_name)
-			if(!target) return
+			if(!target)
+				return
 			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
 			var/clean_name = sanitizeName(try_name, allow_numbers = TRUE)
 			if(clean_name)

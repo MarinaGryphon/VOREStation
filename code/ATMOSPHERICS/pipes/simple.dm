@@ -55,7 +55,8 @@
 		if(prob(5))
 			burst()
 
-	else return 1
+	else
+		return 1
 
 /obj/machinery/atmospherics/pipe/simple/init_dir()
 	switch(dir)
